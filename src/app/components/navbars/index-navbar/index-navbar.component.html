@@ -61,12 +61,11 @@
         </li>
         <li class="flex items-center">
           <i class="fa-solid fas fa-circle-user"></i> 
-          <a 
-            href="https://www.creative-tim.com/product/notus-angular?ref=na-auth" 
-            target="_blank" 
-            class="bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">
-            <i class="fas fa-user"></i> Iniciar Sesion 
-          </a>
+          <button style="cursor: pointer" routerLink="/auth/login" 
+          class="bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">
+            <i class="fas fa-user"></i>
+            <span> Iniciar Sesion</span>
+          </button>
         </li>
       </ul>
     </div>
