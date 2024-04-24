@@ -16,4 +16,5 @@ export class Club{
     state : boolean
     delegado : string;
     municipio : string;
+    logo : string;
 }

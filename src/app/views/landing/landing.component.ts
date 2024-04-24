@@ -4,6 +4,7 @@ import { Sport } from "src/app/model/Sport";
 import { City } from "src/app/model/City";
 import { Club } from "src/app/model/Club";
 import { ClubService } from "../../service/club.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-landing",
@@ -12,7 +13,8 @@ import { ClubService } from "../../service/club.service";
 })
 export class LandingComponent implements OnInit {
   constructor(private generalService: GeneralService,
-              private clubService: ClubService) { }
+              private clubService: ClubService,
+              private router: Router) { }
   sports: Sport[] = [];
   cities: City[] = [];
   clubs: Club[] = [];
@@ -26,16 +28,24 @@ export class LandingComponent implements OnInit {
   }
 
   citiesSport(id) {
+    this.selected = false;
+    this.cities = [];
     this.idSport = id;
     this.generalService.getCitiesSports(id).subscribe(data => {
-      this.cities = data;
+      this.cities = data;      
+      this.clubs = [];
     });
   }
 
   clubCities(city) {
-    this.clubService.getPageFilterSportAndCity(0, 4, this.idSport, city.value).subscribe(data => {
+    this.clubs = [];
+    this.selected = true;
+    this.clubService.getPageFilterSportAndCity(0, 4, this.idSport, city).subscribe(data => {
       this.clubs = data.content;
-      console.log(data.content);
     });    
+  }
+
+  goClub(id){
+    this.router.navigate([`/club/${btoa(id)}`]);
   }
 }

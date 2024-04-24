@@ -2,6 +2,7 @@
     background-color: white;
     color: goldenrod;
     cursor: pointer;
+    height: auto;
  }
  .mat-chip.mat-standard-chip {
     background-color: black;
@@ -10,6 +11,7 @@
     border-width: 2px;
     border-style: solid;
     cursor: pointer;
+    height: auto;
 }
 
 .flex-button { 
