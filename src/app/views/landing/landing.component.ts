@@ -12,14 +12,15 @@ import { Router } from "@angular/router";
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
-  constructor(private generalService: GeneralService,
-              private clubService: ClubService,
-              private router: Router) { }
   sports: Sport[] = [];
   cities: City[] = [];
   clubs: Club[] = [];
   selected = false;
   idSport = 0;
+
+  constructor(private generalService: GeneralService,
+              private clubService: ClubService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.generalService.getSports().subscribe(data => {

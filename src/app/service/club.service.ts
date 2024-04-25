@@ -15,4 +15,8 @@ export class ClubService {
   getPageFilterSportAndCity(page, size, sport, city){
     return this.http.get<any>(`${this.url}/getPageFilterSportAndCity/${page}/${size}/${sport}/${city}`);
   }
+
+  getClub(id){
+    return this.http.get<any>(`${this.url}/get/${id}`);
+  }
 }
