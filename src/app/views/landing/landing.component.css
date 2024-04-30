@@ -17,4 +17,8 @@
 .flex-button { 
     display: flex; 
     justify-content: right; 
-} 
+}
+
+.mat-paginator.hidden {
+    display: none !important;
+}

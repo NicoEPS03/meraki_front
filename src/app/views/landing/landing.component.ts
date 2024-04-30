@@ -17,6 +17,10 @@ export class LandingComponent implements OnInit {
   clubs: Club[] = [];
   selected = false;
   idSport = 0;
+  city = null;
+  pages = 0;
+  pageIndex = 0;
+  pageSize = 15;
 
   constructor(private generalService: GeneralService,
               private clubService: ClubService,
@@ -41,9 +45,19 @@ export class LandingComponent implements OnInit {
   clubCities(city) {
     this.clubs = [];
     this.selected = true;
-    this.clubService.getPageFilterSportAndCity(0, 4, this.idSport, city).subscribe(data => {
+    this.city = city;
+    this.clubService.getPageFilterSportAndCity(this.pageIndex, this.pageSize, this.idSport, city).subscribe(data => {
       this.clubs = data.content;
     });    
+    this.clubService.getNumClubs(this.idSport, city).subscribe(data => {      
+      this.pages =  Math.ceil(data/1);
+    });
+  }
+
+  updateClubCities(e: any) {
+    this.pageIndex = e.pageIndex;
+    this.pageSize = e.pageSize;
+    this.clubCities(this.city);
   }
 
   goClub(id){

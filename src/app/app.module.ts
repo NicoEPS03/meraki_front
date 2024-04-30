@@ -13,6 +13,7 @@ import { DashboardComponent } from "./views/admin/dashboard/dashboard.component"
 import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+import { UsersComponent } from "./views/admin/users/users.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -87,9 +88,10 @@ import { MaterialModule } from "./material/material.module";
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    UsersComponent,
   ],
   imports: [
-    BrowserModule, 
+  BrowserModule, 
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,

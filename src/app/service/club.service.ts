@@ -19,4 +19,8 @@ export class ClubService {
   getClub(id){
     return this.http.get<any>(`${this.url}/get/${id}`);
   }
+
+  getNumClubs(sport, city){
+    return this.http.get<any>(`${this.url}/getNumClubs/${sport}/${city}`);
+  }
 }

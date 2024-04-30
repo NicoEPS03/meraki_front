@@ -45,51 +45,61 @@
     </div>    
   </div>
   
-  <div *ngFor="let x of clubs">
-    <section class="pb-20 bg-black">
-      <div class="container mx-auto px-4 border-2 border-white rounded-3xl">
-        <div class="flex flex-wrap items-center">
-          <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-            <div
-              class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600"
-            >
-              <img
-                alt="..."
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                class="w-full align-middle rounded-t-lg"
-              />
+  <div class="pb-20 bg-black">
+    <div>
+      <section class="pb-20 bg-black" *ngFor="let x of clubs">
+        <div class="container mx-auto px-4 border-2 border-white rounded-3xl">
+          <div class="flex flex-wrap items-center">
+            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-red-600"
+              >
+                <img
+                  alt="..."
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+                  class="w-full align-middle rounded-t-lg"
+                />
+              </div>
             </div>
-          </div>
 
-          <div class="w-full md:w-5/12 px-4 mr-auto ml-auto text-white">
-            <h1 class="text-3xl mb-2 font-semibold leading-normal">
-              {{x.name}}
-            </h1>
-            <p
-              class="text-lg font-light leading-relaxed mt-4 mb-4"
-            >
-              {{x.description}}
-            </p>
-            <p
-              class="text-lg font-light leading-relaxed mt-0 mb-4"
-            >
-              Delegado: {{x.delegado}} 
-            </p>
-            <p
-              class="text-lg font-light leading-relaxed mt-0 mb-4"
-            >
-              {{x.municipio}} - {{x.sport}}
-            </p>
-            <div class="flex-button">
-              <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
-              (click) = "goClub(x.id)">
-                <i class="fas fa-search"></i> Ver 
-              </button>
+            <div class="w-full md:w-5/12 px-4 mr-auto ml-auto text-white">
+              <h1 class="text-3xl mb-2 font-semibold leading-normal py-4">
+                {{x.name}}
+              </h1>
+              <p
+                class="text-lg font-light leading-relaxed mt-4 mb-4"
+              >
+                {{x.description}}
+              </p>
+              <p
+                class="text-lg font-light leading-relaxed mt-0 mb-4"
+              >
+                Delegado: {{x.delegado}} 
+              </p>
+              <p
+                class="text-lg font-light leading-relaxed mt-0 mb-4"
+              >
+                {{x.municipio}} - {{x.sport}}
+              </p>
+              <div class="flex-button pb-4">
+                <button class="bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button"
+                (click) = "goClub(x.id)">
+                  <i class="fas fa-search"></i> Ver 
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <mat-paginator
+        [length]="pages"
+        [pageSize]="pageSize"
+        (page)="updateClubCities($event)"
+        class="bg-black text-white"
+        [class.hidden]="clubs.length == 0">
+      >
+      </mat-paginator>
+    </div>
   </div>
 </main>
 <app-footer></app-footer>
