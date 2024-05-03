@@ -20,6 +20,8 @@ import { IndexComponent } from "./views/index/index.component";
 import { LandingComponent } from "./views/landing/landing.component";
 import { ProfileComponent } from "./views/profile/profile.component";
 import { UsersComponent } from "./views/admin/users/users.component";
+import { InsertUserComponent } from "./views/admin/users/insert-user/insert-user.component";
+import { ClubsComponent } from "./views/admin/clubs/clubs.component";
 
 const routes: Routes = [
   // admin views
@@ -31,7 +33,10 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent },
       { path: "maps", component: MapsComponent },
-      { path: "user", component: UsersComponent },
+      { path: "user", component: UsersComponent},
+      { path: "user/insertar", component: InsertUserComponent},
+      { path: 'user/edicion/:id', component: InsertUserComponent},
+      { path: 'club', component: ClubsComponent},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

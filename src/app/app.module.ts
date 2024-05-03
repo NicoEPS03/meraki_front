@@ -51,6 +51,10 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material/material.module";
+import { DeleteComponent } from './views/admin/users/delete/delete.component';
+import { InsertUserComponent } from './views/admin/users/insert-user/insert-user.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ClubsComponent } from './views/admin/clubs/clubs.component';
 
 @NgModule({
   declarations: [
@@ -89,13 +93,18 @@ import { MaterialModule } from "./material/material.module";
     LandingComponent,
     ProfileComponent,
     UsersComponent,
+    DeleteComponent,
+    InsertUserComponent,
+    ClubsComponent,
   ],
   imports: [
   BrowserModule, 
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

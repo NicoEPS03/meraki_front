@@ -1,10 +1,12 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { User } from './../../../model/User';
 import { UserService } from './../../../service/user.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteComponent } from './delete/delete.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users',
@@ -12,14 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  @Input()
-  get color(): string {
-    return this._color;
-  }
-  set color(color: string) {
-    this._color = color !== "light" && color !== "dark" ? "light" : color;
-  }
-  private _color = "light";
 
   dataSourceUsers = new MatTableDataSource<any>();
   displayedColumns: string[] = ['id', 'document', 'rol', 'state', 'accion'];
@@ -33,16 +27,15 @@ export class UsersComponent implements OnInit {
 
   showModal = false;
 
-  constructor(private userService: UserService, 
-              private router: Router,
-              public route: ActivatedRoute) { }
+  constructor(private userService: UserService, private router: Router,
+              public route: ActivatedRoute, private dialog: MatDialog,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.listarPaginado();
-    
   }
 
-  listarPaginado(){
+  listarPaginado() {
     this.userService.getPageUser(this.pageIndex, this.pageSize).subscribe(data => {
       this.dataSourceUsers = new MatTableDataSource(data.content);
       this.dataSourceUsers.sort = this.sort;
@@ -56,16 +49,19 @@ export class UsersComponent implements OnInit {
     this.listarPaginado();
   }
 
-  toggleModal(id){
-    console.log(id);
-    this.showModal = !this.showModal;
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'Información', {
+      duration: 2000,
+    });
   }
 
-  eliminar(id){
-    this.userService.deleteUser(id).subscribe(data => {
-      this.userService.mensajeCambio.next('Usuario eliminado satisfactoreamente');
-      this.router.navigate(['/admin/user']);
+  toggleModal(id) {
+    const dialogRef = this.dialog.open(DeleteComponent, { data: { id: id } });
+    this.userService.mensajeCambio.subscribe(data => {
+      dialogRef.afterClosed().subscribe(result => {
+        this.listarPaginado();
+        this.openSnackBar(data);
+      });
     });
-}
-
+  }
 }

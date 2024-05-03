@@ -89,9 +89,9 @@
             [routerLink]="['/admin/user']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #adminSettings="routerLinkActive"
+            #adminUser="routerLinkActive"
             [ngClass]="
-              adminSettings.isActive
+              adminUser.isActive
                 ? 'text-black hover:text-black'
                 : 'text-white hover:text-white'
             "
@@ -99,7 +99,7 @@
             <i
               class="fas fa-user mr-2 text-sm"
               [ngClass]="
-                adminSettings.isActive ? 'opacity-75' : 'text-white'
+                adminUser.isActive ? 'opacity-75' : 'text-white'
               "
             ></i>
             Usuarios
@@ -108,23 +108,23 @@
 
         <li class="items-center">
           <a
-            [routerLink]="['/admin/tables']"
+            [routerLink]="['/admin/club']"
             class="text-xs uppercase py-3 font-bold block"
             routerLinkActive
-            #adminTables="routerLinkActive"
+            #adminClub="routerLinkActive"
             [ngClass]="
-              adminTables.isActive
-                ? 'text-red-600 hover:text-red-700'
-                : 'text-blueGray-700 hover:text-blueGray-500'
+              adminClub.isActive
+                ? 'text-black hover:text-black'
+                : 'text-white hover:text-white'
             "
           >
             <i
-              class="fas fa-table mr-2 text-sm"
+              class="fas fa-dumbbell mr-2 text-sm"
               [ngClass]="
-                adminTables.isActive ? 'opacity-75' : 'text-blueGray-300'
+                adminClub.isActive ? 'opacity-75' : 'text-white'
               "
             ></i>
-            Tables
+            Clubs
           </a>
         </li>
 
