@@ -20,4 +20,8 @@ export class GeneralService {
   getCitiesSports(id){
     return this.http.get<City[]>(`${this.url}/getCitiesSport/${id}`);
   }
+
+  getCities(){
+    return this.http.get<City[]>(`${this.url}/getCities`);
+  }
 }

@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteComponent } from './delete/delete.component';
+import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -27,9 +27,8 @@ export class UsersComponent implements OnInit {
 
   showModal = false;
 
-  constructor(private userService: UserService, private router: Router,
-              public route: ActivatedRoute, private dialog: MatDialog,
-              private snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, public route: ActivatedRoute, 
+    private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.listarPaginado();
@@ -56,7 +55,7 @@ export class UsersComponent implements OnInit {
   }
 
   toggleModal(id) {
-    const dialogRef = this.dialog.open(DeleteComponent, { data: { id: id } });
+    const dialogRef = this.dialog.open(DeleteUserComponent, { data: { id: id } });
     this.userService.mensajeCambio.subscribe(data => {
       dialogRef.afterClosed().subscribe(result => {
         this.listarPaginado();

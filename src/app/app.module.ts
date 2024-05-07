@@ -51,10 +51,12 @@ import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material/material.module";
-import { DeleteComponent } from './views/admin/users/delete/delete.component';
+import { DeleteUserComponent } from './views/admin/users/delete-user/delete-user.component';
 import { InsertUserComponent } from './views/admin/users/insert-user/insert-user.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ClubsComponent } from './views/admin/clubs/clubs.component';
+import { ClubsComponent } from "./views/admin/clubs/clubs.component";
+import { DeleteClubComponent } from "./views/admin/clubs/delete-club/delete-club.component";
+import { InsertClubComponent } from './views/admin/clubs/insert-club/insert-club.component';
 
 @NgModule({
   declarations: [
@@ -93,9 +95,12 @@ import { ClubsComponent } from './views/admin/clubs/clubs.component';
     LandingComponent,
     ProfileComponent,
     UsersComponent,
-    DeleteComponent,
+    DeleteUserComponent,
     InsertUserComponent,
     ClubsComponent,
+    DeleteClubComponent,
+    InsertClubComponent
+    
   ],
   imports: [
   BrowserModule, 

@@ -14,12 +14,12 @@
         >
             {{rol}}
         </h3>
-        <mat-form-field class="input">
+        <mat-form-field class="input w-full">
             <mat-label>Documento</mat-label>
             <input matInput formControlName="document" maxlength="15" type="number">
         </mat-form-field>
         <br>
-        <mat-form-field class="input">
+        <mat-form-field class="input w-full">
             <mat-label>Contraseña</mat-label>
             <input matInput formControlName="password" maxlength="30" [type]="hide ? 'password' : 'text'">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -28,7 +28,7 @@
         </mat-form-field>
         <br>
         <div class="flex justify-center table-cell mx-4">
-        <button mat-raised-button type="submit" [disabled]="frmUser.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;" (click)="guardar()">
+        <button mat-raised-button type="submit" [disabled]="frmUser.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;">
             <mat-icon>done</mat-icon>
             <span>Guardar</span>
         </button>

@@ -22,6 +22,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import { UsersComponent } from "./views/admin/users/users.component";
 import { InsertUserComponent } from "./views/admin/users/insert-user/insert-user.component";
 import { ClubsComponent } from "./views/admin/clubs/clubs.component";
+import { InsertClubComponent } from "./views/admin/clubs/insert-club/insert-club.component";
 
 const routes: Routes = [
   // admin views
@@ -37,6 +38,9 @@ const routes: Routes = [
       { path: "user/insertar", component: InsertUserComponent},
       { path: 'user/edicion/:id', component: InsertUserComponent},
       { path: 'club', component: ClubsComponent},
+      { path: "club/insertar", component: InsertClubComponent},
+      { path: 'club/edicion/:id', component: InsertClubComponent},
+      
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

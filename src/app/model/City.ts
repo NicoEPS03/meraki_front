@@ -3,5 +3,9 @@ export class City{
     idDep : number;
     codigo: string;
     nombre : string;
-    estado : boolean;s
+    estado : boolean;
+
+    constructor(id: number) {
+        this.id = id;
+    }
 }
