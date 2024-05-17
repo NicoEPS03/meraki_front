@@ -35,4 +35,8 @@ export class Athlete{
     shoeSize : number;
     disease : boolean;
     diseaseDescription : string;
+
+    public constructor(id?: number) {
+        this.id = id;
+    }
 }

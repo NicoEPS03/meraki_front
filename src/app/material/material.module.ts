@@ -15,6 +15,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatChipsModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   exports: [
     MatButtonModule,
@@ -50,7 +56,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatChipsModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
+    
   ]
 })
 export class MaterialModule { }

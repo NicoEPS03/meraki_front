@@ -57,6 +57,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ClubsComponent } from "./views/admin/clubs/clubs.component";
 import { DeleteClubComponent } from "./views/admin/clubs/delete-club/delete-club.component";
 import { InsertClubComponent } from './views/admin/clubs/insert-club/insert-club.component';
+import { InsertCoachComponent } from './views/admin/clubs/insert-coach/insert-coach.component';
+import { AthleteComponent } from './views/admin/athlete/athlete.component';
+import { DeleteAthleteComponent } from './views/admin/athlete/delete-athlete/delete-athlete.component';
+import { InsertAthleteComponent } from './views/admin/athlete/insert-athlete/insert-athlete.component';
+import { InsertFamilyComponent } from './views/admin/athlete/insert-family/insert-family.component';
+import { DeleteFamilyComponent } from './views/admin/athlete/delete-family/delete-family.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +105,14 @@ import { InsertClubComponent } from './views/admin/clubs/insert-club/insert-club
     InsertUserComponent,
     ClubsComponent,
     DeleteClubComponent,
-    InsertClubComponent
+    InsertClubComponent,
+    InsertCoachComponent,
+    InsertCoachComponent,
+    AthleteComponent,
+    DeleteAthleteComponent,
+    InsertAthleteComponent,
+    InsertFamilyComponent,
+    DeleteFamilyComponent,
     
   ],
   imports: [

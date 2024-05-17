@@ -9,11 +9,6 @@
                 <input matInput formControlName="id" [hidden]="true">
             </mat-form-field>
         </div>
-        <h3
-            class="font-semibold text-lg text-blueGray-700"
-        >
-            {{rol}}
-        </h3>
         <mat-form-field class="input w-full">
             <mat-label>Nombre</mat-label>
             <input matInput formControlName="name" maxlength="300">
@@ -74,16 +69,25 @@
             <input matInput formControlName="whatsappLink" maxlength="50">
         </mat-form-field>
         <br>
-        <div class="flex justify-center table-cell mx-4">
-        <button mat-raised-button type="submit" [disabled]="frmClub.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;">
-            <mat-icon>done</mat-icon>
-            <span>Guardar</span>
-        </button>
-        <button mat-raised-button color="warm" type="button" [routerLink]="['/admin/club']" >
-            <mat-icon>close</mat-icon>
-            <span>Cancelar</span>
-        </button>
-    </div>
+        <div class="mx-auto flex flex-wrap items-center justify-between w-full">
+            <div class="flex justify-center table-cell">
+                <button mat-raised-button type="submit" [disabled]="frmClub.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;">
+                    <mat-icon>done</mat-icon>
+                    <span>Guardar</span>
+                </button>
+                <button mat-raised-button color="warm" type="button" [routerLink]="['/admin/club']" >
+                    <mat-icon>close</mat-icon>
+                    <span>Cancelar</span>
+                </button>
+            </div>           
+        
+            <button mat-raised-button type="button" class="bg-meraki-2 text-white" (click)="verDeportistas()">
+                <mat-icon>group</mat-icon>
+                <span> Deportistas</span>
+            </button>
+        </div>        
     </form>
+    
+    
 </div>
 </div>

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClubService } from 'src/app/service/club.service';
 import { DeleteClubComponent } from './delete-club/delete-club.component';
+import { InsertCoachComponent } from './insert-coach/insert-coach.component';
 
 @Component({
   selector: 'app-clubs',
@@ -53,8 +54,18 @@ export class ClubsComponent implements OnInit {
     });
   }
 
-  toggleModal(id) {
+  deleteModal(id) {
     const dialogRef = this.dialog.open(DeleteClubComponent, { data: { id: id } });
+    this.clubService.mensajeCambio.subscribe(data => {
+      dialogRef.afterClosed().subscribe(result => {
+        this.listarPaginado();
+        this.openSnackBar(data);
+      });
+    });
+  }
+
+  insertModal(id,edit){
+    const dialogRef = this.dialog.open(InsertCoachComponent, { data: { id: id, edit: edit} });
     this.clubService.mensajeCambio.subscribe(data => {
       dialogRef.afterClosed().subscribe(result => {
         this.listarPaginado();

@@ -18,7 +18,6 @@ export class InsertClubComponent implements OnInit {
   form: FormGroup;
   private id: number;
   private edicion: boolean;
-  rol: String;
   nombreDeporte = "Seleccione el deporte";
   nombreCiudad = "Seleccione la ciudad";
   sport: Sport;
@@ -144,6 +143,10 @@ export class InsertClubComponent implements OnInit {
         this.form.get("youtubeLink").setValue(data.youtubeLink);
         this.form.get("whatsappLink").setValue(data.whatsappLink);
     });
+  }
+
+  verDeportistas(){
+    this.router.navigate([`/admin/club/${this.id}/athlete`]);
   }
 
 }

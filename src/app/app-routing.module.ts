@@ -23,6 +23,8 @@ import { UsersComponent } from "./views/admin/users/users.component";
 import { InsertUserComponent } from "./views/admin/users/insert-user/insert-user.component";
 import { ClubsComponent } from "./views/admin/clubs/clubs.component";
 import { InsertClubComponent } from "./views/admin/clubs/insert-club/insert-club.component";
+import { AthleteComponent } from "./views/admin/athlete/athlete.component";
+import { InsertAthleteComponent } from "./views/admin/athlete/insert-athlete/insert-athlete.component";
 
 const routes: Routes = [
   // admin views
@@ -40,8 +42,11 @@ const routes: Routes = [
       { path: 'club', component: ClubsComponent},
       { path: "club/insertar", component: InsertClubComponent},
       { path: 'club/edicion/:id', component: InsertClubComponent},
+      { path: 'club/:id/athlete', component: AthleteComponent},
+      { path: 'club/:id/athlete/insertar', component: InsertAthleteComponent},
+      { path: 'club/:id/athlete/edicion/:idAthlete', component: InsertAthleteComponent},
       
-      { path: "", redirectTo: "dashboard", pathMatch: "full" },
+      { path: "", redirectTo: "user", pathMatch: "full" },
     ],
   },
   // auth views

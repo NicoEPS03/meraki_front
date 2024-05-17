@@ -58,7 +58,7 @@ export class InsertUserComponent implements OnInit {
     let user = new User();
     user.document = this.form.value['document'];
     user.password = this.form.value['password'];
-    user.rol = new Rol(2);
+    user.rol = new Rol(1);
     if(this.edicion === true) {
       user.id = this.id;
       this.userService.editUser(user).subscribe(() => {

@@ -7,10 +7,10 @@
         <h3
           class="font-semibold text-lg text-blueGray-700"
         >
-          Clubs
+          Deportistas
         </h3>
       </div>
-      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" [routerLink]="['/admin/club/insertar/']">
+      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" (click)="guardarAtleta()">
         <mat-icon>create</mat-icon>
         <span> Insertar</span>
       </button>
@@ -18,7 +18,7 @@
   </div>
   <div class="block w-full overflow-x-auto">
     <!-- Projects table -->
-    <table class="items-center w-full bg-transparent border-collapse" mat-table [dataSource]="dataSourceClubs" matSort>
+    <table class="items-center w-full bg-transparent border-collapse" mat-table [dataSource]="dataSourceAthlete" matSort>
 
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef mat-sort-header
@@ -34,46 +34,29 @@
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="sport">
+        <ng-container matColumnDef="lastName">
             <mat-header-cell *matHeaderCellDef mat-sort-header
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"> 
-            Deporte </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.sport}} </mat-cell>
+            Apellido </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="municipio">
+        <ng-container matColumnDef="document">
             <mat-header-cell *matHeaderCellDef mat-sort-header
             class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-            Municipio </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.municipio}} </mat-cell>
+            Documento </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.document}} </mat-cell>
         </ng-container>
-
-        <ng-container matColumnDef="state">
-          <mat-header-cell *matHeaderCellDef mat-sort-header
-          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-          Estado </mat-header-cell>
-          <mat-cell *matCellDef="let element"> 
-            <div *ngIf="element.state">
-              <i class="fas fa-circle text-emerald-500 mr-2"></i> Activo
-            </div>
-            <div *ngIf="!element.state">
-              <i class="fas fa-circle text-red-500 mr-2"></i> Inactivo 
-            </div>
-          </mat-cell>
-      </ng-container>
 
         <ng-container matColumnDef="accion">
           <mat-header-cell *matHeaderCellDef
           class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
           Acciones</mat-header-cell>
           <mat-cell *matCellDef="let element">
-              <button mat-button style="color: #008080" [disabled]="!element.state" (click)="insertModal(element.id, element.coach)" title="Coach">
-                <mat-icon>directions_run</mat-icon>
-              </button>
-              <button mat-button style="color: #008080" [disabled]="!element.state" [routerLink]="['/admin/club/edicion/', element.id]" title="Editar">
+              <button mat-button style="color: #008080" (click)="editarAtleta(element.id)" title="Editar">
                   <mat-icon>edit</mat-icon>
               </button>
-              <button mat-button style="color: #008080" [disabled]="!element.state" (click)="deleteModal(element.id)" title="Eliminar">
+              <button mat-button style="color: #008080" (click)="toggleModal(element.id)" title="Eliminar">
                   <mat-icon>clear</mat-icon>
               </button>
           </mat-cell>
