@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  HOST: 'http://localhost:8080',
+  HOST_BACK: 'http://localhost:8080',
+  HOST_IMG: 'http://localhost:8080',
 };
 
 /*

@@ -7,7 +7,7 @@ import { Family } from '../model/Family';
   providedIn: 'root'
 })
 export class FamilyService {
-  private url = `${environment.HOST}/family`;
+  private url = `${environment.HOST_BACK}/family`;
   mensajeCambio = new Subject<string>();
 
   constructor(private http: HttpClient) { }

@@ -6,9 +6,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class SidebarComponent implements OnInit {
   collapseShow = "hidden";
+  admin: Number;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.admin = Number(sessionStorage.getItem('idSession'));
+  }
   toggleCollapseShow(classes) {
     this.collapseShow = classes;
   }

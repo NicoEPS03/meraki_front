@@ -1,0 +1,7 @@
+:host ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #008080; /* Verde para el thumb */
+  }
+  
+  :host ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #00808087; /* Verde claro para el fondo */
+  }

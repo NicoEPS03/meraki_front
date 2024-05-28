@@ -9,7 +9,7 @@ import { Subject } from 'rxjs';
 })
 export class ClubService {
 
-  private url = `${environment.HOST}/club`;
+  private url = `${environment.HOST_BACK}/club`;
   mensajeCambio = new Subject<string>();
 
   constructor(private http: HttpClient) { }
@@ -30,12 +30,12 @@ export class ClubService {
     return this.http.get<any>(`${this.url}/getPageAdmin/${page}/${size}`);
   }
 
-  insertClub(user: Club){
-    return this.http.post(`${this.url}/insert`, user);
+  insertClub(club: Club){
+    return this.http.post(`${this.url}/insert`, club);
   }
 
-  editClub(user: Club){
-    return this.http.put(`${this.url}/edit`, user);
+  editClub(club: Club){
+    return this.http.put(`${this.url}/edit`, club);
   }
 
   deleteClub(id){

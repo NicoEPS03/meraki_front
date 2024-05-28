@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { City } from 'src/app/model/City';
@@ -7,6 +8,7 @@ import { Club } from 'src/app/model/Club';
 import { Sport } from 'src/app/model/Sport';
 import { ClubService } from 'src/app/service/club.service';
 import { GeneralService } from 'src/app/service/general.service';
+import { InsertImageComponent } from '../insert-image/insert-image.component';
 
 @Component({
   selector: 'app-insert-club',
@@ -17,7 +19,7 @@ export class InsertClubComponent implements OnInit {
 
   form: FormGroup;
   private id: number;
-  private edicion: boolean;
+  edicion: boolean;
   nombreDeporte = "Seleccione el deporte";
   nombreCiudad = "Seleccione la ciudad";
   sport: Sport;
@@ -27,7 +29,7 @@ export class InsertClubComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
               private clubService: ClubService, private snackBar: MatSnackBar,
-              private generalService: GeneralService) { }
+              private generalService: GeneralService, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -149,4 +151,12 @@ export class InsertClubComponent implements OnInit {
     this.router.navigate([`/admin/club/${this.id}/athlete`]);
   }
 
+  insertImageModal(){
+    const dialogRef = this.dialog.open(InsertImageComponent, { data: { idClub: this.id, edicion: false} });
+    this.clubService.mensajeCambio.subscribe(data => {
+      dialogRef.afterClosed().subscribe(result => {
+        this.openSnackBar(data);
+      });
+    });
+  }
 }

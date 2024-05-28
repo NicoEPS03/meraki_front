@@ -2,6 +2,12 @@
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
 >
     <div class="px-4 py-4">
+        <div class="flex justify-center" *ngIf="edicion">
+            <button mat-raised-button type="submit" class="bg-meraki-2 text-white" (click)="insertImageModal()" style="margin: 0.5rem;">
+                <mat-icon>image</mat-icon>
+                <span>Imagenes</span>
+            </button>
+        </div>
     <form [formGroup]="form" #frmClub="ngForm" (ngSubmit)="guardar()">
         <div [hidden]="true">
             <mat-form-field class="input">
@@ -81,7 +87,7 @@
                 </button>
             </div>           
         
-            <button mat-raised-button type="button" class="bg-meraki-2 text-white" (click)="verDeportistas()">
+            <button mat-raised-button type="button" class="bg-meraki-2 text-white" (click)="verDeportistas()" *ngIf="edicion">
                 <mat-icon>group</mat-icon>
                 <span> Deportistas</span>
             </button>

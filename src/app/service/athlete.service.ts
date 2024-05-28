@@ -9,7 +9,7 @@ import { Athlete } from '../model/Athlete';
 })
 export class AthleteService {
 
-  private url = `${environment.HOST}/athlete`;
+  private url = `${environment.HOST_BACK}/athlete`;
   mensajeCambio = new Subject<string>();
 
   constructor(private http: HttpClient) { }
@@ -18,12 +18,12 @@ export class AthleteService {
     return this.http.get<any>(`${this.url}/getPageClub/${page}/${size}/${club}`);
   }
 
-  insertAthlete(user: Athlete){
-    return this.http.post(`${this.url}/insert`, user);
+  insertAthlete(athlete: Athlete){
+    return this.http.post(`${this.url}/insert`, athlete);
   }
 
-  editAthlete(user: Athlete){
-    return this.http.put(`${this.url}/edit`, user);
+  editAthlete(athlete: Athlete){
+    return this.http.put(`${this.url}/edit`, athlete);
   }
 
   deleteAthlete(id){

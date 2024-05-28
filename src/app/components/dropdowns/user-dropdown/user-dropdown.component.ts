@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef } from "@angular/core";
+import { Router } from "@angular/router";
 import { createPopper } from "@popperjs/core";
 
 @Component({
@@ -9,6 +10,7 @@ export class UserDropdownComponent implements AfterViewInit {
   dropdownPopoverShow = false;
   @ViewChild("btnDropdownRef", { static: false }) btnDropdownRef: ElementRef;
   @ViewChild("popoverDropdownRef", { static: false })
+
   popoverDropdownRef: ElementRef;
   ngAfterViewInit() {
     createPopper(
@@ -26,5 +28,9 @@ export class UserDropdownComponent implements AfterViewInit {
     } else {
       this.dropdownPopoverShow = true;
     }
+  }
+
+  cerrarsesion(){
+    sessionStorage.clear();
   }
 }

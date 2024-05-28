@@ -9,7 +9,7 @@ import { User } from '../model/User';
 })
 export class UserService {
 
-  private url = `${environment.HOST}/user`;
+  private url = `${environment.HOST_BACK}/user`;
   mensajeCambio = new Subject<string>();
 
   constructor(private http: HttpClient) { }
