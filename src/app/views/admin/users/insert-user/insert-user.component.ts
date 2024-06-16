@@ -64,13 +64,13 @@ export class InsertUserComponent implements OnInit {
       this.userService.editUser(user).subscribe(() => {
         this.form.reset();
         this.openSnackBar('Usuario editado satisfactoreamente');
-        this.router.navigate(['/admin/user']);
+        this.router.navigate(['/admin/users']);
       });
     }else{
       this.userService.insertUser(user).subscribe(() => {
         this.form.reset();
         this.userService.mensajeCambio.next('Usuario guadado satisfactoreamente');
-        this.router.navigate(['/admin/user']);
+        this.router.navigate(['/admin/users']);
       });
     }
   }

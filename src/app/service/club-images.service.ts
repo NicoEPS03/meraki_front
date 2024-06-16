@@ -28,5 +28,9 @@ export class ClubImagesService {
       observe: 'events'
     });
   }
+  
+  getImages(id){
+    return this.http.get<any>(`${this.url}/get/${id}`);
+  }
 
 }

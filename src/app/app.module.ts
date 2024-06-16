@@ -12,18 +12,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from "./app-routing.module";
-import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
-import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-import { FooterAdminComponent } from "./components/footers/footer-admin/footer-admin.component";
+import { AuthComponent } from "./layouts/auth/auth.component";
+import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
+import { LandingComponent } from "./views/landing/landing.component";
+import { ProfileComponent } from "./views/landing/profile/profile.component";
+import { LoginComponent } from "./views/auth/login/login.component";
+import { FooterComponent } from "./components/footers/footer/footer.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ClubComponent } from './views/admin/club/club.component';
+import { SupporNetComponent } from './views/landing/suppor-net/suppor-net.component';
+import { GodFatherComponent } from './views/landing/god-father/god-father.component';
+import { AboutUsComponent } from './views/landing/about-us/about-us.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     AdminComponent,
-    AdminNavbarComponent,
-    FooterAdminComponent,
-    UserDropdownComponent,
+    IndexNavbarComponent,
+    LandingComponent,
+    ProfileComponent,
+    AuthComponent,
+    LoginComponent,
+    FooterComponent,
+    ClubComponent,
+    SupporNetComponent,
+    GodFatherComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule, 
@@ -31,6 +46,8 @@ import { FooterAdminComponent } from "./components/footers/footer-admin/footer-a
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

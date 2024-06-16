@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AthleteService } from 'src/app/service/athlete.service';
 import { DeleteAthleteComponent } from './delete-athlete/delete-athlete.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-athlete',
@@ -70,10 +71,26 @@ export class AthleteComponent implements OnInit {
   }
 
   guardarAtleta(){
-    this.router.navigate([`/admin/club/${this.id}/athlete/insertar/`]);
+    this.router.navigate([`/admin/clubs/${this.id}/athlete/insertar/`]);
   }
 
   editarAtleta(id){
-    this.router.navigate([`/admin/club/${this.id}/athlete/edicion/${id}`]);
+    this.router.navigate([`/admin/clubs/${this.id}/athlete/edicion/${id}`]);
+  }
+
+  exportExcel(){
+    const dataToExport = this.dataSourceAthlete.data.map(row => ({
+      Id: row.id,
+      Nombre: row.name,
+      Deporte: row.sport,
+      Municipio: row.municipio, 
+      Estado: row.state
+    }));
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'clubes': worksheet },
+      SheetNames: ['clubes']
+    };
+    XLSX.writeFile(workbook, 'TablaClubes.xlsx');
   }
 }

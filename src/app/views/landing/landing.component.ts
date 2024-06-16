@@ -48,7 +48,7 @@ export class LandingComponent implements OnInit {
     this.city = city;
     this.clubService.getPageFilterSportAndCity(this.pageIndex, this.pageSize, this.idSport, city).subscribe(data => {
       this.clubs = data.content;
-    });    
+    });
     this.clubService.getNumClubs(this.idSport, city).subscribe(data => {      
       this.pages =  Math.ceil(data/1);
     });

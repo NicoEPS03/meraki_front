@@ -10,6 +10,12 @@ import { LoginComponent } from "./views/auth/login/login.component";
 
 // no layouts views
 import { AuthGuard } from "./views/auth/auth.guard";
+import { ProfileComponent } from "./views/landing/profile/profile.component";
+import { LandingComponent } from "./views/landing/landing.component";
+import { ClubComponent } from "./views/admin/club/club.component";
+import { SupporNetComponent } from "./views/landing/suppor-net/suppor-net.component";
+import { GodFatherComponent } from "./views/landing/god-father/god-father.component";
+import { AboutUsComponent } from "./views/landing/about-us/about-us.component";
 
 const routes: Routes = [
   // admin views
@@ -17,9 +23,9 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "user", loadChildren: () => import('./views/admin/users/users.module').then(m => m.UsersModule) },
-      { path: 'club', loadChildren: () => import('./views/admin/clubs/clubs.module').then(m => m.ClubsModule) },
-      { path: "", redirectTo: "user", pathMatch: "full" },
+      { path: "users", loadChildren: () => import('./views/admin/users/users.module').then(m => m.UsersModule) },
+      { path: "clubs", loadChildren: () => import('./views/admin/clubs/clubs.module').then(m => m.ClubsModule) },
+      { path: "club", component: ClubComponent},
     ],
     canActivate: [AuthGuard]
   },
@@ -32,8 +38,12 @@ const routes: Routes = [
       { path: "", redirectTo: "login", pathMatch: "full" },
     ],
   },
-  // no layout views  
-  { path: "", loadChildren: () => import('./views/landing/landing.module').then(m => m.LandingModule) },
+  // no layout views 
+  { path: "club/:id", component: ProfileComponent },
+  { path: "suppornet", component: SupporNetComponent},
+  { path: "godfather", component: GodFatherComponent},
+  { path: "aboutus", component: AboutUsComponent},
+  { path: "", component: LandingComponent },
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 
@@ -41,4 +51,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {  
+}

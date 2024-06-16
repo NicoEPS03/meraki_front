@@ -10,9 +10,13 @@
           Usuarios
         </h3>
       </div>
-      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" [routerLink]="['/admin/user/insertar/']">
+      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" [routerLink]="['/admin/users/insertar/']" style="margin: 0.5rem;">
         <mat-icon>create</mat-icon>
         <span> Agregar Admin</span>
+      </button>
+      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" (click)="exportExcel()">
+        <mat-icon>calculate</mat-icon>
+        <span> Exportar excel</span>
       </button>
     </div>
   </div>
@@ -60,7 +64,7 @@
           class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
           Acciones</mat-header-cell>
           <mat-cell *matCellDef="let element">
-              <button mat-button style="color: #008080" [disabled]="!element.state" [routerLink]="['/admin/user/edicion/', element.id]" title="Editar">
+              <button mat-button style="color: #008080" [disabled]="!element.state" [routerLink]="['/admin/users/edicion/', element.id]" title="Editar">
                   <mat-icon>edit</mat-icon>
               </button>
               <button mat-button style="color: #008080" [disabled]="!element.state" (click)="toggleModal(element.id) " title="Eliminar">

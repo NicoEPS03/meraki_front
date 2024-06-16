@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
     const data = await this.generalService.login(user).toPromise();
     sessionStorage.setItem('isAuthenticated', 'true');
     sessionStorage.setItem('idSession', data.rol.id.toString());
-    this.router.navigate(['/admin/user']);
+    if(data.rol.id.toString() == "1"){
+      this.router.navigate(['/admin/users']);
+    } else if (data.rol.id.toString() == "2"){
+      sessionStorage.setItem('id', data.id.toString());
+      this.router.navigate(['/admin/club']);
+    }
+    
   }
 }

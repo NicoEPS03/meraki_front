@@ -30,37 +30,30 @@
     >
       <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
         <li class="flex items-center">
-          <a
-            class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold "
-            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-angular%2F"
-            target="_blank"
-          >
+          <button style="cursor: pointer" routerLink="/godfather" 
+          class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold">
+            <i class="fas fa-people-carry"></i>
             <span class=" inline-block ml-2">Plan Padrino</span>
-          </a>
+          </button>
         </li>
 
         <li class="flex items-center">
-          <a
-            class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold"
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-angular%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20Angular%20UI%20Kit%20and%20Admin.%20Let%20Notus%20Angular%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
-            target="_blank"
-          >
-            <span class="inline-block ml-2">Únete</span>
-          </a>
+          <button style="cursor: pointer" routerLink="/suppornet" 
+          class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold">
+            <i class="fas fa-hands-helping"></i>
+            <span class="inline-block ml-2">Red. de Apoyo</span>
+          </button>
         </li>
 
         <li class="flex items-center">
-          <a
-            class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold"
-            href="https://github.com/creativetimofficial/notus-angular?ref=na-index-navbar"
-            target="_blank"
-          >
+          <button style="cursor: pointer" routerLink="/aboutus" 
+          class="hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold">
             <span class="inline-block ml-2">¿Quiénes somos?</span>
-          </a>
+          </button>
         </li>
         <li class="flex items-center" [class.hidden]="admin == false">
           <i class="fa-solid fas fa-circle-user"></i> 
-          <button style="cursor: pointer" routerLink="/admin/user" 
+          <button style="cursor: pointer" routerLink="/admin" 
           class="bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150">
             <i class="fas fa-user"></i>
             <span> Admin</span>

@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClubService } from 'src/app/service/club.service';
 import { DeleteClubComponent } from './delete-club/delete-club.component';
 import { InsertCoachComponent } from './insert-coach/insert-coach.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-clubs',
@@ -74,4 +75,19 @@ export class ClubsComponent implements OnInit {
     });
   }
 
+  exportExcel(){
+    const dataToExport = this.dataSourceClubs.data.map(row => ({
+      Id: row.id,
+      Nombre: row.name,
+      Deporte: row.sport,
+      Municipio: row.municipio, 
+      Estado: row.state
+    }));
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'clubes': worksheet },
+      SheetNames: ['clubes']
+    };
+    XLSX.writeFile(workbook, 'TablaClubes.xlsx');
+  }
 }

@@ -2,21 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { City } from 'src/app/model/City';
 import { Club } from 'src/app/model/Club';
 import { Sport } from 'src/app/model/Sport';
 import { ClubService } from 'src/app/service/club.service';
 import { GeneralService } from 'src/app/service/general.service';
-import { InsertImageComponent } from '../insert-image/insert-image.component';
+import { InsertImageComponent } from '../clubs/insert-image/insert-image.component';
+import { CoachService } from 'src/app/service/coach.service';
 
 @Component({
-  selector: 'app-insert-club',
-  templateUrl: './insert-club.component.html',
-  styleUrls: ['./insert-club.component.css']
+  selector: 'app-club',
+  templateUrl: './club.component.html',
+  styleUrls: ['./club.component.css']
 })
-export class InsertClubComponent implements OnInit {
+export class ClubComponent implements OnInit {
 
+  
   form: FormGroup;
   private id: number;
   edicion: boolean;
@@ -28,53 +30,31 @@ export class InsertClubComponent implements OnInit {
   cities: City[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private clubService: ClubService, private snackBar: MatSnackBar,
-              private generalService: GeneralService, private dialog: MatDialog,) { }
+              private clubService: ClubService, private coachService: CoachService,
+              private snackBar: MatSnackBar, private generalService: GeneralService, 
+              private dialog: MatDialog,) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-      this.edicion = params['id'] != null;
-    });
-    this.inicializarFormularioVacio();
+  async ngOnInit() {
+    this.inicializarFormulario();
     this.listarDeportes();
     this.listarCiudades();
-    if (this.edicion == true) {
-      this.cargarDatos();
-    }
+    this.cargarDatos();
   }
 
-  inicializarFormularioVacio() {
-    if (this.edicion == true) {
-      this.form = new FormGroup({
-        'id': new FormControl(0, [Validators.required]),
-        'name': new FormControl('', [Validators.required]),
-        'sport': new FormControl(Sport,[Validators.required]),
-        'city': new FormControl(City,[Validators.required]),
-        'description': new FormControl(''),
-        'instragramLink': new FormControl(''),
-        'facebookLink': new FormControl(''),
-        'twitterLink': new FormControl(''),
-        'tiktokLink': new FormControl(''),
-        'youtubeLink': new FormControl(''),
-        'whatsappLink': new FormControl(''),
-        
-      });
-    }else{
-      this.form = new FormGroup({
-        'id': new FormControl(0, [Validators.required]),
-        'name': new FormControl('', [Validators.required]),
-        'sport': new FormControl(Sport,[Validators.required]),
-        'city': new FormControl(City,[Validators.required]),
-        'description': new FormControl(''),
-        'instragramLink': new FormControl(''),
-        'facebookLink': new FormControl(''),
-        'twitterLink': new FormControl(''),
-        'tiktokLink': new FormControl(''),
-        'youtubeLink': new FormControl(''),
-        'whatsappLink': new FormControl(''),
-      });
-    }
+  inicializarFormulario() {
+    this.form = new FormGroup({
+      'id': new FormControl(0, [Validators.required]),
+      'name': new FormControl('', [Validators.required]),
+      'sport': new FormControl(Sport,[Validators.required]),
+      'city': new FormControl(City,[Validators.required]),
+      'description': new FormControl(''),
+      'instragramLink': new FormControl(''),
+      'facebookLink': new FormControl(''),
+      'twitterLink': new FormControl(''),
+      'tiktokLink': new FormControl(''),
+      'youtubeLink': new FormControl(''),
+      'whatsappLink': new FormControl(''),        
+    });
   }
 
   openSnackBar(message: string) {
@@ -107,30 +87,23 @@ export class InsertClubComponent implements OnInit {
     club.whatsappLink = this.form.value['whatsappLink'];
     club.city = new City(this.form.value['city']);
     club.sport = new Sport(this.form.value['sport']);
-    if(this.edicion === true) {
-      club.id = this.id;
-      if (isNaN(Number(club.city.id)) ){
-        club.city = this.city;
-      }
-
-      if (isNaN(Number(club.sport.id))){
-        club.sport = this.sport;
-      }
-      this.clubService.editClub(club).subscribe(() => {
-        this.form.reset();
-        this.openSnackBar('Club editado satisfactoreamente');
-        this.router.navigate(['/admin/clubs']);
-      });
-    }else{
-      this.clubService.insertClub(club).subscribe(() => {
-        this.form.reset();
-        this.clubService.mensajeCambio.next('Club guadado satisfactoreamente');
-        this.router.navigate(['/admin/clubs']);
-      });
+    club.id = this.id;
+    if (isNaN(Number(club.city.id)) ){
+      club.city = this.city;
     }
+
+    if (isNaN(Number(club.sport.id))){
+      club.sport = this.sport;
+    }
+    this.clubService.editClub(club).subscribe(() => {
+      this.openSnackBar('Club editado satisfactoreamente');
+      this.router.navigate(['/admin/club']);
+    });
   }
 
-  cargarDatos() {
+  async cargarDatos() {    
+    var data = await this.coachService.getCoachByUser(Number(sessionStorage.getItem('id'))).toPromise();
+    this.id = data.club;
     this.clubService.getClub(this.id).subscribe(data =>{
         this.form.get("name").setValue(data.name);
         this.form.get("description").setValue(data.description);
@@ -159,4 +132,5 @@ export class InsertClubComponent implements OnInit {
       });
     });
   }
+
 }

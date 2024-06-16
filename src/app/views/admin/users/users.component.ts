@@ -7,6 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteUserComponent } from './delete-user/delete-user.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-users',
@@ -62,5 +63,20 @@ export class UsersComponent implements OnInit {
         this.openSnackBar(data);
       });
     });
+  }
+
+  exportExcel(){
+    const dataToExport = this.dataSourceUsers.data.map(row => ({
+      Id: row.id,
+      Documento: row.document,
+      Rol: row.rol.id,
+      Estado: row.state
+    }));
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
+    const workbook: XLSX.WorkBook = {
+      Sheets: { 'usuarios': worksheet },
+      SheetNames: ['usuarios']
+    };
+    XLSX.writeFile(workbook, 'TablaUsuarios.xlsx');
   }
 }

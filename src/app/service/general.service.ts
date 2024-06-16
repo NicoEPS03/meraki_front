@@ -13,7 +13,7 @@ export class GeneralService {
   
   private url = `${environment.HOST_BACK}/general`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getSports(){
     return this.http.get<Sport[]>(`${this.url}/getSports`);
