@@ -1,11 +1,31 @@
-<div>
+<div class="h-full">
   <app-sidebar></app-sidebar>
-  <div class="relative md:ml-64 bg-blueGray-100">
-    <app-admin-navbar></app-admin-navbar>
-    <app-header-stats></app-header-stats>
+  <div class="relative md:ml-64 bg-meraki-admin h-full" >
+    <nav
+      class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4"
+    >
+      <div
+        class="w-full mx-autp items-center flex justify-right md:flex-nowrap flex-wrap md:px-10 px-4"
+      >
+        <!-- User -->
+        <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+          <button style="cursor: pointer" 
+            class="bg-meraki-2 text-white active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
+            (click)="cerrarsesion()">
+            <i class="fas fa-user"></i>
+            <span> Cerrar Sesion</span>
+          </button>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="relative bg-meraki-admin md:pt-32 pb-32 pt-12">
+      <div class="px-4 md:px-10 mx-auto w-full">
+        
+      </div>
+    </div>
     <div class="px-4 md:px-10 mx-auto w-full -m-24">
       <router-outlet></router-outlet>
-      <app-footer-admin></app-footer-admin>
     </div>
   </div>
 </div>

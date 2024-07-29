@@ -1,0 +1,121 @@
+<app-index-navbar></app-index-navbar>
+<main class="profile-page">
+  <section class="relative block h-500-px">
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-black"
+    >
+    <div *ngFor="let img of images">
+      <span
+        id="blackOverlay"
+        [style.background-image]="img.banner ? 'url(' + img.url + ')' : ''"
+        class="w-full h-full absolute opacity-50 bg-cover bg-center bg-no-repeat"
+      >          
+      </span>
+    </div>
+      
+    </div>
+  </section>
+  <section class="relative py-16 bg-black">
+    <div class="container mx-auto px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+      >
+        <div class="px-6">
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+              <div class="relative">
+                <div *ngFor="let img of images">
+                  <img
+                  alt="x.img.url"
+                  [src] = "img.logo ? img.url : '' "
+                  class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                  *ngIf="img.logo"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"
+            >
+            </div>
+            <div class="w-full lg:w-4/12 px-4 lg:order-1">
+              <div class="flex justify-center py-4 lg:pt-4 pt-8">
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-24">
+            <div
+              class="text-xl leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase"
+            >
+              <i
+                class="fas fa-map-marker-alt mr-2 text-blueGray-400"
+              ></i>
+              {{club.city.nombre}}
+            </div>
+            <div class="mb-2 text-blueGray-600 mt-10 text-xl">
+              <i class="fas fa-dumbbell mr-2 text-blueGray-400"></i>
+              {{club.sport.name}}
+            </div>
+          </div>
+          <div class="mt-10 py-10 border-t border-blueGray-200 text-justify">
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full lg:w-9/12 px-4">
+                <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
+                  {{club.description}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="py-10 border-t border-blueGray-200 text-center">
+            <div class="lg:mb-0 mb-6">
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.instragramLink)"
+              >
+                <i class="fab fa-instagram fa-lg"></i>
+              </button>
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.facebookLink)"
+              >
+                <i class="fab fa-facebook fa-lg"></i>
+              </button>
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.tiktokLink)"
+              >
+                <i class="fab fa-tiktok fa-lg"></i>
+              </button>
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.youtubeLink)"
+              >
+                <i class="fab fa-youtube fa-lg"></i>
+              </button>
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.twitterLink)"
+              >
+                <i class="fab fa-twitter fa-lg"></i>
+              </button>
+              <button
+                class="shadow-lg font-normal h-16 w-16 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-4"
+                type="button"
+                (click)="goSocial(club.whatsappLink)"
+                style="background-color: #25d366;"
+              >
+                <i class="fab fa-whatsapp fa-lg"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

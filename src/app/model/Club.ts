@@ -14,4 +14,12 @@ export class Club{
     youtubeLink : string;
     whatsappLink : string;
     state : boolean
+    delegado : string;
+    municipio : string;
+    logo : string;
+
+    public constructor(id?: number) {
+        this.id = id;
+    }
+    
 }

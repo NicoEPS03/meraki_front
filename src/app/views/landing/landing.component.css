@@ -1,0 +1,24 @@
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+    background-color: white;
+    color: goldenrod;
+    cursor: pointer;
+    height: auto;
+ }
+ .mat-chip.mat-standard-chip {
+    background-color: black;
+    color: white;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    cursor: pointer;
+    height: auto;
+}
+
+.flex-button { 
+    display: flex; 
+    justify-content: right; 
+}
+
+.mat-paginator.hidden {
+    display: none !important;
+}

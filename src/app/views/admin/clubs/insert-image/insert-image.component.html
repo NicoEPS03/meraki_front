@@ -1,0 +1,35 @@
+<div class="w-full md:w-6/12 px-4 mr-auto ml-auto">
+    <div
+      class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg"
+    >
+      <img *ngIf="imgURL"
+        alt="..."
+        [src]="imgURL" [alt]="fileName"
+        class="w-full align-middle rounded-t-lg"
+      />
+    </div>
+</div>
+<div>
+  <div *ngIf="progress">
+    <mat-progress-bar [value]="progress" max="100">{{ progress }}%</mat-progress-bar>
+  </div>
+  <form [formGroup]="form" #frmClubImages="ngForm" (ngSubmit)="saveFile()">
+    <div class="px-4">
+        <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
+        <button mat-raised-button class="bg-meraki-2 text-white" (click)="fileInput.click()">
+            <mat-icon>cloud_upload</mat-icon> Subir Archivo
+        </button>
+        <div *ngIf="selectedFile">{{ selectedFile.name }}</div>
+    </div>    
+    <br>
+    <mat-slide-toggle class="px-4" formControlName="banner">Banner</mat-slide-toggle>
+    <mat-slide-toggle class="px-4" formControlName="logo">Logo</mat-slide-toggle>
+    <mat-slide-toggle class="px-4" formControlName="other">Otra</mat-slide-toggle>
+    <div class="px-4">
+      <br>
+      <button mat-raised-button class="bg-meraki-2 text-white" type="submit" [disabled]="frmClubImages.invalid">
+          Guardar foto
+      </button>
+    </div>
+  </form>
+</div>

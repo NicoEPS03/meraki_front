@@ -1,0 +1,42 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+>
+    <div class="px-4 py-4">
+    <form [formGroup]="form" #frmUser="ngForm" (ngSubmit)="guardar()">
+        <div [hidden]="true">
+            <mat-form-field class="input">
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id" [hidden]="true">
+            </mat-form-field>
+        </div>
+        <h3
+            class="font-semibold text-lg text-blueGray-700"
+        >
+            {{rol}}
+        </h3>
+        <mat-form-field class="input w-full">
+            <mat-label>Documento</mat-label>
+            <input matInput formControlName="document" maxlength="15" type="number">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" maxlength="30" [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+        </mat-form-field>
+        <br>
+        <div class="flex justify-center table-cell mx-4">
+        <button mat-raised-button type="submit" [disabled]="frmUser.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;">
+            <mat-icon>done</mat-icon>
+            <span>Guardar</span>
+        </button>
+        <button mat-raised-button color="warm" type="button" [routerLink]="['/admin/users']" >
+            <mat-icon>close</mat-icon>
+            <span>Cancelar</span>
+        </button>
+    </div>
+    </form>
+</div>
+</div>

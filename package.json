@@ -1,8 +1,7 @@
 {
-  "name": "notus-angular",
+  "name": "meraki",
   "version": "1.1.0",
-  "description": "Notus Angular - Free Tailwind CSS UI Kit and Admin by Creative Tim.",
-  "repository": "https://github.com/creativetimofficial/notus-angular",
+  "description": "Meraki",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -12,25 +11,30 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm start"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm start",
+    "startRam": "node --max_old_space_size=10048 ./node_modules/@angular/cli/bin/ng serve",
+    "buildRam": "node --max_old_space_size=14048 ./node_modules/@angular/cli/bin/ng build"
   },
   "dependencies": {
     "@angular/animations": "11.2.5",
+    "@angular/cdk": "^11.2.13",
     "@angular/common": "11.2.5",
     "@angular/compiler": "11.2.5",
     "@angular/core": "11.2.5",
     "@angular/forms": "11.2.5",
+    "@angular/material": "^11.2.13",
     "@angular/platform-browser": "11.2.5",
     "@angular/platform-browser-dynamic": "11.2.5",
     "@angular/router": "11.2.5",
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
-    "blk-design-system-angular": "^1.0.0",
     "chart.js": "2.9.4",
+    "date-fns": "^3.6.0",
     "rxjs": "6.6.6",
     "tailwindcss": "2.0.4",
     "tslib": "2.1.0",
+    "xlsx": "^0.18.5",
     "zone.js": "0.11.4"
   },
   "devDependencies": {
@@ -41,6 +45,7 @@
     "@types/jasmine": "3.6.6",
     "@types/jasminewd2": "2.0.8",
     "@types/node": "14.14.35",
+    "@types/xlsx": "^0.0.36",
     "codelyzer": "6.0.1",
     "jasmine-core": "3.6.0",
     "jasmine-spec-reporter": "6.0.0",

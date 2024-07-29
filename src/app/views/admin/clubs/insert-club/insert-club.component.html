@@ -1,0 +1,97 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+>
+    <div class="px-4 py-4">
+        <div class="flex justify-center" *ngIf="edicion">
+            <button mat-raised-button type="submit" class="bg-meraki-2 text-white" (click)="insertImageModal()" style="margin: 0.5rem;">
+                <mat-icon>image</mat-icon>
+                <span>Imagenes</span>
+            </button>
+        </div>
+    <form [formGroup]="form" #frmClub="ngForm" (ngSubmit)="guardar()">
+        <div [hidden]="true">
+            <mat-form-field class="input">
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id" [hidden]="true">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="input w-full">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" maxlength="300">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" maxlength="300"></textarea>
+        </mat-form-field>
+        <br>
+        <mat-form-field class=" w-full">
+            <mat-label>{{nombreDeporte}}</mat-label>
+            <mat-select formControlName="sport">
+                <mat-label>Seleccione el deporte</mat-label>
+                <mat-option *ngFor="let x of sports" [value]="x.id">
+                    {{x.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class=" w-full">
+            <mat-label>{{nombreCiudad}}</mat-label>
+            <mat-select formControlName="city">
+                <mat-label>Seleccione la ciudad</mat-label>
+                <mat-option *ngFor="let x of cities" [value]="x.id">
+                    {{x.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Instragram link</mat-label>
+            <input matInput formControlName="instragramLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Facebook link</mat-label>
+            <input matInput formControlName="facebookLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Twitter link</mat-label>
+            <input matInput formControlName="twitterLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Tiktok link</mat-label>
+            <input matInput formControlName="tiktokLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Youtube link</mat-label>
+            <input matInput formControlName="youtubeLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <mat-form-field class="input w-full">
+            <mat-label>Whatsapp link</mat-label>
+            <input matInput formControlName="whatsappLink" maxlength="50">
+        </mat-form-field>
+        <br>
+        <div class="mx-auto flex flex-wrap items-center justify-between w-full">
+            <div class="flex justify-center table-cell">
+                <button mat-raised-button type="submit" [disabled]="frmClub.invalid" class="bg-meraki-2 text-white" style="margin: 0.5rem;">
+                    <mat-icon>done</mat-icon>
+                    <span>Guardar</span>
+                </button>
+                <button mat-raised-button color="warm" type="button" [routerLink]="['/admin/clubs']" >
+                    <mat-icon>close</mat-icon>
+                    <span>Cancelar</span>
+                </button>
+            </div>           
+        
+            <button mat-raised-button type="button" class="bg-meraki-2 text-white" (click)="verDeportistas()" *ngIf="edicion">
+                <mat-icon>group</mat-icon>
+                <span> Deportistas</span>
+            </button>
+        </div>        
+    </form>   
+</div>
+</div>

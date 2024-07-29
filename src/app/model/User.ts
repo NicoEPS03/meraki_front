@@ -6,4 +6,9 @@ export class User{
     document : string;
     password : string;
     state : boolean;
+
+    constructor(document?: string, password?: string){
+        this.document = document;
+        this.password = password;
+    }
 }

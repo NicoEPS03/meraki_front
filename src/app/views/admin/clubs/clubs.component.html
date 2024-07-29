@@ -1,0 +1,92 @@
+<div
+  class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="flex flex-wrap items-center">
+      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <h3
+          class="font-semibold text-lg text-blueGray-700"
+        >
+          Clubs
+        </h3>
+      </div>
+      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" [routerLink]="['/admin/clubs/insertar/']" style="margin: 0.5rem;">
+        <mat-icon>create</mat-icon>
+        <span> Insertar</span>
+      </button>
+      <button mat-raised-button class="py-3 px-4 bg-meraki-2 text-white" (click)="exportExcel()">
+        <mat-icon>calculate</mat-icon>
+        <span> Exportar excel</span>
+      </button>
+    </div>
+  </div>
+  <div class="block w-full overflow-x-auto">
+    <!-- Projects table -->
+    <table class="items-center w-full bg-transparent border-collapse" mat-table [dataSource]="dataSourceClubs" matSort>
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+            ID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"> 
+            Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="sport">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"> 
+            Deporte </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.sport}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="municipio">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+            class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+            Municipio </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.municipio}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+          Estado </mat-header-cell>
+          <mat-cell *matCellDef="let element"> 
+            <div *ngIf="element.state">
+              <i class="fas fa-circle text-emerald-500 mr-2"></i> Activo
+            </div>
+            <div *ngIf="!element.state">
+              <i class="fas fa-circle text-red-500 mr-2"></i> Inactivo 
+            </div>
+          </mat-cell>
+      </ng-container>
+
+        <ng-container matColumnDef="accion">
+          <mat-header-cell *matHeaderCellDef
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+          Acciones</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+              <button mat-button style="color: #008080" [disabled]="!element.state" (click)="insertModal(element.id, element.coach)" title="Coach">
+                <mat-icon>directions_run</mat-icon>
+              </button>
+              <button mat-button style="color: #008080" [disabled]="!element.state" [routerLink]="['/admin/clubs/edicion/', element.id]" title="Editar">
+                  <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-button style="color: #008080" [disabled]="!element.state" (click)="deleteModal(element.id)" title="Eliminar">
+                  <mat-icon>clear</mat-icon>
+              </button>
+          </mat-cell>
+      </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+    </table><mat-paginator [length]="cantidad" [pageSize]="pageSize" [pageSizeOptions]="[15, 25, 100]"
+    (page)="cambiarPagina($event)"></mat-paginator>  
+  </div>  
+</div>

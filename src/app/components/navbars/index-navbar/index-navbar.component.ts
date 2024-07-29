@@ -6,10 +6,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class IndexNavbarComponent implements OnInit {
   navbarOpen = false;
+  admin = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.admin = (sessionStorage.getItem('isAuthenticated') == "true");
+  }
 
   setNavbarOpen() {
     this.navbarOpen = !this.navbarOpen;
