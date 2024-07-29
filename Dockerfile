@@ -1,4 +1,18 @@
-# Use the NGINX image
+# Step 1: Build the Angular app
+FROM node:14 AS build
+
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Step 2: Serve the Angular app using NGINX
 FROM nginx:alpine
 
 # Copy the build output to the NGINX html directory
