@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  HOST_BACK: 'http://localhost:8080',
+  HOST_BACK: 'http://u80wg8s.157.173.210.107.sslip.io',
   HOST_IMG: 'http://localhost:8080',
 };
 
