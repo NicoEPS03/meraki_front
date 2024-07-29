@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular application
-RUN npm run buildRam --prod
+RUN npm run build --prod
 
 # Step 2: Serve the Angular app using NGINX
 FROM nginx:alpine
