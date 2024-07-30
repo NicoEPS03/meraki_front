@@ -1,15 +1,14 @@
 # Etapa 1: Construcción de la aplicación
-FROM node:14 AS build
+FROM node:14
 
+# Create app directory
 WORKDIR /app
 
-# Copia los archivos de configuración de npm
-COPY package.json package-lock.json ./
-
-# Instala las dependencias
+# Install app dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copia el resto del código de la aplicación
+# Bundle app source
 COPY . .
 
 # Copia la carpeta construida al directorio HTML de NGINX
