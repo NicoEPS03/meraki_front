@@ -11,9 +11,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Copia la carpeta construida al directorio HTML de NGINX
-COPY dist/notus-angular/* /usr/share/nginx/html
-
 # Exponer el puerto 80
 EXPOSE 80
 
