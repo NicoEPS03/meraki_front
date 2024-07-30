@@ -1,15 +1,23 @@
 # Etapa 1: Construcción de la aplicación
-FROM node:14
+FROM node:14 AS build
 
-# Create app directory
+# Establece el directorio de trabajo
 WORKDIR /app
 
-# Install app dependencies
+# Copia los archivos de configuración de npm
 COPY package*.json ./
+
+# Instala las dependencias de npm
 RUN npm install
 
-# Bundle app source
+# Copia el resto del código de la aplicación
 COPY . .
+
+# Etapa 2: Servir la aplicación con NGINX
+FROM nginx:alpine
+
+# Copia la carpeta construida desde la etapa anterior
+COPY --from=build /app/dist/notus-angular /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80
