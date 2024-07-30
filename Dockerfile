@@ -12,9 +12,6 @@ RUN npm install
 # Copia el resto del código de la aplicación
 COPY . .
 
-# Ejecuta el script de generación
-RUN npm run generate
-
 # Copia la carpeta construida al directorio HTML de NGINX
 COPY dist/notus-angular/* /usr/share/nginx/html
 
