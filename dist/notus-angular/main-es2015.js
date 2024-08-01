@@ -324,7 +324,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    HOST_BACK: 'http://u80wg8s.157.173.210.107.sslip.io',
+    HOST_BACK: 'https://u80wg8s.157.173.210.107.sslip.io',
     HOST_IMG: 'http://localhost:8080',
 };
 /*
