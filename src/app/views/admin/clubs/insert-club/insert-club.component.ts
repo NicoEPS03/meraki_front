@@ -29,7 +29,8 @@ export class InsertClubComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
               private clubService: ClubService, private snackBar: MatSnackBar,
-              private generalService: GeneralService, private dialog: MatDialog,) { }
+              private generalService: GeneralService, private dialog: MatDialog,
+              private infoSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -120,12 +121,22 @@ export class InsertClubComponent implements OnInit {
         this.form.reset();
         this.openSnackBar('Club editado satisfactoreamente');
         this.router.navigate(['/admin/clubs']);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }else{
       this.clubService.insertClub(club).subscribe(() => {
         this.form.reset();
         this.clubService.mensajeCambio.next('Club guadado satisfactoreamente');
         this.router.navigate(['/admin/clubs']);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }
   }

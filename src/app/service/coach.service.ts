@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Coach } from '../model/Coach';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +27,24 @@ export class CoachService {
     return this.http.get<any>(`${this.url}/getCoachUser/${id}`);
   }
 
-  insertCoach(coach: Coach){
-    return this.http.post(`${this.url}/insert`, coach);
+  insertCoach(coach: Coach): Observable<any>{
+    return this.http.post(`${this.url}/insert`, coach).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  editCoach(coach: Coach){
-    return this.http.put(`${this.url}/edit`, coach);
+  editCoach(coach: Coach): Observable<any>{
+    return this.http.put(`${this.url}/edit`, coach).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteCoach(id){
     return this.http.delete<any>(`${this.url}/delete/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    const errorMessage = error.error?.message || 'Un error inesperado';
+    return throwError(errorMessage);
   }
 }

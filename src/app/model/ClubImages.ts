@@ -7,5 +7,4 @@ export class ClubImages{
     logo : boolean;
     banner : boolean;
     other : boolean;
-    state : boolean;
 }

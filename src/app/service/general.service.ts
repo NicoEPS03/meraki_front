@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Sport } from '../model/Sport';
 import { City } from '../model/City';
 import { DocumentType } from '../model/DocumentType';
 import { User } from '../model/User';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +33,14 @@ export class GeneralService {
     return this.http.get<DocumentType[]>(`${this.url}/getDocuments`);
   }
 
-  login(user){
-    return this.http.post<User>(`${this.url}/login`, user);
+  login(user): Observable<any>{
+    return this.http.post<User>(`${this.url}/login`, user).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    const errorMessage = error.error?.message || 'Un error inesperado';
+    return throwError(errorMessage);
   }
 }

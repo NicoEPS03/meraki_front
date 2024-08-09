@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Family } from '../model/Family';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,15 +21,24 @@ export class FamilyService {
     return this.http.get<any>(`${this.url}/get/${id}`);
   }
 
-  insertFamiliar(familiar: Family){
-    return this.http.post(`${this.url}/insert`, familiar);
+  insertFamiliar(familiar: Family): Observable<any>{
+    return this.http.post(`${this.url}/insert`, familiar).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  editFamiliar(familiar: Family){
-    return this.http.put(`${this.url}/edit`, familiar);
+  editFamiliar(familiar: Family): Observable<any>{
+    return this.http.put(`${this.url}/edit`, familiar).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteFamiliar(id){
     return this.http.delete<any>(`${this.url}/delete/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    const errorMessage = error.error?.message || 'Un error inesperado';
+    return throwError(errorMessage);
   }
 }

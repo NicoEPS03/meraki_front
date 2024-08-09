@@ -32,7 +32,7 @@ export class ClubComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
               private clubService: ClubService, private coachService: CoachService,
               private snackBar: MatSnackBar, private generalService: GeneralService, 
-              private dialog: MatDialog,) { }
+              private dialog: MatDialog, private infoSnackBar: MatSnackBar) { }
 
   async ngOnInit() {
     this.inicializarFormulario();
@@ -98,6 +98,11 @@ export class ClubComponent implements OnInit {
     this.clubService.editClub(club).subscribe(() => {
       this.openSnackBar('Club editado satisfactoreamente');
       this.router.navigate(['/admin/club']);
+    },
+    error=> {
+      this.infoSnackBar.open(error, '', {
+        duration: 2000,
+      });
     });
   }
 
@@ -126,11 +131,13 @@ export class ClubComponent implements OnInit {
 
   insertImageModal(){
     const dialogRef = this.dialog.open(InsertImageComponent, { data: { idClub: this.id, edicion: false} });
-    this.clubService.mensajeCambio.subscribe(data => {
-      dialogRef.afterClosed().subscribe(result => {
-        this.openSnackBar(data);
-      });
-    });
+    this.clubService.mensajeCambio.subscribe(
+      data => {
+        dialogRef.afterClosed().subscribe(result => {
+          this.openSnackBar(data);
+        });
+      }
+      );
   }
 
 }
