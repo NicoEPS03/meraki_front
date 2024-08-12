@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Athlete } from 'src/app/model/Athlete';
 import { DocumentType } from 'src/app/model/DocumentType';
@@ -25,7 +26,7 @@ export class InsertFamilyComponent implements OnInit {
 
   constructor(private familyService: FamilyService, private generalService: GeneralService,
     private router: Router, public dialogRef: MatDialogRef<InsertFamilyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private infoSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.idAthlete = this.data.idAthlete
@@ -108,12 +109,22 @@ export class InsertFamilyComponent implements OnInit {
         this.form.reset();
         this.dialogRef.close();
         this.familyService.mensajeCambio.next('Familiar editado satisfactoreamente');
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     } else {
       this.familyService.insertFamiliar(family).subscribe(() => {
         this.form.reset();
         this.dialogRef.close();
         this.familyService.mensajeCambio.next('Familiar agregado satisfactoreamente');
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }
   }

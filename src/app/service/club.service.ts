@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Club } from '../model/Club';
-import { Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,15 +31,24 @@ export class ClubService {
     return this.http.get<any>(`${this.url}/getPageAdmin/${page}/${size}`);
   }
 
-  insertClub(club: Club){
-    return this.http.post(`${this.url}/insert`, club);
+  insertClub(club: Club): Observable<any>{
+    return this.http.post(`${this.url}/insert`, club).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  editClub(club: Club){
-    return this.http.put(`${this.url}/edit`, club);
+  editClub(club: Club): Observable<any>{
+    return this.http.put(`${this.url}/edit`, club).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteClub(id){
     return this.http.delete<any>(`${this.url}/delete/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    const errorMessage = error.error?.message || 'Un error inesperado';
+    return throwError(errorMessage);
   }
 }

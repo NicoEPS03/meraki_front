@@ -43,7 +43,7 @@ export class InsertAthleteComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
     private snackBar: MatSnackBar, private generalService: GeneralService,
     private athleteService: AthleteService, private familyService: FamilyService,
-    private dialog: MatDialog,
+    private dialog: MatDialog, private infoSnackBar: MatSnackBar
   ) { }
 
   async ngOnInit() {
@@ -371,12 +371,22 @@ export class InsertAthleteComponent implements OnInit {
         this.form.reset();
         this.openSnackBar('Deportista editado satisfactoreamente');
         this.router.navigate([`/admin/club/${this.id}/athlete`]);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     } else {
       this.athleteService.insertAthlete(athlete).subscribe(() => {
         this.form.reset();
         this.athleteService.mensajeCambio.next('Deportista guadado satisfactoreamente');
         this.router.navigate([`/admin/club/${this.id}/athlete`]);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }
   }

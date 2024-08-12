@@ -9,6 +9,7 @@ import { CoachService } from 'src/app/service/coach.service';
 import { GeneralService } from 'src/app/service/general.service';
 import { User } from 'src/app/model/User';
 import { ClubService } from 'src/app/service/club.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insert-coach',
@@ -27,7 +28,7 @@ export class InsertCoachComponent implements OnInit {
 
   constructor(private coachService: CoachService, private generalService: GeneralService,
     private router: Router, public dialogRef: MatDialogRef<InsertCoachComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private clubService: ClubService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private clubService: ClubService, private infoSnackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.edicion = this.data.edit;
@@ -96,12 +97,22 @@ export class InsertCoachComponent implements OnInit {
         this.form.reset();
         this.dialogRef.close();
         this.clubService.mensajeCambio.next('Coach editado satisfactoreamente');
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     } else {
       this.coachService.insertCoach(coach).subscribe(() => {
         this.form.reset();
         this.dialogRef.close();
         this.clubService.mensajeCambio.next('Coach agregado satisfactoreamente');
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }
   }

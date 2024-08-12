@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/User';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +23,24 @@ export class UserService {
     return this.http.get<any>(`${this.url}/get/${id}`);
   }
 
-  insertUser(user: User){
-    return this.http.post(`${this.url}/insert`, user);
+  insertUser(user: User): Observable<any>{
+    return this.http.post(`${this.url}/insert`, user).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  editUser(user: User){
-    return this.http.put(`${this.url}/edit`, user);
+  editUser(user: User): Observable<any>{
+    return this.http.put(`${this.url}/edit`, user).pipe(
+      catchError(this.handleError)
+    );
   }
 
   deleteUser(id){
     return this.http.delete<any>(`${this.url}/delete/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    const errorMessage = error.error?.message || 'Un error inesperado';
+    return throwError(errorMessage);
   }
 }

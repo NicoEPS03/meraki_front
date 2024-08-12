@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { User } from "src/app/model/User";
 import { GeneralService } from "src/app/service/general.service";
@@ -11,7 +12,9 @@ import { GeneralService } from "src/app/service/general.service";
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private generalService: GeneralService, private router: Router) { }
+  constructor(private generalService: GeneralService, private router: Router,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {  
     this.inicializarFormularioVacio();
@@ -28,16 +31,20 @@ export class LoginComponent implements OnInit {
     let user = new User();
     user.document = this.form.value['document'];
     user.password = this.form.value['password'];
-
-    const data = await this.generalService.login(user).toPromise();
-    sessionStorage.setItem('isAuthenticated', 'true');
-    sessionStorage.setItem('idSession', data.rol.id.toString());
-    if(data.rol.id.toString() == "1"){
-      this.router.navigate(['/admin/users']);
-    } else if (data.rol.id.toString() == "2"){
-      sessionStorage.setItem('id', data.id.toString());
-      this.router.navigate(['/admin/club']);
+    try {
+      const data = await this.generalService.login(user).toPromise();
+      sessionStorage.setItem('isAuthenticated', 'true');
+      sessionStorage.setItem('idSession', data.rol.id.toString());
+      if(data.rol.id.toString() == "1"){
+        this.router.navigate(['/admin/users']);
+      } else if (data.rol.id.toString() == "2"){
+        sessionStorage.setItem('id', data.id.toString());
+        this.router.navigate(['/admin/club']);
+      }
+    } catch (error) {
+      this.snackBar.open(error, '', {
+        duration: 2000,
+      });
     }
-    
   }
 }

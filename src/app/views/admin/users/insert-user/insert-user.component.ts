@@ -19,7 +19,7 @@ export class InsertUserComponent implements OnInit {
   hide = true;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private userService: UserService, private snackBar: MatSnackBar) { }
+              private userService: UserService, private snackBar: MatSnackBar, private infoSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -65,12 +65,22 @@ export class InsertUserComponent implements OnInit {
         this.form.reset();
         this.openSnackBar('Usuario editado satisfactoreamente');
         this.router.navigate(['/admin/users']);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }else{
       this.userService.insertUser(user).subscribe(() => {
         this.form.reset();
         this.userService.mensajeCambio.next('Usuario guadado satisfactoreamente');
         this.router.navigate(['/admin/users']);
+      },
+      error=> {
+        this.infoSnackBar.open(error, '', {
+          duration: 2000,
+        });
       });
     }
   }
