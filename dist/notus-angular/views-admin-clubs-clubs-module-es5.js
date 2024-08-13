@@ -630,9 +630,15 @@
       var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
       /*! src/app/service/club.service */
       "Zhdy");
+      /* harmony import */
+
+
+      var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+      /*! @angular/material/snack-bar */
+      "dNgK");
 
       var InsertCoachComponent = /*#__PURE__*/function () {
-        function InsertCoachComponent(coachService, generalService, router, dialogRef, data, clubService) {
+        function InsertCoachComponent(coachService, generalService, router, dialogRef, data, clubService, infoSnackBar) {
           _classCallCheck(this, InsertCoachComponent);
 
           this.coachService = coachService;
@@ -641,6 +647,7 @@
           this.dialogRef = dialogRef;
           this.data = data;
           this.clubService = clubService;
+          this.infoSnackBar = infoSnackBar;
           this.documento = "Seleccione el documento de identidad";
           this.documentTypes = [];
           this.hide = true;
@@ -733,6 +740,10 @@
                 _this7.dialogRef.close();
 
                 _this7.clubService.mensajeCambio.next('Coach editado satisfactoreamente');
+              }, function (error) {
+                _this7.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             } else {
               this.coachService.insertCoach(coach).subscribe(function () {
@@ -741,6 +752,10 @@
                 _this7.dialogRef.close();
 
                 _this7.clubService.mensajeCambio.next('Coach agregado satisfactoreamente');
+              }, function (error) {
+                _this7.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             }
           }
@@ -777,6 +792,8 @@
           }]
         }, {
           type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_13__["ClubService"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_14__["MatSnackBar"]
         }];
       };
 
@@ -1096,23 +1113,29 @@
       /* harmony import */
 
 
-      var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! src/environments/environment */
+      "AytR");
+      /* harmony import */
+
+
+      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! rxjs */
       "qCKp");
       /* harmony import */
 
 
-      var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-      /*! src/environments/environment */
-      "AytR");
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var AthleteService = /*#__PURE__*/function () {
         function AthleteService(http) {
           _classCallCheck(this, AthleteService);
 
           this.http = http;
-          this.url = "".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].HOST_BACK, "/athlete");
-          this.mensajeCambio = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+          this.url = "".concat(src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].HOST_BACK, "/athlete");
+          this.mensajeCambio = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
         }
 
         return _createClass(AthleteService, [{
@@ -1123,12 +1146,12 @@
         }, {
           key: "insertAthlete",
           value: function insertAthlete(athlete) {
-            return this.http.post("".concat(this.url, "/insert"), athlete);
+            return this.http.post("".concat(this.url, "/insert"), athlete).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "editAthlete",
           value: function editAthlete(athlete) {
-            return this.http.put("".concat(this.url, "/edit"), athlete);
+            return this.http.put("".concat(this.url, "/edit"), athlete).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "deleteAthlete",
@@ -1139,6 +1162,14 @@
           key: "getAthlete",
           value: function getAthlete(id) {
             return this.http.get("".concat(this.url, "/get/").concat(id));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -1389,42 +1420,48 @@
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @angular/material/snack-bar */
+      "dNgK");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
       /* harmony import */
 
 
-      var src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! src/app/model/Athlete */
       "tiqh");
       /* harmony import */
 
 
-      var src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! src/app/model/DocumentType */
       "ZNp3");
       /* harmony import */
 
 
-      var src_app_model_Family__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      var src_app_model_Family__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! src/app/model/Family */
       "rnlr");
       /* harmony import */
 
 
-      var src_app_service_family_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      var src_app_service_family_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
       /*! src/app/service/family.service */
       "cQZb");
       /* harmony import */
 
 
-      var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! src/app/service/general.service */
       "Qvvb");
 
       var InsertFamilyComponent = /*#__PURE__*/function () {
-        function InsertFamilyComponent(familyService, generalService, router, dialogRef, data) {
+        function InsertFamilyComponent(familyService, generalService, router, dialogRef, data, infoSnackBar) {
           _classCallCheck(this, InsertFamilyComponent);
 
           this.familyService = familyService;
@@ -1432,6 +1469,7 @@
           this.router = router;
           this.dialogRef = dialogRef;
           this.data = data;
+          this.infoSnackBar = infoSnackBar;
           this.documento = "Seleccione el documento de identidad";
           this.documentTypes = [];
         }
@@ -1492,7 +1530,7 @@
                 'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](0, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
@@ -1504,7 +1542,7 @@
                 'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](0, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
@@ -1518,10 +1556,10 @@
           value: function guardar() {
             var _this13 = this;
 
-            var family = new src_app_model_Family__WEBPACK_IMPORTED_MODULE_9__["Family"]();
-            family.athlete = new src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_7__["Athlete"](this.idAthlete);
+            var family = new src_app_model_Family__WEBPACK_IMPORTED_MODULE_10__["Family"]();
+            family.athlete = new src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_8__["Athlete"](this.idAthlete);
             family.name = this.form.value['name'];
-            family.documentType = new src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"](this.form.value['documentType']);
+            family.documentType = new src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"](this.form.value['documentType']);
             family.document = this.form.value['document'];
             family.phone = this.form.value['phone'];
             family.email = this.form.value['email'];
@@ -1542,6 +1580,10 @@
                 _this13.dialogRef.close();
 
                 _this13.familyService.mensajeCambio.next('Familiar editado satisfactoreamente');
+              }, function (error) {
+                _this13.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             } else {
               this.familyService.insertFamiliar(family).subscribe(function () {
@@ -1550,6 +1592,10 @@
                 _this13.dialogRef.close();
 
                 _this13.familyService.mensajeCambio.next('Familiar agregado satisfactoreamente');
+              }, function (error) {
+                _this13.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             }
           }
@@ -1571,11 +1617,11 @@
 
       InsertFamilyComponent.ctorParameters = function () {
         return [{
-          type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_10__["FamilyService"]
+          type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_11__["FamilyService"]
         }, {
-          type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_11__["GeneralService"]
+          type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__["GeneralService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
         }, {
           type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"]
         }, {
@@ -1584,6 +1630,8 @@
             type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"],
             args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"]]
           }]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"]
         }];
       };
 
@@ -1644,6 +1692,12 @@
       var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! src/environments/environment */
       "AytR");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var FamilyService = /*#__PURE__*/function () {
         function FamilyService(http) {
@@ -1667,17 +1721,25 @@
         }, {
           key: "insertFamiliar",
           value: function insertFamiliar(familiar) {
-            return this.http.post("".concat(this.url, "/insert"), familiar);
+            return this.http.post("".concat(this.url, "/insert"), familiar).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "editFamiliar",
           value: function editFamiliar(familiar) {
-            return this.http.put("".concat(this.url, "/edit"), familiar);
+            return this.http.put("".concat(this.url, "/edit"), familiar).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "deleteFamiliar",
           value: function deleteFamiliar(id) {
             return this.http["delete"]("".concat(this.url, "/delete/").concat(id));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -1899,7 +1961,7 @@
       "Rxf7");
 
       var InsertClubComponent = /*#__PURE__*/function () {
-        function InsertClubComponent(route, router, clubService, snackBar, generalService, dialog) {
+        function InsertClubComponent(route, router, clubService, snackBar, generalService, dialog, infoSnackBar) {
           _classCallCheck(this, InsertClubComponent);
 
           this.route = route;
@@ -1908,6 +1970,7 @@
           this.snackBar = snackBar;
           this.generalService = generalService;
           this.dialog = dialog;
+          this.infoSnackBar = infoSnackBar;
           this.nombreDeporte = "Seleccione el deporte";
           this.nombreCiudad = "Seleccione la ciudad";
           this.sports = [];
@@ -2023,6 +2086,10 @@
                 _this18.openSnackBar('Club editado satisfactoreamente');
 
                 _this18.router.navigate(['/admin/clubs']);
+              }, function (error) {
+                _this18.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             } else {
               this.clubService.insertClub(club).subscribe(function () {
@@ -2031,6 +2098,10 @@
                 _this18.clubService.mensajeCambio.next('Club guadado satisfactoreamente');
 
                 _this18.router.navigate(['/admin/clubs']);
+              }, function (error) {
+                _this18.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             }
           }
@@ -2100,6 +2171,8 @@
           type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__["GeneralService"]
         }, {
           type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"]
         }];
       };
 
@@ -2240,7 +2313,7 @@
       "Uu75");
 
       var InsertAthleteComponent = /*#__PURE__*/function () {
-        function InsertAthleteComponent(route, router, snackBar, generalService, athleteService, familyService, dialog) {
+        function InsertAthleteComponent(route, router, snackBar, generalService, athleteService, familyService, dialog, infoSnackBar) {
           _classCallCheck(this, InsertAthleteComponent);
 
           this.route = route;
@@ -2250,6 +2323,7 @@
           this.athleteService = athleteService;
           this.familyService = familyService;
           this.dialog = dialog;
+          this.infoSnackBar = infoSnackBar;
           this.dataSourceFamily = new _angular_material_table__WEBPACK_IMPORTED_MODULE_13__["MatTableDataSource"]();
           this.displayedColumnsFamily = ['id', 'name', 'document', 'phone', 'relationship', 'accion'];
           this.nombrePoblacion = "Seleccione lugar de nacimiento";
@@ -2696,6 +2770,10 @@
                 _this25.openSnackBar('Deportista editado satisfactoreamente');
 
                 _this25.router.navigate(["/admin/club/".concat(_this25.id, "/athlete")]);
+              }, function (error) {
+                _this25.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             } else {
               this.athleteService.insertAthlete(athlete).subscribe(function () {
@@ -2704,6 +2782,10 @@
                 _this25.athleteService.mensajeCambio.next('Deportista guadado satisfactoreamente');
 
                 _this25.router.navigate(["/admin/club/".concat(_this25.id, "/athlete")]);
+              }, function (error) {
+                _this25.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             }
           }
@@ -2843,6 +2925,8 @@
           type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_14__["FamilyService"]
         }, {
           type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__["MatDialog"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"]
         }];
       };
 

@@ -41,6 +41,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+
 
 
 
@@ -59,13 +61,18 @@ let UserService = class UserService {
         return this.http.get(`${this.url}/get/${id}`);
     }
     insertUser(user) {
-        return this.http.post(`${this.url}/insert`, user);
+        return this.http.post(`${this.url}/insert`, user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     editUser(user) {
-        return this.http.put(`${this.url}/edit`, user);
+        return this.http.put(`${this.url}/edit`, user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     deleteUser(id) {
         return this.http.delete(`${this.url}/delete/${id}`);
+    }
+    handleError(error) {
+        var _a;
+        const errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
     }
 };
 UserService.ctorParameters = () => [
@@ -252,11 +259,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsertUserComponent = class InsertUserComponent {
-    constructor(route, router, userService, snackBar) {
+    constructor(route, router, userService, snackBar, infoSnackBar) {
         this.route = route;
         this.router = router;
         this.userService = userService;
         this.snackBar = snackBar;
+        this.infoSnackBar = infoSnackBar;
         this.hide = true;
     }
     ngOnInit() {
@@ -301,6 +309,10 @@ let InsertUserComponent = class InsertUserComponent {
                 this.form.reset();
                 this.openSnackBar('Usuario editado satisfactoreamente');
                 this.router.navigate(['/admin/users']);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
         else {
@@ -308,6 +320,10 @@ let InsertUserComponent = class InsertUserComponent {
                 this.form.reset();
                 this.userService.mensajeCambio.next('Usuario guadado satisfactoreamente');
                 this.router.navigate(['/admin/users']);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
     }
@@ -323,6 +339,7 @@ InsertUserComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
     { type: src_app_service_user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] },
     { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] }
 ];
 InsertUserComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
