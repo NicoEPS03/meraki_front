@@ -99,6 +99,12 @@
       var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! src/environments/environment */
       "AytR");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var UserService = /*#__PURE__*/function () {
         function UserService(http) {
@@ -122,17 +128,25 @@
         }, {
           key: "insertUser",
           value: function insertUser(user) {
-            return this.http.post("".concat(this.url, "/insert"), user);
+            return this.http.post("".concat(this.url, "/insert"), user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "editUser",
           value: function editUser(user) {
-            return this.http.put("".concat(this.url, "/edit"), user);
+            return this.http.put("".concat(this.url, "/edit"), user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "deleteUser",
           value: function deleteUser(id) {
             return this.http["delete"]("".concat(this.url, "/delete/").concat(id));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -488,13 +502,14 @@
       "Ouoq");
 
       var InsertUserComponent = /*#__PURE__*/function () {
-        function InsertUserComponent(route, router, userService, snackBar) {
+        function InsertUserComponent(route, router, userService, snackBar, infoSnackBar) {
           _classCallCheck(this, InsertUserComponent);
 
           this.route = route;
           this.router = router;
           this.userService = userService;
           this.snackBar = snackBar;
+          this.infoSnackBar = infoSnackBar;
           this.hide = true;
         }
 
@@ -555,6 +570,10 @@
                 _this4.openSnackBar('Usuario editado satisfactoreamente');
 
                 _this4.router.navigate(['/admin/users']);
+              }, function (error) {
+                _this4.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             } else {
               this.userService.insertUser(user).subscribe(function () {
@@ -563,6 +582,10 @@
                 _this4.userService.mensajeCambio.next('Usuario guadado satisfactoreamente');
 
                 _this4.router.navigate(['/admin/users']);
+              }, function (error) {
+                _this4.infoSnackBar.open(error, '', {
+                  duration: 2000
+                });
               });
             }
           }
@@ -589,6 +612,8 @@
           type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
         }, {
           type: src_app_service_user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"]
         }, {
           type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"]
         }];

@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   inicializarFormularioVacio() {
     this.form = new FormGroup({
-      'document': new FormControl(0, [Validators.required]),
+      'document': new FormControl(null, [Validators.required]),
       'password': new FormControl('', [Validators.required])
     });
   }

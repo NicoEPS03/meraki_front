@@ -58,28 +58,35 @@
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/material/snack-bar */
+      "dNgK");
+      /* harmony import */
+
+
+      var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
       /* harmony import */
 
 
-      var src_app_model_User__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var src_app_model_User__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! src/app/model/User */
       "jraZ");
       /* harmony import */
 
 
-      var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
       /*! src/app/service/general.service */
       "Qvvb");
 
       var LoginComponent = /*#__PURE__*/function () {
-        function LoginComponent(generalService, router) {
+        function LoginComponent(generalService, router, snackBar) {
           _classCallCheck(this, LoginComponent);
 
           this.generalService = generalService;
           this.router = router;
+          this.snackBar = snackBar;
         }
 
         return _createClass(LoginComponent, [{
@@ -91,7 +98,7 @@
           key: "inicializarFormularioVacio",
           value: function inicializarFormularioVacio() {
             this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
-              'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](0, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+              'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
               'password': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
             });
           }
@@ -103,13 +110,14 @@
               return _regeneratorRuntime().wrap(function _callee$(_context) {
                 while (1) switch (_context.prev = _context.next) {
                   case 0:
-                    user = new src_app_model_User__WEBPACK_IMPORTED_MODULE_5__["User"]();
+                    user = new src_app_model_User__WEBPACK_IMPORTED_MODULE_6__["User"]();
                     user.document = this.form.value['document'];
                     user.password = this.form.value['password'];
-                    _context.next = 5;
+                    _context.prev = 3;
+                    _context.next = 6;
                     return this.generalService.login(user).toPromise();
 
-                  case 5:
+                  case 6:
                     data = _context.sent;
                     sessionStorage.setItem('isAuthenticated', 'true');
                     sessionStorage.setItem('idSession', data.rol.id.toString());
@@ -121,11 +129,21 @@
                       this.router.navigate(['/admin/club']);
                     }
 
-                  case 9:
+                    _context.next = 15;
+                    break;
+
+                  case 12:
+                    _context.prev = 12;
+                    _context.t0 = _context["catch"](3);
+                    this.snackBar.open(_context.t0, '', {
+                      duration: 2000
+                    });
+
+                  case 15:
                   case "end":
                     return _context.stop();
                 }
-              }, _callee, this);
+              }, _callee, this, [[3, 12]]);
             }));
           }
         }]);
@@ -133,9 +151,11 @@
 
       LoginComponent.ctorParameters = function () {
         return [{
-          type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_6__["GeneralService"]
+          type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_7__["GeneralService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_4__["MatSnackBar"]
         }];
       };
 
@@ -478,6 +498,12 @@
       var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! src/environments/environment */
       "AytR");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var CoachService = /*#__PURE__*/function () {
         function CoachService(http) {
@@ -506,17 +532,25 @@
         }, {
           key: "insertCoach",
           value: function insertCoach(coach) {
-            return this.http.post("".concat(this.url, "/insert"), coach);
+            return this.http.post("".concat(this.url, "/insert"), coach).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "editCoach",
           value: function editCoach(coach) {
-            return this.http.put("".concat(this.url, "/edit"), coach);
+            return this.http.put("".concat(this.url, "/edit"), coach).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "deleteCoach",
           value: function deleteCoach(id) {
             return this.http["delete"]("".concat(this.url, "/delete/").concat(id));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -579,7 +613,7 @@
       var environment = {
         production: false,
         HOST_BACK: 'https://u80wg8s.157.173.210.107.sslip.io',
-        HOST_IMG: 'http://localhost:8080'
+        HOST_IMG: 'https://157.173.210.107/upload'
       };
       /*
        * For easier debugging in development mode, you can import the following file
@@ -609,7 +643,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<footer class=\"relative bg-blueGray-200 pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-blueGray-200 fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-600\">\n          Encuentranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-tiktok\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-blueGray-500 text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"\"\n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-300\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-blueGray-500 font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n";
+      __webpack_exports__["default"] = "<footer class=\"relative bg-blueGray-200 pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-blueGray-200 fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-600\">\n          Encuéntranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-tiktok\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-blueGray-500 text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/13BtxOYfsz9c4kuLSfX0P-t17wCg2Nhm5/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/1PqWBez_lbT4pRgr2fcBUd3kOggj8O4jv/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"                  \n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-300\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-blueGray-500 font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n";
       /***/
     },
 
@@ -629,7 +663,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                    Gestionar recursos a nivel nacional e internacional para invertir en deporte, cultura y el bienestar general de la población, con el objetivo de convertir a MERAKI en la entidad deportiva y cultural más creíble del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                    A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento, y para el año 2027 nuestros deportistas serán reconocidos como medallistas en los eventos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán elogiados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional para invertir en deporte, cultura y el bienestar general de la población, con el objetivo de convertir a MERAKI en la entidad deportiva y cultural más creíble del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento, y para el año 2027 nuestros deportistas serán reconocidos como medallistas en los eventos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán elogiados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 
@@ -649,7 +683,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<nav\n  class=\"md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-meraki-2 flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6\"\n>\n  <div\n    class=\"md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto\"\n  >\n    <!-- Toggler -->\n    <button\n      class=\"cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-black rounded border border-solid border-transparent\"\n      type=\"button\"\n      (click)=\"toggleCollapseShow('bg-white m-2 py-3 px-6')\"\n    >\n      <i class=\"fas fa-bars\"></i>\n    </button>\n    <!-- Brand -->\n    <a\n      [routerLink]=\"['']\"\n      class=\"md:block text-left md:pb-2 text-white mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0\"\n    >\n      Meraki\n    </a>\n    <!-- User -->\n    <ul class=\"md:hidden items-center flex flex-wrap list-none\">\n      <li class=\"inline-block relative\">\n        <button style=\"cursor: pointer\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\"\n          (click)=\"cerrarsesion()\">\n          <i class=\"fas fa-user\"></i>\n          <span> Cerrar Sesion</span>\n        </button>\n      </li>\n    </ul>\n    <!-- Collapse -->\n    <div\n      class=\"md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded\"\n      [ngClass]=\"collapseShow\"\n    >\n      <!-- Collapse header -->\n      <div\n        class=\"md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200\"\n      >\n        <div class=\"flex flex-wrap\">\n          <div class=\"w-6/12 flex justify-end\">\n            <button\n              type=\"button\"\n              class=\"cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent\"\n              (click)=\"toggleCollapseShow('hidden')\"\n            >\n              <i class=\"fas fa-times\"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <!-- Divider -->\n      <hr class=\"my-4 md:min-w-full\" />\n      <!-- Navigation -->\n\n      <ul class=\"md:flex-col md:min-w-full flex flex-col list-none\">\n        <li class=\"items-center\" [class.hidden]=\"admin != 1\">\n          <a\n            [routerLink]=\"['/admin/users']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminUser=\"routerLinkActive\"\n            [ngClass]=\"\n              adminUser.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"            \n          >\n            <i\n              class=\"fas fa-user mr-2 text-sm\"\n              [ngClass]=\"\n                adminUser.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Usuarios\n          </a>\n        </li>\n\n        <li class=\"items-center\" [class.hidden]=\"admin != 1\">\n          <a\n            [routerLink]=\"['/admin/clubs']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminClub=\"routerLinkActive\"\n            [ngClass]=\"\n              adminClub.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"\n          >\n            <i\n              class=\"fas fa-dumbbell mr-2 text-sm\"\n              [ngClass]=\"\n                adminClub.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Clubs\n          </a>\n        </li>\n\n        <li class=\"items-center\" [class.hidden]=\"admin != 2\">\n          <a\n            [routerLink]=\"['/admin/club']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminClub=\"routerLinkActive\"\n            [ngClass]=\"\n              adminClub.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"\n          >\n            <i\n              class=\"fas fa-dumbbell mr-2 text-sm\"\n              [ngClass]=\"\n                adminClub.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Club\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
+      __webpack_exports__["default"] = "<nav\n  class=\"md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-meraki-2 flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6\"\n>\n  <div\n    class=\"md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto\"\n  >\n    <!-- Toggler -->\n    <button\n      class=\"cursor-pointer text-white opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-black rounded border border-solid border-transparent\"\n      type=\"button\"\n      (click)=\"toggleCollapseShow('bg-meraki-2 m-2 py-3 px-6')\"\n    >\n      <i class=\"fas fa-bars\"></i>\n    </button>\n    <!-- Brand -->\n    <a\n      [routerLink]=\"['']\"\n      class=\"md:block text-left md:pb-2 text-white mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0\"\n    >\n    <h1 style=\"margin: 0\">\n      <img src=\"assets/img/Recurso 21080.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n    </h1>\n    </a>\n    <!-- User -->\n    <ul class=\"md:hidden items-center flex flex-wrap list-none\">\n      <li class=\"inline-block relative\">\n        <button style=\"cursor: pointer\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\"\n          (click)=\"cerrarsesion()\">\n          <i class=\"fas fa-user\"></i>\n          <span> Cerrar Sesion</span>\n        </button>\n      </li>\n    </ul>\n    <!-- Collapse -->\n    <div\n      class=\"md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-4 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded\"\n      [ngClass]=\"collapseShow\"\n    >\n      <!-- Collapse header -->\n      <div\n        class=\"md:min-w-full md:hidden block pb-4 mb-4 border-solid border-blueGray-200\"\n      >\n        <div class=\"flex flex-wrap\">\n          <div class=\"w-6/12 flex justify-end\">\n            <button\n              type=\"button\"\n              class=\"cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent\"\n              (click)=\"toggleCollapseShow('hidden')\"\n            >\n              <i class=\"fas fa-times\"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <!-- Divider -->\n      <hr class=\"my-4 md:min-w-full\" />\n      <!-- Navigation -->\n\n      <ul class=\"md:flex-col md:min-w-full flex flex-col list-none\">\n        <li class=\"items-center\" [class.hidden]=\"admin != 1\">\n          <a\n            [routerLink]=\"['/admin/users']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminUser=\"routerLinkActive\"\n            [ngClass]=\"\n              adminUser.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"            \n          >\n            <i\n              class=\"fas fa-user mr-2 text-sm\"\n              [ngClass]=\"\n                adminUser.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Usuarios\n          </a>\n        </li>\n\n        <li class=\"items-center\" [class.hidden]=\"admin != 1\">\n          <a\n            [routerLink]=\"['/admin/clubs']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminClub=\"routerLinkActive\"\n            [ngClass]=\"\n              adminClub.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"\n          >\n            <i\n              class=\"fas fa-dumbbell mr-2 text-sm\"\n              [ngClass]=\"\n                adminClub.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Clubes\n          </a>\n        </li>\n\n        <li class=\"items-center\" [class.hidden]=\"admin != 2\">\n          <a\n            [routerLink]=\"['/admin/club']\"\n            class=\"text-xs uppercase py-3 font-bold block\"\n            routerLinkActive\n            #adminClub=\"routerLinkActive\"\n            [ngClass]=\"\n              adminClub.isActive\n                ? 'text-black hover:text-black'\n                : 'text-white hover:text-white'\n            \"\n          >\n            <i\n              class=\"fas fa-dumbbell mr-2 text-sm\"\n              [ngClass]=\"\n                adminClub.isActive ? 'opacity-75' : 'text-white'\n              \"\n            ></i>\n            Club\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
       /***/
     },
 
@@ -669,7 +703,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"container mx-auto px-4 h-full\">\n  <div class=\"flex content-center items-center justify-center h-full\">\n    <div class=\"w-full lg:w-4/12 px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0\"\n      >\n        <div class=\"flex-auto px-4 lg:px-10 py-10 pt-0\">\n          <hr class=\"mt-6 border-b-1 border-blueGray-300\" />\n          <form [formGroup]=\"form\" #frmUser=\"ngForm\" (ngSubmit)=\"login()\">\n            <div class=\"relative w-full mb-3\">\n              <label\n                class=\"block uppercase text-blueGray-600 text-xs font-bold mb-2\"\n                htmlFor=\"grid-password\"\n              >\n                Documento\n              </label>\n              <input\n                type=\"number\"\n                class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150\"\n                placeholder=\"C.C.\"\n                formControlName=\"document\"\n              />\n            </div>\n\n            <div class=\"relative w-full mb-3\">\n              <label\n                class=\"block uppercase text-blueGray-600 text-xs font-bold mb-2\"\n                htmlFor=\"grid-password\"\n              >\n                Contraseña\n              </label>\n              <input\n                type=\"password\"\n                class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150\"\n                placeholder=\"Contraseña\"\n                formControlName=\"password\"\n              />\n            </div>\n\n            <div class=\"text-center mt-6\">\n              <button\n                class=\"bg-black text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150\"\n                type=\"button\"\n                type=\"submit\" [disabled]=\"frmUser.invalid\"\n              >\n                Ingresar\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n      <div class=\"flex flex-wrap mt-6 relative\">\n        <div class=\"w-1/2\">\n          <a href=\"javascript:void(0)\" class=\"text-blueGray-200\">\n            <small>¿Olvidates tu contraseña?</small>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
+      __webpack_exports__["default"] = "<div class=\"container mx-auto px-4 h-full\">\n  <div class=\"flex content-center items-center justify-center h-full\">\n    <div class=\"w-full lg:w-4/12 px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0\"\n      >\n        <div class=\"flex-auto px-4 lg:px-10 py-10 pt-0\">\n          <hr class=\"mt-6 border-b-1 border-blueGray-300\" />\n          <form [formGroup]=\"form\" #frmUser=\"ngForm\" (ngSubmit)=\"login()\">\n            <div class=\"relative w-full mb-3\">\n              <label\n                class=\"block uppercase text-blueGray-600 text-xs font-bold mb-2\"\n                htmlFor=\"grid-password\"\n              >\n                Documento\n              </label>\n              <input\n                type=\"number\"\n                class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150\"\n                placeholder=\"C.C.\"\n                formControlName=\"document\"\n              />\n            </div>\n\n            <div class=\"relative w-full mb-3\">\n              <label\n                class=\"block uppercase text-blueGray-600 text-xs font-bold mb-2\"\n                htmlFor=\"grid-password\"\n              >\n                Contraseña\n              </label>\n              <input\n                type=\"password\"\n                class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150\"\n                placeholder=\"Contraseña\"\n                formControlName=\"password\"\n              />\n            </div>\n\n            <div class=\"text-center mt-6\">\n              <button\n                class=\"bg-black text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150\"\n                type=\"button\"\n                type=\"submit\" [disabled]=\"frmUser.invalid\"\n              >\n                Ingresar\n              </button>\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n";
       /***/
     },
 
@@ -885,6 +919,18 @@
       var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/common/http */
       "tk/3");
+      /* harmony import */
+
+
+      var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! rxjs */
+      "qCKp");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var GeneralService = /*#__PURE__*/function () {
         function GeneralService(http) {
@@ -917,7 +963,15 @@
         }, {
           key: "login",
           value: function login(user) {
-            return this.http.post("".concat(this.url, "/login"), user);
+            return this.http.post("".concat(this.url, "/login"), user).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -1176,7 +1230,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          Meraki\n        </h1>        \n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
+      __webpack_exports__["default"] = "<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/Recurso 21080.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
       /***/
     },
 
@@ -1551,7 +1605,7 @@
       "6RUL");
 
       var ClubComponent = /*#__PURE__*/function () {
-        function ClubComponent(route, router, clubService, coachService, snackBar, generalService, dialog) {
+        function ClubComponent(route, router, clubService, coachService, snackBar, generalService, dialog, infoSnackBar) {
           _classCallCheck(this, ClubComponent);
 
           this.route = route;
@@ -1561,6 +1615,7 @@
           this.snackBar = snackBar;
           this.generalService = generalService;
           this.dialog = dialog;
+          this.infoSnackBar = infoSnackBar;
           this.nombreDeporte = "Seleccione el deporte";
           this.nombreCiudad = "Seleccione la ciudad";
           this.sports = [];
@@ -1658,6 +1713,10 @@
               _this8.openSnackBar('Club editado satisfactoreamente');
 
               _this8.router.navigate(['/admin/club']);
+            }, function (error) {
+              _this8.infoSnackBar.open(error, '', {
+                duration: 2000
+              });
             });
           }
         }, {
@@ -1746,6 +1805,8 @@
           type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__["GeneralService"]
         }, {
           type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"]
+        }, {
+          type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"]
         }];
       };
 
@@ -2214,6 +2275,12 @@
       var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! rxjs */
       "qCKp");
+      /* harmony import */
+
+
+      var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! rxjs/operators */
+      "kU1M");
 
       var ClubService = /*#__PURE__*/function () {
         function ClubService(http) {
@@ -2247,17 +2314,25 @@
         }, {
           key: "insertClub",
           value: function insertClub(club) {
-            return this.http.post("".concat(this.url, "/insert"), club);
+            return this.http.post("".concat(this.url, "/insert"), club).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "editClub",
           value: function editClub(club) {
-            return this.http.put("".concat(this.url, "/edit"), club);
+            return this.http.put("".concat(this.url, "/edit"), club).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
           }
         }, {
           key: "deleteClub",
           value: function deleteClub(id) {
             return this.http["delete"]("".concat(this.url, "/delete/").concat(id));
+          }
+        }, {
+          key: "handleError",
+          value: function handleError(error) {
+            var _a;
+
+            var errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
           }
         }]);
       }();
@@ -2996,7 +3071,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-black\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones, padres de familia y deportistas miembros de la familia MERAKI en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-black\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-seedling mr-2 text-black\"\n              ></i>\n              Sembrando vida\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones, padres de familia y deportistas miembros de la familia MERAKI en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 

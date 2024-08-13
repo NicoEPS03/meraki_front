@@ -311,6 +311,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/service/general.service */ "Qvvb");
 /* harmony import */ var src_app_model_User__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/model/User */ "jraZ");
 /* harmony import */ var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/app/service/club.service */ "Zhdy");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/snack-bar */ "dNgK");
+
 
 
 
@@ -326,13 +328,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsertCoachComponent = class InsertCoachComponent {
-    constructor(coachService, generalService, router, dialogRef, data, clubService) {
+    constructor(coachService, generalService, router, dialogRef, data, clubService, infoSnackBar) {
         this.coachService = coachService;
         this.generalService = generalService;
         this.router = router;
         this.dialogRef = dialogRef;
         this.data = data;
         this.clubService = clubService;
+        this.infoSnackBar = infoSnackBar;
         this.documento = "Seleccione el documento de identidad";
         this.documentTypes = [];
         this.hide = true;
@@ -399,6 +402,10 @@ let InsertCoachComponent = class InsertCoachComponent {
                 this.form.reset();
                 this.dialogRef.close();
                 this.clubService.mensajeCambio.next('Coach editado satisfactoreamente');
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
         else {
@@ -406,6 +413,10 @@ let InsertCoachComponent = class InsertCoachComponent {
                 this.form.reset();
                 this.dialogRef.close();
                 this.clubService.mensajeCambio.next('Coach agregado satisfactoreamente');
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
     }
@@ -423,7 +434,8 @@ InsertCoachComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
     { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"],] }] },
-    { type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_13__["ClubService"] }
+    { type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_13__["ClubService"] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_14__["MatSnackBar"] }
 ];
 InsertCoachComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -597,8 +609,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "qCKp");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+
 
 
 
@@ -607,23 +621,28 @@ __webpack_require__.r(__webpack_exports__);
 let AthleteService = class AthleteService {
     constructor(http) {
         this.http = http;
-        this.url = `${src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].HOST_BACK}/athlete`;
-        this.mensajeCambio = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.url = `${src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].HOST_BACK}/athlete`;
+        this.mensajeCambio = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
     }
     getAthletesByClub(page, size, club) {
         return this.http.get(`${this.url}/getPageClub/${page}/${size}/${club}`);
     }
     insertAthlete(athlete) {
-        return this.http.post(`${this.url}/insert`, athlete);
+        return this.http.post(`${this.url}/insert`, athlete).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     editAthlete(athlete) {
-        return this.http.put(`${this.url}/edit`, athlete);
+        return this.http.put(`${this.url}/edit`, athlete).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     deleteAthlete(id) {
         return this.http.delete(`${this.url}/delete/${id}`);
     }
     getAthlete(id) {
         return this.http.get(`${this.url}/get/${id}`);
+    }
+    handleError(error) {
+        var _a;
+        const errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(errorMessage);
     }
 };
 AthleteService.ctorParameters = () => [
@@ -759,12 +778,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/dialog */ "0IaG");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/model/Athlete */ "tiqh");
-/* harmony import */ var src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/model/DocumentType */ "ZNp3");
-/* harmony import */ var src_app_model_Family__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/model/Family */ "rnlr");
-/* harmony import */ var src_app_service_family_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/service/family.service */ "cQZb");
-/* harmony import */ var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/service/general.service */ "Qvvb");
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/snack-bar */ "dNgK");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/model/Athlete */ "tiqh");
+/* harmony import */ var src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/model/DocumentType */ "ZNp3");
+/* harmony import */ var src_app_model_Family__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/model/Family */ "rnlr");
+/* harmony import */ var src_app_service_family_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/service/family.service */ "cQZb");
+/* harmony import */ var src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/app/service/general.service */ "Qvvb");
+
 
 
 
@@ -778,12 +799,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsertFamilyComponent = class InsertFamilyComponent {
-    constructor(familyService, generalService, router, dialogRef, data) {
+    constructor(familyService, generalService, router, dialogRef, data, infoSnackBar) {
         this.familyService = familyService;
         this.generalService = generalService;
         this.router = router;
         this.dialogRef = dialogRef;
         this.data = data;
+        this.infoSnackBar = infoSnackBar;
         this.documento = "Seleccione el documento de identidad";
         this.documentTypes = [];
     }
@@ -822,7 +844,7 @@ let InsertFamilyComponent = class InsertFamilyComponent {
                 'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](0, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
@@ -835,7 +857,7 @@ let InsertFamilyComponent = class InsertFamilyComponent {
                 'id': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](0, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'name': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'document': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+                'documentType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"], [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
                 'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
@@ -845,10 +867,10 @@ let InsertFamilyComponent = class InsertFamilyComponent {
         }
     }
     guardar() {
-        let family = new src_app_model_Family__WEBPACK_IMPORTED_MODULE_9__["Family"]();
-        family.athlete = new src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_7__["Athlete"](this.idAthlete);
+        let family = new src_app_model_Family__WEBPACK_IMPORTED_MODULE_10__["Family"]();
+        family.athlete = new src_app_model_Athlete__WEBPACK_IMPORTED_MODULE_8__["Athlete"](this.idAthlete);
         family.name = this.form.value['name'];
-        family.documentType = new src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_8__["DocumentType"](this.form.value['documentType']);
+        family.documentType = new src_app_model_DocumentType__WEBPACK_IMPORTED_MODULE_9__["DocumentType"](this.form.value['documentType']);
         family.document = this.form.value['document'];
         family.phone = this.form.value['phone'];
         family.email = this.form.value['email'];
@@ -864,6 +886,10 @@ let InsertFamilyComponent = class InsertFamilyComponent {
                 this.form.reset();
                 this.dialogRef.close();
                 this.familyService.mensajeCambio.next('Familiar editado satisfactoreamente');
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
         else {
@@ -871,6 +897,10 @@ let InsertFamilyComponent = class InsertFamilyComponent {
                 this.form.reset();
                 this.dialogRef.close();
                 this.familyService.mensajeCambio.next('Familiar agregado satisfactoreamente');
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
     }
@@ -883,11 +913,12 @@ let InsertFamilyComponent = class InsertFamilyComponent {
     }
 };
 InsertFamilyComponent.ctorParameters = () => [
-    { type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_10__["FamilyService"] },
-    { type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_11__["GeneralService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_11__["FamilyService"] },
+    { type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__["GeneralService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] },
     { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialogRef"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"],] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MAT_DIALOG_DATA"],] }] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"] }
 ];
 InsertFamilyComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -916,6 +947,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "qCKp");
 /* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/environments/environment */ "AytR");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+
 
 
 
@@ -934,13 +967,18 @@ let FamilyService = class FamilyService {
         return this.http.get(`${this.url}/get/${id}`);
     }
     insertFamiliar(familiar) {
-        return this.http.post(`${this.url}/insert`, familiar);
+        return this.http.post(`${this.url}/insert`, familiar).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     editFamiliar(familiar) {
-        return this.http.put(`${this.url}/edit`, familiar);
+        return this.http.put(`${this.url}/edit`, familiar).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])(this.handleError));
     }
     deleteFamiliar(id) {
         return this.http.delete(`${this.url}/delete/${id}`);
+    }
+    handleError(error) {
+        var _a;
+        const errorMessage = ((_a = error.error) === null || _a === void 0 ? void 0 : _a.message) || 'Un error inesperado';
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(errorMessage);
     }
 };
 FamilyService.ctorParameters = () => [
@@ -1060,13 +1098,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsertClubComponent = class InsertClubComponent {
-    constructor(route, router, clubService, snackBar, generalService, dialog) {
+    constructor(route, router, clubService, snackBar, generalService, dialog, infoSnackBar) {
         this.route = route;
         this.router = router;
         this.clubService = clubService;
         this.snackBar = snackBar;
         this.generalService = generalService;
         this.dialog = dialog;
+        this.infoSnackBar = infoSnackBar;
         this.nombreDeporte = "Seleccione el deporte";
         this.nombreCiudad = "Seleccione la ciudad";
         this.sports = [];
@@ -1155,6 +1194,10 @@ let InsertClubComponent = class InsertClubComponent {
                 this.form.reset();
                 this.openSnackBar('Club editado satisfactoreamente');
                 this.router.navigate(['/admin/clubs']);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
         else {
@@ -1162,6 +1205,10 @@ let InsertClubComponent = class InsertClubComponent {
                 this.form.reset();
                 this.clubService.mensajeCambio.next('Club guadado satisfactoreamente');
                 this.router.navigate(['/admin/clubs']);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
     }
@@ -1199,7 +1246,8 @@ InsertClubComponent.ctorParameters = () => [
     { type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_11__["ClubService"] },
     { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"] },
     { type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_12__["GeneralService"] },
-    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] }
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_6__["MatSnackBar"] }
 ];
 InsertClubComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -1260,7 +1308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let InsertAthleteComponent = class InsertAthleteComponent {
-    constructor(route, router, snackBar, generalService, athleteService, familyService, dialog) {
+    constructor(route, router, snackBar, generalService, athleteService, familyService, dialog, infoSnackBar) {
         this.route = route;
         this.router = router;
         this.snackBar = snackBar;
@@ -1268,6 +1316,7 @@ let InsertAthleteComponent = class InsertAthleteComponent {
         this.athleteService = athleteService;
         this.familyService = familyService;
         this.dialog = dialog;
+        this.infoSnackBar = infoSnackBar;
         this.dataSourceFamily = new _angular_material_table__WEBPACK_IMPORTED_MODULE_13__["MatTableDataSource"]();
         this.displayedColumnsFamily = ['id', 'name', 'document', 'phone', 'relationship', 'accion'];
         this.nombrePoblacion = "Seleccione lugar de nacimiento";
@@ -1598,6 +1647,10 @@ let InsertAthleteComponent = class InsertAthleteComponent {
                 this.form.reset();
                 this.openSnackBar('Deportista editado satisfactoreamente');
                 this.router.navigate([`/admin/club/${this.id}/athlete`]);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
         else {
@@ -1605,6 +1658,10 @@ let InsertAthleteComponent = class InsertAthleteComponent {
                 this.form.reset();
                 this.athleteService.mensajeCambio.next('Deportista guadado satisfactoreamente');
                 this.router.navigate([`/admin/club/${this.id}/athlete`]);
+            }, error => {
+                this.infoSnackBar.open(error, '', {
+                    duration: 2000,
+                });
             });
         }
     }
@@ -1690,7 +1747,8 @@ InsertAthleteComponent.ctorParameters = () => [
     { type: src_app_service_general_service__WEBPACK_IMPORTED_MODULE_9__["GeneralService"] },
     { type: src_app_service_athlete_service__WEBPACK_IMPORTED_MODULE_10__["AthleteService"] },
     { type: src_app_service_family_service__WEBPACK_IMPORTED_MODULE_14__["FamilyService"] },
-    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__["MatDialog"] }
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_16__["MatDialog"] },
+    { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_5__["MatSnackBar"] }
 ];
 InsertAthleteComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
