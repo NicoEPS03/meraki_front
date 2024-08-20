@@ -1,3 +1,4 @@
+import { ViewportScroller } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { Club } from "src/app/model/Club";
@@ -14,9 +15,11 @@ export class ProfileComponent implements OnInit {
   images : ClubImages
   id: string;
   constructor(private route: ActivatedRoute, private router: Router,
-              private clubService: ClubService, private imagesService: ClubImagesService) {}
+              private clubService: ClubService, private imagesService: ClubImagesService,
+              private viewportScroller: ViewportScroller) {}
 
   ngOnInit(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
     this.getClub(this.id = atob(this.route.snapshot.paramMap.get('id')));
   }
 

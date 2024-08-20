@@ -2,11 +2,11 @@ import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-god-father',
-  templateUrl: './god-father.component.html',
-  styleUrls: ['./god-father.component.css']
+  selector: 'app-grow-life',
+  templateUrl: './grow-life.component.html',
+  styleUrls: ['./grow-life.component.css']
 })
-export class GodFatherComponent implements OnInit {
+export class GrowLifeComponent implements OnInit {
 
   constructor(private viewportScroller: ViewportScroller) { }
 

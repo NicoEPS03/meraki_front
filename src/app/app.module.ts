@@ -23,6 +23,8 @@ import { ClubComponent } from './views/admin/club/club.component';
 import { SupporNetComponent } from './views/landing/suppor-net/suppor-net.component';
 import { GodFatherComponent } from './views/landing/god-father/god-father.component';
 import { AboutUsComponent } from './views/landing/about-us/about-us.component';
+import { GrowLifeComponent } from './views/landing/grow-life/grow-life.component';
+import { SocialDropdownComponent } from './components/dropdowns/social-dropdown/social-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { AboutUsComponent } from './views/landing/about-us/about-us.component';
     SupporNetComponent,
     GodFatherComponent,
     AboutUsComponent,
+    GrowLifeComponent,
+    SocialDropdownComponent,
   ],
   imports: [
     BrowserModule, 
