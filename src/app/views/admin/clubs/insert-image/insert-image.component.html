@@ -1,3 +1,37 @@
+<div  class="w-full ">
+  <table class="items-center w-full bg-transparent border-collapse" mat-table [dataSource]="dataSourceImages">
+    <ng-container matColumnDef="tipoImagen">
+      <mat-header-cell *matHeaderCellDef
+      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100"> 
+      Tipo imagen </mat-header-cell>
+      <mat-cell *matCellDef="let element"> 
+        <div *ngIf="element.logo">
+          Logo
+        </div>
+        <div *ngIf="element.other">
+          Otra 
+        </div>
+        <div *ngIf="element.banner">
+          Banner 
+        </div>
+      </mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="eliminar">
+      <mat-header-cell *matHeaderCellDef
+      class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
+      Eliminar</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <button mat-button style="color: #008080" [disabled]="!element.state" title="Eliminar">
+              <mat-icon>clear</mat-icon>
+          </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</div>
 <div class="w-full md:w-6/12 px-4 mr-auto ml-auto">
     <div
       class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg"

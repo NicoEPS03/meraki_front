@@ -116,7 +116,7 @@ module.exports = __webpack_require__(/*! C:\Users\nicko\OneDrive\Documents\Traba
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-hands-helping mr-2 text-black\"\n              ></i>\n              Red de Apoyo\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    Es un programa diseñado para crear redes COMERCIALES, PROFESIONALES y de SERVICIOS entre los padres de familia, apoyado por la Corporación MERAKI y enfocado en el emprendimiento, la asociatividad y el empoderamiento de los padres, quienes son los primeros responsables económicos del deportista. Este programa ofrece capacitaciones y apoyo técnico para facilitar el desarrollo de habilidades empresariales y el fortalecimiento de la red de contactos de los participantes\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-hands-helping mr-2 text-black\"\n              ></i>\n              Red de Apoyo\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                    Es un programa diseñado para crear redes COMERCIALES, PROFESIONALES y de SERVICIOS entre los padres de familia, apoyado por la Corporación MERAKI y enfocado en el emprendimiento, la asociatividad y el empoderamiento de los padres, quienes son los primeros responsables económicos del deportista. Este programa ofrece capacitaciones y apoyo técnico para facilitar el desarrollo de habilidades empresariales y el fortalecimiento de la red de contactos de los participantes\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -323,7 +323,7 @@ CoachService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              (selectionChange)=\"citiesSport($event.value)\">            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);\"\n                  class=\"w-36 h-36 rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-4 mb-4 text-justify\"\n              >\n                {{x.description}}\n              </p>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                Delegado: {{x.delegado}} \n              </p>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              (selectionChange)=\"citiesSport($event.value)\">            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);\"\n                  class=\"w-36 h-36 rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -366,7 +366,7 @@ const environment = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"relative bg-blueGray-200 pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-blueGray-200 fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-600\">\n          Encuéntranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-tiktok\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-blueGray-500 text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/13BtxOYfsz9c4kuLSfX0P-t17wCg2Nhm5/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/1PqWBez_lbT4pRgr2fcBUd3kOggj8O4jv/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"                  \n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-300\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-blueGray-500 font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<footer class=\"relative bg-black pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-black fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold text-white\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-200\">\n          Encuéntranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-linkedin\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-white text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/13BtxOYfsz9c4kuLSfX0P-t17wCg2Nhm5/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/1PqWBez_lbT4pRgr2fcBUd3kOggj8O4jv/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"                  \n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-200\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-white font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n        <div class=\"flex justify-center\" >\n          <h1>\n            <img src=\"assets/img/footer.png\" style=\"height: 1em; line-height: 1;\">\n          </h1>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n");
 
 /***/ }),
 
@@ -379,7 +379,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional para invertir en deporte, cultura y el bienestar general de la población, con el objetivo de convertir a MERAKI en la entidad deportiva y cultural más creíble del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento, y para el año 2027 nuestros deportistas serán reconocidos como medallistas en los eventos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán elogiados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional con fin de invertirlos en deporte, cultura y el bienestar general de la población, haciendo de MERAKI la entidad deportiva y cultural con mayor credibilidad del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento Cundinamarqués y para el año 2028 nuestros deportistas serán reconocidos como medallistas en los eventos deportivos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán exaltados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
+
+/***/ }),
+
+/***/ "JHoV":
+/*!************************************************************************************!*\
+  !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.css ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzb2NpYWwtZHJvcGRvd24uY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -463,6 +476,19 @@ AuthGuard = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
+/***/ "M7HA":
+/*!*****************************************************************!*\
+  !*** ./src/app/views/landing/grow-life/grow-life.component.css ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJncm93LWxpZmUuY29tcG9uZW50LmNzcyJ9 */");
+
+/***/ }),
+
 /***/ "MpHd":
 /*!********************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/admin/club/club.component.html ***!
@@ -489,19 +515,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_suppor_net_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./suppor-net.component.html */ "0Zaz");
 /* harmony import */ var _suppor_net_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./suppor-net.component.css */ "pJ0A");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
 
 let SupporNetComponent = class SupporNetComponent {
-    constructor() { }
+    constructor(viewportScroller) {
+        this.viewportScroller = viewportScroller;
+    }
     ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
     }
 };
-SupporNetComponent.ctorParameters = () => [];
+SupporNetComponent.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"] }
+];
 SupporNetComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-suppor-net',
         template: _raw_loader_suppor_net_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_suppor_net_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -632,6 +665,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_general_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../service/general.service */ "Qvvb");
 /* harmony import */ var _service_club_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../service/club.service */ "Zhdy");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
 
 
 
@@ -640,10 +675,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LandingComponent = class LandingComponent {
-    constructor(generalService, clubService, router) {
+    constructor(generalService, clubService, router, viewportScroller) {
         this.generalService = generalService;
         this.clubService = clubService;
         this.router = router;
+        this.viewportScroller = viewportScroller;
         this.sports = [];
         this.cities = [];
         this.clubs = [];
@@ -655,6 +691,7 @@ let LandingComponent = class LandingComponent {
         this.pageSize = 15;
     }
     ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
         this.generalService.getSports().subscribe(data => {
             this.sports = data;
         });
@@ -691,7 +728,8 @@ let LandingComponent = class LandingComponent {
 LandingComponent.ctorParameters = () => [
     { type: _service_general_service__WEBPACK_IMPORTED_MODULE_4__["GeneralService"] },
     { type: _service_club_service__WEBPACK_IMPORTED_MODULE_5__["ClubService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["ViewportScroller"] }
 ];
 LandingComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -714,7 +752,20 @@ LandingComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/Recurso 21080.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/meraki_logo.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-right justify-end lg:hidden\">\n          <button style=\"cursor: pointer\" routerLink=\"\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-futbol\"></i>\n            <span class=\" inline-block ml-2\">Deportes</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end lg:hidden\">\n          <app-social-dropdown></app-social-dropdown>\n        </li>\n\n        <li class=\"flex items-right justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-seedling\"></i>\n            <span class=\" inline-block ml-2\">Sembrando vida</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n");
+
+/***/ }),
+
+/***/ "RodE":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/landing/grow-life/grow-life.component.html ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-seedling mr-2 text-white\"\n              ></i>\n              Sembrando vida\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones sociales, padres de familia y deportistas miembros de la familia MERAKI junto con empresas privadas y entidades gubernamentales en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -735,9 +786,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/dialog */ "0IaG");
-/* harmony import */ var src_app_model_Club__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/model/Club */ "lIW2");
-/* harmony import */ var src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/model/ClubImages */ "qTpV");
-/* harmony import */ var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/service/club-images.service */ "4iZu");
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/table */ "+0xr");
+/* harmony import */ var src_app_model_Club__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/model/Club */ "lIW2");
+/* harmony import */ var src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/model/ClubImages */ "qTpV");
+/* harmony import */ var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/service/club-images.service */ "4iZu");
+
 
 
 
@@ -756,11 +809,19 @@ let InsertImageComponent = class InsertImageComponent {
         this.imgURL = null;
         this.fileName = '';
         this.progress = 0;
+        this.dataSourceImages = new _angular_material_table__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"]();
+        this.displayedColumns = ['tipoImagen', 'eliminar'];
     }
     ngOnInit() {
         this.idClub = this.data.idClub;
         this.edicion = this.data.edicion;
+        this.listar();
         this.inicializarFormularioVacio();
+    }
+    listar() {
+        this.imageClubService.getImages(this.idClub).subscribe(data => {
+            this.dataSourceImages = new _angular_material_table__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"](data);
+        });
     }
     inicializarFormularioVacio() {
         if (this.edicion == true) {
@@ -796,8 +857,8 @@ let InsertImageComponent = class InsertImageComponent {
     }
     saveFile() {
         this.progress = 0;
-        let clubImage = new src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_8__["ClubImages"];
-        clubImage.club = new src_app_model_Club__WEBPACK_IMPORTED_MODULE_7__["Club"](this.idClub);
+        let clubImage = new src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_9__["ClubImages"];
+        clubImage.club = new src_app_model_Club__WEBPACK_IMPORTED_MODULE_8__["Club"](this.idClub);
         clubImage.url = `${new Date().toDateString()}_${this.idClub}_${this.fileName}`;
         clubImage.banner = this.form.value['banner'];
         clubImage.logo = this.form.value['logo'];
@@ -825,7 +886,7 @@ let InsertImageComponent = class InsertImageComponent {
     }
 };
 InsertImageComponent.ctorParameters = () => [
-    { type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_9__["ClubImagesService"] },
+    { type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_10__["ClubImagesService"] },
     { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MatDialogRef"] },
     { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_4__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MAT_DIALOG_DATA"],] }] }
 ];
@@ -854,19 +915,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_god_father_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./god-father.component.html */ "vZjp");
 /* harmony import */ var _god_father_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./god-father.component.css */ "d5Nf");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
 
 let GodFatherComponent = class GodFatherComponent {
-    constructor() { }
+    constructor(viewportScroller) {
+        this.viewportScroller = viewportScroller;
+    }
     ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
     }
 };
-GodFatherComponent.ctorParameters = () => [];
+GodFatherComponent.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"] }
+];
 GodFatherComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-god-father',
         template: _raw_loader_god_father_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_god_father_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -1081,6 +1149,63 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
+/***/ "UMCE":
+/*!***********************************************************************************!*\
+  !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: SocialDropdownComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocialDropdownComponent", function() { return SocialDropdownComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./social-dropdown.component.html */ "jyU7");
+/* harmony import */ var _social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./social-dropdown.component.css */ "JHoV");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @popperjs/core */ "EjV/");
+
+
+
+
+
+let SocialDropdownComponent = class SocialDropdownComponent {
+    constructor() {
+        this.dropdownPopoverShow = false;
+    }
+    ngOnInit() { }
+    toggleDropdown(event) {
+        event.preventDefault();
+        if (this.dropdownPopoverShow) {
+            this.dropdownPopoverShow = false;
+        }
+        else {
+            this.dropdownPopoverShow = true;
+            this.createPoppper();
+        }
+    }
+    createPoppper() {
+        Object(_popperjs_core__WEBPACK_IMPORTED_MODULE_4__["createPopper"])(this.btnDropdownRef.nativeElement, this.popoverDropdownRef.nativeElement, {
+            placement: "left-start",
+        });
+    }
+};
+SocialDropdownComponent.propDecorators = {
+    btnDropdownRef: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ["btnDropdownRef", { static: false },] }],
+    popoverDropdownRef: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ["popoverDropdownRef", { static: false },] }]
+};
+SocialDropdownComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-social-dropdown',
+        template: _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], SocialDropdownComponent);
+
+
+
+/***/ }),
+
 /***/ "VUSx":
 /*!*****************************************************!*\
   !*** ./src/app/views/admin/club/club.component.css ***!
@@ -1152,6 +1277,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "Y0AE":
+/*!****************************************************************!*\
+  !*** ./src/app/views/landing/grow-life/grow-life.component.ts ***!
+  \****************************************************************/
+/*! exports provided: GrowLifeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GrowLifeComponent", function() { return GrowLifeComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_grow_life_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./grow-life.component.html */ "RodE");
+/* harmony import */ var _grow_life_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./grow-life.component.css */ "M7HA");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+
+let GrowLifeComponent = class GrowLifeComponent {
+    constructor(viewportScroller) {
+        this.viewportScroller = viewportScroller;
+    }
+    ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
+    }
+};
+GrowLifeComponent.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"] }
+];
+GrowLifeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+        selector: 'app-grow-life',
+        template: _raw_loader_grow_life_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_grow_life_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], GrowLifeComponent);
+
+
+
+/***/ }),
+
 /***/ "Yx8i":
 /*!*******************************!*\
   !*** ./src/app/model/City.ts ***!
@@ -1202,6 +1370,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./views/landing/suppor-net/suppor-net.component */ "NwrV");
 /* harmony import */ var _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./views/landing/god-father/god-father.component */ "Sj5I");
 /* harmony import */ var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/landing/about-us/about-us.component */ "c8Gl");
+/* harmony import */ var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./views/landing/grow-life/grow-life.component */ "Y0AE");
+/* harmony import */ var _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/dropdowns/social-dropdown/social-dropdown.component */ "UMCE");
 
 
 
@@ -1209,6 +1379,8 @@ __webpack_require__.r(__webpack_exports__);
 // layouts
 
 // components for views and layouts
+
+
 
 
 
@@ -1243,6 +1415,8 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_18__["SupporNetComponent"],
             _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__["GodFatherComponent"],
             _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__["AboutUsComponent"],
+            _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__["GrowLifeComponent"],
+            _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__["SocialDropdownComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1375,19 +1549,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_about_us_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./about-us.component.html */ "FSCO");
 /* harmony import */ var _about_us_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./about-us.component.css */ "tT94");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
 
 let AboutUsComponent = class AboutUsComponent {
-    constructor() { }
+    constructor(viewportScroller) {
+        this.viewportScroller = viewportScroller;
+    }
     ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
     }
 };
-AboutUsComponent.ctorParameters = () => [];
+AboutUsComponent.ctorParameters = () => [
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"] }
+];
 AboutUsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-about-us',
         template: _raw_loader_about_us_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_about_us_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -1553,6 +1734,19 @@ class User {
 
 /***/ }),
 
+/***/ "jyU7":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/dropdowns/social-dropdown/social-dropdown.component.html ***!
+  \***************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<a\n  class=\"px-3 py-2 text-blueGray-100 hover:text-blueGray-300 text-xs uppercase font-bold\"\n  (click)=\"toggleDropdown($event)\"\n  #btnDropdownRef\n>\n<i class=\"fas fa-user-friends\"></i>\n  Social\n</a>\n<div\n  class=\"bg-white text-base z-10 float-left py-2 list-none text-left rounded shadow-lg min-w-48 translate-x-full\"\n  [ngClass]=\"dropdownPopoverShow ? 'block' : 'hidden'\"\n  #popoverDropdownRef\n>\n    <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-people-carry\"></i>\n        <span class=\" inline-block ml-2\">Plan Padrino</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-hands-helping\"></i>\n        <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-seedling\"></i>\n        <span class=\" inline-block ml-2\">Sembrando vida</span>\n    </button>\n</div>\n");
+
+/***/ }),
+
 /***/ "lIW2":
 /*!*******************************!*\
   !*** ./src/app/model/Club.ts ***!
@@ -1584,10 +1778,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_profile_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./profile.component.html */ "qzJY");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/club-images.service */ "4iZu");
-/* harmony import */ var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/club.service */ "Zhdy");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/club-images.service */ "4iZu");
+/* harmony import */ var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/club.service */ "Zhdy");
+
 
 
 
@@ -1595,13 +1791,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ProfileComponent = class ProfileComponent {
-    constructor(route, router, clubService, imagesService) {
+    constructor(route, router, clubService, imagesService, viewportScroller) {
         this.route = route;
         this.router = router;
         this.clubService = clubService;
         this.imagesService = imagesService;
+        this.viewportScroller = viewportScroller;
     }
     ngOnInit() {
+        this.viewportScroller.scrollToPosition([0, 0]);
         this.getClub(this.id = atob(this.route.snapshot.paramMap.get('id')));
     }
     getClub(id) {
@@ -1618,13 +1816,14 @@ let ProfileComponent = class ProfileComponent {
     }
 };
 ProfileComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
-    { type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_5__["ClubService"] },
-    { type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_4__["ClubImagesService"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_6__["ClubService"] },
+    { type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_5__["ClubImagesService"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_2__["ViewportScroller"] }
 ];
 ProfileComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: "app-profile",
         template: _raw_loader_profile_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
     })
@@ -1712,6 +1911,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/landing/suppor-net/suppor-net.component */ "NwrV");
 /* harmony import */ var _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/landing/god-father/god-father.component */ "Sj5I");
 /* harmony import */ var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/landing/about-us/about-us.component */ "c8Gl");
+/* harmony import */ var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./views/landing/grow-life/grow-life.component */ "Y0AE");
 
 
 
@@ -1721,6 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
 // auth views
 
 // no layouts views
+
 
 
 
@@ -1754,6 +1955,7 @@ const routes = [
     { path: "suppornet", component: _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_10__["SupporNetComponent"] },
     { path: "godfather", component: _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_11__["GodFatherComponent"] },
     { path: "aboutus", component: _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__["AboutUsComponent"] },
+    { path: "growlife", component: _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__["GrowLifeComponent"] },
     { path: "", component: _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__["LandingComponent"] },
     { path: "**", redirectTo: "", pathMatch: "full" },
 ];
@@ -1779,7 +1981,7 @@ AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-black\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-seedling mr-2 text-black\"\n              ></i>\n              Sembrando vida\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones, padres de familia y deportistas miembros de la familia MERAKI en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-white\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                  El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -1792,7 +1994,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"w-full md:w-6/12 px-4 mr-auto ml-auto\">\n    <div\n      class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg\"\n    >\n      <img *ngIf=\"imgURL\"\n        alt=\"...\"\n        [src]=\"imgURL\" [alt]=\"fileName\"\n        class=\"w-full align-middle rounded-t-lg\"\n      />\n    </div>\n</div>\n<div>\n  <div *ngIf=\"progress\">\n    <mat-progress-bar [value]=\"progress\" max=\"100\">{{ progress }}%</mat-progress-bar>\n  </div>\n  <form [formGroup]=\"form\" #frmClubImages=\"ngForm\" (ngSubmit)=\"saveFile()\">\n    <div class=\"px-4\">\n        <input type=\"file\" #fileInput (change)=\"onFileSelected($event)\" style=\"display: none\" />\n        <button mat-raised-button class=\"bg-meraki-2 text-white\" (click)=\"fileInput.click()\">\n            <mat-icon>cloud_upload</mat-icon> Subir Archivo\n        </button>\n        <div *ngIf=\"selectedFile\">{{ selectedFile.name }}</div>\n    </div>    \n    <br>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"banner\">Banner</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"logo\">Logo</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"other\">Otra</mat-slide-toggle>\n    <div class=\"px-4\">\n      <br>\n      <button mat-raised-button class=\"bg-meraki-2 text-white\" type=\"submit\" [disabled]=\"frmClubImages.invalid\">\n          Guardar foto\n      </button>\n    </div>\n  </form>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div  class=\"w-full \">\n  <table class=\"items-center w-full bg-transparent border-collapse\" mat-table [dataSource]=\"dataSourceImages\">\n    <ng-container matColumnDef=\"tipoImagen\">\n      <mat-header-cell *matHeaderCellDef\n      class=\"px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100\"> \n      Tipo imagen </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> \n        <div *ngIf=\"element.logo\">\n          Logo\n        </div>\n        <div *ngIf=\"element.other\">\n          Otra \n        </div>\n        <div *ngIf=\"element.banner\">\n          Banner \n        </div>\n      </mat-cell>\n    </ng-container>\n  \n    <ng-container matColumnDef=\"eliminar\">\n      <mat-header-cell *matHeaderCellDef\n      class=\"px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100\">\n      Eliminar</mat-header-cell>\n      <mat-cell *matCellDef=\"let element\">\n          <button mat-button style=\"color: #008080\" [disabled]=\"!element.state\" title=\"Eliminar\">\n              <mat-icon>clear</mat-icon>\n          </button>\n      </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </table>\n</div>\n<div class=\"w-full md:w-6/12 px-4 mr-auto ml-auto\">\n    <div\n      class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg\"\n    >\n      <img *ngIf=\"imgURL\"\n        alt=\"...\"\n        [src]=\"imgURL\" [alt]=\"fileName\"\n        class=\"w-full align-middle rounded-t-lg\"\n      />\n    </div>\n</div>\n<div>\n  <div *ngIf=\"progress\">\n    <mat-progress-bar [value]=\"progress\" max=\"100\">{{ progress }}%</mat-progress-bar>\n  </div>\n  <form [formGroup]=\"form\" #frmClubImages=\"ngForm\" (ngSubmit)=\"saveFile()\">\n    <div class=\"px-4\">\n        <input type=\"file\" #fileInput (change)=\"onFileSelected($event)\" style=\"display: none\" />\n        <button mat-raised-button class=\"bg-meraki-2 text-white\" (click)=\"fileInput.click()\">\n            <mat-icon>cloud_upload</mat-icon> Subir Archivo\n        </button>\n        <div *ngIf=\"selectedFile\">{{ selectedFile.name }}</div>\n    </div>    \n    <br>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"banner\">Banner</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"logo\">Logo</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"other\">Otra</mat-slide-toggle>\n    <div class=\"px-4\">\n      <br>\n      <button mat-raised-button class=\"bg-meraki-2 text-white\" type=\"submit\" [disabled]=\"frmClubImages.invalid\">\n          Guardar foto\n      </button>\n    </div>\n  </form>\n</div>");
 
 /***/ }),
 
