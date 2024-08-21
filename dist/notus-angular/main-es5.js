@@ -1,11 +1,11 @@
 (function () {
   function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == typeof h && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(typeof e + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
 
@@ -21,7 +21,7 @@
     /*! exports provided: LoginComponent */
 
     /***/
-    function kjZ(module, __webpack_exports__, __webpack_require__) {
+    function _kjZ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -175,7 +175,7 @@
     /*! exports provided: default */
 
     /***/
-    function ztn(module, __webpack_exports__, __webpack_require__) {
+    function _ztn(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -218,7 +218,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-hands-helping mr-2 text-black\"\n              ></i>\n              Red de Apoyo\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    Es un programa diseñado para crear redes COMERCIALES, PROFESIONALES y de SERVICIOS entre los padres de familia, apoyado por la Corporación MERAKI y enfocado en el emprendimiento, la asociatividad y el empoderamiento de los padres, quienes son los primeros responsables económicos del deportista. Este programa ofrece capacitaciones y apoyo técnico para facilitar el desarrollo de habilidades empresariales y el fortalecimiento de la red de contactos de los participantes\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-hands-helping mr-2 text-black\"\n              ></i>\n              Red de Apoyo\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                    Es un programa diseñado para crear redes COMERCIALES, PROFESIONALES y de SERVICIOS entre los padres de familia, apoyado por la Corporación MERAKI y enfocado en el emprendimiento, la asociatividad y el empoderamiento de los padres, quienes son los primeros responsables económicos del deportista. Este programa ofrece capacitaciones y apoyo técnico para facilitar el desarrollo de habilidades empresariales y el fortalecimiento de la red de contactos de los participantes\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 
@@ -583,7 +583,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              (selectionChange)=\"citiesSport($event.value)\">            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);\"\n                  class=\"w-36 h-36 rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-4 mb-4 text-justify\"\n              >\n                {{x.description}}\n              </p>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                Delegado: {{x.delegado}} \n              </p>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              (selectionChange)=\"citiesSport($event.value)\">            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);\"\n                  class=\"w-36 h-36 rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 
@@ -643,7 +643,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<footer class=\"relative bg-blueGray-200 pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-blueGray-200 fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-600\">\n          Encuéntranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-tiktok\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-blueGray-500 text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/13BtxOYfsz9c4kuLSfX0P-t17wCg2Nhm5/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/1PqWBez_lbT4pRgr2fcBUd3kOggj8O4jv/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm\"                  \n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-300\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-blueGray-500 font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n";
+      __webpack_exports__["default"] = "<footer class=\"relative bg-black pt-8 pb-6\">\n  <div\n    class=\"bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20\"\n    style=\"transform: translateZ(0)\"\n  >\n    <svg\n      class=\"absolute bottom-0 overflow-hidden\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n      preserveAspectRatio=\"none\"\n      version=\"1.1\"\n      viewBox=\"0 0 2560 100\"\n      x=\"0\"\n      y=\"0\"\n    >\n      <polygon\n        class=\"text-black fill-current\"\n        points=\"2560 0 2560 100 0 100\"\n      ></polygon>\n    </svg>\n  </div>\n  <div class=\"container mx-auto px-4\">\n    <div class=\"flex flex-wrap text-center lg:text-left\">\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <h4 class=\"text-3xl font-semibold text-white\">¡Sigamos en contacto!</h4>\n        <h5 class=\"text-lg mt-0 mb-2 text-blueGray-200\">\n          Encuéntranos en otras plataformas\n        </h5>\n        <div class=\"mt-6 lg:mb-0 mb-6\">\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n            onclick=\"window.open('https://www.instagram.com/merakicorporacion/','_blank')\"\n          >\n            <i class=\"fab fa-instagram\"></i>\n          </button>\n          <button\n            class=\"bg-white text-black shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-facebook\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-linkedin\"></i>\n          </button>\n          <button\n            class=\"bg-white text-blueGray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2\"\n            type=\"button\"\n          >\n            <i class=\"fab fa-youtube\"></i>\n          </button>\n        </div>\n      </div>\n      <div class=\"w-full lg:w-6/12 px-4\">\n        <div class=\"flex flex-wrap items-top mb-6\">\n          <div class=\"w-full lg:w-4/12 px-4 ml-auto\">\n            <span\n              class=\"block uppercase text-white text-sm font-semibold mb-2\"\n            >\n              Legales\n            </span>\n            <ul class=\"list-unstyled\">\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/13BtxOYfsz9c4kuLSfX0P-t17wCg2Nhm5/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Terminos y Condiciones\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"\n                  href=\"https://docs.google.com/document/d/1PqWBez_lbT4pRgr2fcBUd3kOggj8O4jv/edit?usp=drive_link\"\n                  target=\"_blank\"\n                >\n                  Política de Privacidad\n                </a>\n              </li>\n              <li>\n                <a\n                  class=\"text-blueGray-200 hover:text-blueGray-100 font-semibold block pb-2 text-sm\"                  \n                >\n                  Contactanos\n                </a>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <hr class=\"my-6 border-blueGray-200\" />\n    <div class=\"flex flex-wrap items-center md:justify-between justify-center\">\n      <div class=\"w-full md:w-4/12 px-4 mx-auto text-center\">\n        <div class=\"text-sm text-white font-semibold py-1\">\n          Copyright © {{ date }} Meraki.\n        </div>\n        <div class=\"flex justify-center\" >\n          <h1>\n            <img src=\"assets/img/footer.png\" style=\"height: 1em; line-height: 1;\">\n          </h1>\n        </div>\n      </div>\n    </div>\n  </div>\n</footer>\n";
       /***/
     },
 
@@ -663,7 +663,27 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional para invertir en deporte, cultura y el bienestar general de la población, con el objetivo de convertir a MERAKI en la entidad deportiva y cultural más creíble del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-left\">Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento, y para el año 2027 nuestros deportistas serán reconocidos como medallistas en los eventos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán elogiados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional con fin de invertirlos en deporte, cultura y el bienestar general de la población, haciendo de MERAKI la entidad deportiva y cultural con mayor credibilidad del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento Cundinamarqués y para el año 2028 nuestros deportistas serán reconocidos como medallistas en los eventos deportivos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán exaltados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      /***/
+    },
+
+    /***/
+    "JHoV":
+    /*!************************************************************************************!*\
+      !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.css ***!
+      \************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function JHoV(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzb2NpYWwtZHJvcGRvd24uY29tcG9uZW50LmNzcyJ9 */";
       /***/
     },
 
@@ -790,6 +810,26 @@
     },
 
     /***/
+    "M7HA":
+    /*!*****************************************************************!*\
+      !*** ./src/app/views/landing/grow-life/grow-life.component.css ***!
+      \*****************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function M7HA(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJncm93LWxpZmUuY29tcG9uZW50LmNzcyJ9 */";
+      /***/
+    },
+
+    /***/
     "MpHd":
     /*!********************************************************************************************!*\
       !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/admin/club/club.component.html ***!
@@ -849,26 +889,38 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
 
       var SupporNetComponent = /*#__PURE__*/function () {
-        function SupporNetComponent() {
+        function SupporNetComponent(viewportScroller) {
           _classCallCheck(this, SupporNetComponent);
+
+          this.viewportScroller = viewportScroller;
         }
 
         return _createClass(SupporNetComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            this.viewportScroller.scrollToPosition([0, 0]);
+          }
         }]);
       }();
 
       SupporNetComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"]
+        }];
       };
 
-      SupporNetComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+      SupporNetComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-suppor-net',
         template: _raw_loader_suppor_net_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_suppor_net_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -1125,14 +1177,21 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
 
       var LandingComponent = /*#__PURE__*/function () {
-        function LandingComponent(generalService, clubService, router) {
+        function LandingComponent(generalService, clubService, router, viewportScroller) {
           _classCallCheck(this, LandingComponent);
 
           this.generalService = generalService;
           this.clubService = clubService;
           this.router = router;
+          this.viewportScroller = viewportScroller;
           this.sports = [];
           this.cities = [];
           this.clubs = [];
@@ -1149,6 +1208,7 @@
           value: function ngOnInit() {
             var _this = this;
 
+            this.viewportScroller.scrollToPosition([0, 0]);
             this.generalService.getSports().subscribe(function (data) {
               _this.sports = data;
             });
@@ -1203,6 +1263,8 @@
           type: _service_club_service__WEBPACK_IMPORTED_MODULE_5__["ClubService"]
         }, {
           type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+        }, {
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["ViewportScroller"]
         }];
       };
 
@@ -1230,7 +1292,27 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/Recurso 21080.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"hover:text-white text-white px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
+      __webpack_exports__["default"] = "<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/meraki_logo.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-right justify-end lg:hidden\">\n          <button style=\"cursor: pointer\" routerLink=\"\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-futbol\"></i>\n            <span class=\" inline-block ml-2\">Deportes</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end lg:hidden\">\n          <app-social-dropdown></app-social-dropdown>\n        </li>\n\n        <li class=\"flex items-right justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-seedling\"></i>\n            <span class=\" inline-block ml-2\">Sembrando vida</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n";
+      /***/
+    },
+
+    /***/
+    "RodE":
+    /*!********************************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/landing/grow-life/grow-life.component.html ***!
+      \********************************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function RodE(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-seedling mr-2 text-white\"\n              ></i>\n              Sembrando vida\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones sociales, padres de familia y deportistas miembros de la familia MERAKI junto con empresas privadas y entidades gubernamentales en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 
@@ -1298,19 +1380,25 @@
       /* harmony import */
 
 
-      var src_app_model_Club__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      var _angular_material_table__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+      /*! @angular/material/table */
+      "+0xr");
+      /* harmony import */
+
+
+      var src_app_model_Club__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
       /*! src/app/model/Club */
       "lIW2");
       /* harmony import */
 
 
-      var src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+      var src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! src/app/model/ClubImages */
       "qTpV");
       /* harmony import */
 
 
-      var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+      var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! src/app/service/club-images.service */
       "4iZu");
 
@@ -1324,6 +1412,8 @@
           this.imgURL = null;
           this.fileName = '';
           this.progress = 0;
+          this.dataSourceImages = new _angular_material_table__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"]();
+          this.displayedColumns = ['tipoImagen', 'eliminar'];
         }
 
         return _createClass(InsertImageComponent, [{
@@ -1331,7 +1421,17 @@
           value: function ngOnInit() {
             this.idClub = this.data.idClub;
             this.edicion = this.data.edicion;
+            this.listar();
             this.inicializarFormularioVacio();
+          }
+        }, {
+          key: "listar",
+          value: function listar() {
+            var _this4 = this;
+
+            this.imageClubService.getImages(this.idClub).subscribe(function (data) {
+              _this4.dataSourceImages = new _angular_material_table__WEBPACK_IMPORTED_MODULE_7__["MatTableDataSource"](data);
+            });
           }
         }, {
           key: "inicializarFormularioVacio",
@@ -1357,7 +1457,7 @@
         }, {
           key: "onFileSelected",
           value: function onFileSelected(event) {
-            var _this4 = this;
+            var _this5 = this;
 
             var input = event.target;
 
@@ -1368,18 +1468,18 @@
               reader.readAsDataURL(this.selectedFile);
 
               reader.onload = function () {
-                _this4.imgURL = reader.result;
+                _this5.imgURL = reader.result;
               };
             }
           }
         }, {
           key: "saveFile",
           value: function saveFile() {
-            var _this5 = this;
+            var _this6 = this;
 
             this.progress = 0;
-            var clubImage = new src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_8__["ClubImages"]();
-            clubImage.club = new src_app_model_Club__WEBPACK_IMPORTED_MODULE_7__["Club"](this.idClub);
+            var clubImage = new src_app_model_ClubImages__WEBPACK_IMPORTED_MODULE_9__["ClubImages"]();
+            clubImage.club = new src_app_model_Club__WEBPACK_IMPORTED_MODULE_8__["Club"](this.idClub);
             clubImage.url = "".concat(new Date().toDateString(), "_").concat(this.idClub, "_").concat(this.fileName);
             clubImage.banner = this.form.value['banner'];
             clubImage.logo = this.form.value['logo'];
@@ -1390,13 +1490,13 @@
               if (this.selectedFile) {
                 this.imageClubService.insertImageClub(clubImage, this.selectedFile).subscribe(function (event) {
                   if (event.type === _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpEventType"].UploadProgress) {
-                    _this5.progress = Math.round(100 * event.loaded / event.total);
+                    _this6.progress = Math.round(100 * event.loaded / event.total);
                   } else if (event instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpResponse"]) {//this.message = 'Archivo subido con éxito';
                   }
                 }, function (err) {
-                  _this5.progress = 0; //this.message = 'No se pudo subir el archivo!';
+                  _this6.progress = 0; //this.message = 'No se pudo subir el archivo!';
 
-                  _this5.selectedFile = undefined;
+                  _this6.selectedFile = undefined;
                 });
                 this.selectedFile = undefined;
               }
@@ -1407,7 +1507,7 @@
 
       InsertImageComponent.ctorParameters = function () {
         return [{
-          type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_9__["ClubImagesService"]
+          type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_10__["ClubImagesService"]
         }, {
           type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_6__["MatDialogRef"]
         }, {
@@ -1467,26 +1567,38 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
 
       var GodFatherComponent = /*#__PURE__*/function () {
-        function GodFatherComponent() {
+        function GodFatherComponent(viewportScroller) {
           _classCallCheck(this, GodFatherComponent);
+
+          this.viewportScroller = viewportScroller;
         }
 
         return _createClass(GodFatherComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            this.viewportScroller.scrollToPosition([0, 0]);
+          }
         }]);
       }();
 
       GodFatherComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"]
+        }];
       };
 
-      GodFatherComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+      GodFatherComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-god-father',
         template: _raw_loader_god_father_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_god_father_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -1668,25 +1780,25 @@
         }, {
           key: "listarDeportes",
           value: function listarDeportes() {
-            var _this6 = this;
+            var _this7 = this;
 
             this.generalService.getSports().subscribe(function (data) {
-              _this6.sports = data;
+              _this7.sports = data;
             });
           }
         }, {
           key: "listarCiudades",
           value: function listarCiudades() {
-            var _this7 = this;
+            var _this8 = this;
 
             this.generalService.getCities().subscribe(function (data) {
-              _this7.cities = data;
+              _this8.cities = data;
             });
           }
         }, {
           key: "guardar",
           value: function guardar() {
-            var _this8 = this;
+            var _this9 = this;
 
             var club = new src_app_model_Club__WEBPACK_IMPORTED_MODULE_9__["Club"]();
             club.name = this.form.value['name'];
@@ -1710,11 +1822,11 @@
             }
 
             this.clubService.editClub(club).subscribe(function () {
-              _this8.openSnackBar('Club editado satisfactoreamente');
+              _this9.openSnackBar('Club editado satisfactoreamente');
 
-              _this8.router.navigate(['/admin/club']);
+              _this9.router.navigate(['/admin/club']);
             }, function (error) {
-              _this8.infoSnackBar.open(error, '', {
+              _this9.infoSnackBar.open(error, '', {
                 duration: 2000
               });
             });
@@ -1723,7 +1835,7 @@
           key: "cargarDatos",
           value: function cargarDatos() {
             return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
-              var _this9 = this;
+              var _this10 = this;
 
               var data;
               return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -1736,26 +1848,26 @@
                     data = _context3.sent;
                     this.id = data.club;
                     this.clubService.getClub(this.id).subscribe(function (data) {
-                      _this9.form.get("name").setValue(data.name);
+                      _this10.form.get("name").setValue(data.name);
 
-                      _this9.form.get("description").setValue(data.description);
+                      _this10.form.get("description").setValue(data.description);
 
-                      _this9.sport = data.sport;
-                      _this9.city = data.city;
-                      _this9.nombreDeporte = data.sport.name;
-                      _this9.nombreCiudad = data.city.nombre;
+                      _this10.sport = data.sport;
+                      _this10.city = data.city;
+                      _this10.nombreDeporte = data.sport.name;
+                      _this10.nombreCiudad = data.city.nombre;
 
-                      _this9.form.get("instragramLink").setValue(data.instragramLink);
+                      _this10.form.get("instragramLink").setValue(data.instragramLink);
 
-                      _this9.form.get("facebookLink").setValue(data.facebookLink);
+                      _this10.form.get("facebookLink").setValue(data.facebookLink);
 
-                      _this9.form.get("twitterLink").setValue(data.twitterLink);
+                      _this10.form.get("twitterLink").setValue(data.twitterLink);
 
-                      _this9.form.get("tiktokLink").setValue(data.tiktokLink);
+                      _this10.form.get("tiktokLink").setValue(data.tiktokLink);
 
-                      _this9.form.get("youtubeLink").setValue(data.youtubeLink);
+                      _this10.form.get("youtubeLink").setValue(data.youtubeLink);
 
-                      _this9.form.get("whatsappLink").setValue(data.whatsappLink);
+                      _this10.form.get("whatsappLink").setValue(data.whatsappLink);
                     });
 
                   case 5:
@@ -1773,7 +1885,7 @@
         }, {
           key: "insertImageModal",
           value: function insertImageModal() {
-            var _this10 = this;
+            var _this11 = this;
 
             var dialogRef = this.dialog.open(_clubs_insert_image_insert_image_component__WEBPACK_IMPORTED_MODULE_13__["InsertImageComponent"], {
               data: {
@@ -1783,7 +1895,7 @@
             });
             this.clubService.mensajeCambio.subscribe(function (data) {
               dialogRef.afterClosed().subscribe(function (result) {
-                _this10.openSnackBar(data);
+                _this11.openSnackBar(data);
               });
             });
           }
@@ -1864,6 +1976,110 @@
         selector: "app-root",
         template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_1__["default"]
       })], AppComponent);
+      /***/
+    },
+
+    /***/
+    "UMCE":
+    /*!***********************************************************************************!*\
+      !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.ts ***!
+      \***********************************************************************************/
+
+    /*! exports provided: SocialDropdownComponent */
+
+    /***/
+    function UMCE(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "SocialDropdownComponent", function () {
+        return SocialDropdownComponent;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! raw-loader!./social-dropdown.component.html */
+      "jyU7");
+      /* harmony import */
+
+
+      var _social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./social-dropdown.component.css */
+      "JHoV");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+      /* harmony import */
+
+
+      var _popperjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @popperjs/core */
+      "EjV/");
+
+      var SocialDropdownComponent = /*#__PURE__*/function () {
+        function SocialDropdownComponent() {
+          _classCallCheck(this, SocialDropdownComponent);
+
+          this.dropdownPopoverShow = false;
+        }
+
+        return _createClass(SocialDropdownComponent, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {}
+        }, {
+          key: "toggleDropdown",
+          value: function toggleDropdown(event) {
+            event.preventDefault();
+
+            if (this.dropdownPopoverShow) {
+              this.dropdownPopoverShow = false;
+            } else {
+              this.dropdownPopoverShow = true;
+              this.createPoppper();
+            }
+          }
+        }, {
+          key: "createPoppper",
+          value: function createPoppper() {
+            Object(_popperjs_core__WEBPACK_IMPORTED_MODULE_4__["createPopper"])(this.btnDropdownRef.nativeElement, this.popoverDropdownRef.nativeElement, {
+              placement: "left-start"
+            });
+          }
+        }]);
+      }();
+
+      SocialDropdownComponent.propDecorators = {
+        btnDropdownRef: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
+          args: ["btnDropdownRef", {
+            "static": false
+          }]
+        }],
+        popoverDropdownRef: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"],
+          args: ["popoverDropdownRef", {
+            "static": false
+          }]
+        }]
+      };
+      SocialDropdownComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-social-dropdown',
+        template: _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+      })], SocialDropdownComponent);
       /***/
     },
 
@@ -1984,6 +2200,85 @@
 
 
       __webpack_exports__["default"] = ".mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {\n  background-color: white;\n  color: goldenrod;\n  cursor: pointer;\n  height: auto;\n}\n\n.mat-chip.mat-standard-chip {\n  background-color: black;\n  color: white;\n  border-color: white;\n  border-width: 2px;\n  border-style: solid;\n  cursor: pointer;\n  height: auto;\n}\n\n.flex-button {\n  display: flex;\n  justify-content: right;\n}\n\n.mat-paginator.hidden {\n  display: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHVCQUF1QjtFQUN2QixnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLFlBQVk7QUFDZjs7QUFDQTtFQUNHLHVCQUF1QjtFQUN2QixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsZUFBZTtFQUNmLFlBQVk7QUFDaEI7O0FBRUE7RUFDSSxhQUFhO0VBQ2Isc0JBQXNCO0FBQzFCOztBQUVBO0VBQ0ksd0JBQXdCO0FBQzVCIiwiZmlsZSI6ImxhbmRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtY2hpcC5tYXQtc3RhbmRhcmQtY2hpcC5tYXQtY2hpcC1zZWxlY3RlZC5tYXQtcHJpbWFyeSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIGNvbG9yOiBnb2xkZW5yb2Q7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbiB9XHJcbiAubWF0LWNoaXAubWF0LXN0YW5kYXJkLWNoaXAge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlO1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHg7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG59XHJcblxyXG4uZmxleC1idXR0b24geyBcclxuICAgIGRpc3BsYXk6IGZsZXg7IFxyXG4gICAganVzdGlmeS1jb250ZW50OiByaWdodDsgXHJcbn1cclxuXHJcbi5tYXQtcGFnaW5hdG9yLmhpZGRlbiB7XHJcbiAgICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XHJcbn0iXX0= */";
+      /***/
+    },
+
+    /***/
+    "Y0AE":
+    /*!****************************************************************!*\
+      !*** ./src/app/views/landing/grow-life/grow-life.component.ts ***!
+      \****************************************************************/
+
+    /*! exports provided: GrowLifeComponent */
+
+    /***/
+    function Y0AE(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "GrowLifeComponent", function () {
+        return GrowLifeComponent;
+      });
+      /* harmony import */
+
+
+      var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! tslib */
+      "mrSG");
+      /* harmony import */
+
+
+      var _raw_loader_grow_life_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! raw-loader!./grow-life.component.html */
+      "RodE");
+      /* harmony import */
+
+
+      var _grow_life_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ./grow-life.component.css */
+      "M7HA");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      /*! @angular/core */
+      "fXoL");
+
+      var GrowLifeComponent = /*#__PURE__*/function () {
+        function GrowLifeComponent(viewportScroller) {
+          _classCallCheck(this, GrowLifeComponent);
+
+          this.viewportScroller = viewportScroller;
+        }
+
+        return _createClass(GrowLifeComponent, [{
+          key: "ngOnInit",
+          value: function ngOnInit() {
+            this.viewportScroller.scrollToPosition([0, 0]);
+          }
+        }]);
+      }();
+
+      GrowLifeComponent.ctorParameters = function () {
+        return [{
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"]
+        }];
+      };
+
+      GrowLifeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
+        selector: 'app-grow-life',
+        template: _raw_loader_grow_life_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_grow_life_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+      })], GrowLifeComponent);
       /***/
     },
 
@@ -2160,7 +2455,19 @@
 
       var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
       /*! ./views/landing/about-us/about-us.component */
-      "c8Gl"); // layouts
+      "c8Gl");
+      /* harmony import */
+
+
+      var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+      /*! ./views/landing/grow-life/grow-life.component */
+      "Y0AE");
+      /* harmony import */
+
+
+      var _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+      /*! ./components/dropdowns/social-dropdown/social-dropdown.component */
+      "UMCE"); // layouts
       // components for views and layouts
 
 
@@ -2169,7 +2476,7 @@
       });
 
       AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _components_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_5__["SidebarComponent"], _layouts_admin_admin_component__WEBPACK_IMPORTED_MODULE_4__["AdminComponent"], _components_navbars_index_navbar_index_navbar_component__WEBPACK_IMPORTED_MODULE_11__["IndexNavbarComponent"], _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_12__["LandingComponent"], _views_landing_profile_profile_component__WEBPACK_IMPORTED_MODULE_13__["ProfileComponent"], _layouts_auth_auth_component__WEBPACK_IMPORTED_MODULE_10__["AuthComponent"], _views_auth_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"], _components_footers_footer_footer_component__WEBPACK_IMPORTED_MODULE_15__["FooterComponent"], _views_admin_club_club_component__WEBPACK_IMPORTED_MODULE_17__["ClubComponent"], _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_18__["SupporNetComponent"], _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__["GodFatherComponent"], _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__["AboutUsComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"], _components_sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_5__["SidebarComponent"], _layouts_admin_admin_component__WEBPACK_IMPORTED_MODULE_4__["AdminComponent"], _components_navbars_index_navbar_index_navbar_component__WEBPACK_IMPORTED_MODULE_11__["IndexNavbarComponent"], _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_12__["LandingComponent"], _views_landing_profile_profile_component__WEBPACK_IMPORTED_MODULE_13__["ProfileComponent"], _layouts_auth_auth_component__WEBPACK_IMPORTED_MODULE_10__["AuthComponent"], _views_auth_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"], _components_footers_footer_footer_component__WEBPACK_IMPORTED_MODULE_15__["FooterComponent"], _views_admin_club_club_component__WEBPACK_IMPORTED_MODULE_17__["ClubComponent"], _views_landing_suppor_net_suppor_net_component__WEBPACK_IMPORTED_MODULE_18__["SupporNetComponent"], _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__["GodFatherComponent"], _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__["AboutUsComponent"], _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__["GrowLifeComponent"], _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__["SocialDropdownComponent"]],
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_7__["BrowserAnimationsModule"], _material_material_module__WEBPACK_IMPORTED_MODULE_8__["MaterialModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["ReactiveFormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"]],
         providers: [],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
@@ -2389,26 +2696,38 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
 
       var AboutUsComponent = /*#__PURE__*/function () {
-        function AboutUsComponent() {
+        function AboutUsComponent(viewportScroller) {
           _classCallCheck(this, AboutUsComponent);
+
+          this.viewportScroller = viewportScroller;
         }
 
         return _createClass(AboutUsComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            this.viewportScroller.scrollToPosition([0, 0]);
+          }
         }]);
       }();
 
       AboutUsComponent.ctorParameters = function () {
-        return [];
+        return [{
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["ViewportScroller"]
+        }];
       };
 
-      AboutUsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+      AboutUsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["Component"])({
         selector: 'app-about-us',
         template: _raw_loader_about_us_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
         styles: [_about_us_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
@@ -2651,6 +2970,26 @@
     },
 
     /***/
+    "jyU7":
+    /*!***************************************************************************************************************************!*\
+      !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/dropdowns/social-dropdown/social-dropdown.component.html ***!
+      \***************************************************************************************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function jyU7(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = "<a\n  class=\"px-3 py-2 text-blueGray-100 hover:text-blueGray-300 text-xs uppercase font-bold\"\n  (click)=\"toggleDropdown($event)\"\n  #btnDropdownRef\n>\n<i class=\"fas fa-user-friends\"></i>\n  Social\n</a>\n<div\n  class=\"bg-white text-base z-10 float-left py-2 list-none text-left rounded shadow-lg min-w-48 translate-x-full\"\n  [ngClass]=\"dropdownPopoverShow ? 'block' : 'hidden'\"\n  #popoverDropdownRef\n>\n    <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-people-carry\"></i>\n        <span class=\" inline-block ml-2\">Plan Padrino</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-hands-helping\"></i>\n        <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-seedling\"></i>\n        <span class=\" inline-block ml-2\">Sembrando vida</span>\n    </button>\n</div>\n";
+      /***/
+    },
+
+    /***/
     "lIW2":
     /*!*******************************!*\
       !*** ./src/app/model/Club.ts ***!
@@ -2713,53 +3052,61 @@
       /* harmony import */
 
 
-      var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
+      /* harmony import */
+
+
+      var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
       /* harmony import */
 
 
-      var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
       /* harmony import */
 
 
-      var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! src/app/service/club-images.service */
       "4iZu");
       /* harmony import */
 
 
-      var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      var src_app_service_club_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
       /*! src/app/service/club.service */
       "Zhdy");
 
       var ProfileComponent = /*#__PURE__*/function () {
-        function ProfileComponent(route, router, clubService, imagesService) {
+        function ProfileComponent(route, router, clubService, imagesService, viewportScroller) {
           _classCallCheck(this, ProfileComponent);
 
           this.route = route;
           this.router = router;
           this.clubService = clubService;
           this.imagesService = imagesService;
+          this.viewportScroller = viewportScroller;
         }
 
         return _createClass(ProfileComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
+            this.viewportScroller.scrollToPosition([0, 0]);
             this.getClub(this.id = atob(this.route.snapshot.paramMap.get('id')));
           }
         }, {
           key: "getClub",
           value: function getClub(id) {
-            var _this11 = this;
+            var _this12 = this;
 
             this.clubService.getClub(id).subscribe(function (data) {
-              _this11.club = data;
+              _this12.club = data;
 
-              _this11.imagesService.getImages(data.id).subscribe(function (data) {
-                _this11.images = data;
+              _this12.imagesService.getImages(data.id).subscribe(function (data) {
+                _this12.images = data;
                 console.log(data);
               });
             });
@@ -2774,17 +3121,19 @@
 
       ProfileComponent.ctorParameters = function () {
         return [{
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
         }, {
-          type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_5__["ClubService"]
+          type: src_app_service_club_service__WEBPACK_IMPORTED_MODULE_6__["ClubService"]
         }, {
-          type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_4__["ClubImagesService"]
+          type: src_app_service_club_images_service__WEBPACK_IMPORTED_MODULE_5__["ClubImagesService"]
+        }, {
+          type: _angular_common__WEBPACK_IMPORTED_MODULE_2__["ViewportScroller"]
         }];
       };
 
-      ProfileComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+      ProfileComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: "app-profile",
         template: _raw_loader_profile_component_html__WEBPACK_IMPORTED_MODULE_1__["default"]
       })], ProfileComponent);
@@ -2974,7 +3323,13 @@
 
       var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
       /*! ./views/landing/about-us/about-us.component */
-      "c8Gl"); // layouts
+      "c8Gl");
+      /* harmony import */
+
+
+      var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+      /*! ./views/landing/grow-life/grow-life.component */
+      "Y0AE"); // layouts
       // auth views
       // no layouts views
 
@@ -3036,6 +3391,9 @@
         path: "aboutus",
         component: _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__["AboutUsComponent"]
       }, {
+        path: "growlife",
+        component: _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__["GrowLifeComponent"]
+      }, {
         path: "",
         component: _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__["LandingComponent"]
       }, {
@@ -3071,7 +3429,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-black\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-black font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-seedling mr-2 text-black\"\n              ></i>\n              Sembrando vida\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-700\">\n                    El programa \"sembrando vida\" es una iniciativa medioambiental colaborativa que une a clubes deportivos, fundaciones, padres de familia y deportistas miembros de la familia MERAKI en la noble causa de la recuperación forestal. A través de actividades de reforestación y conservación de áreas naturales, buscamos promover la conciencia ecológica y la responsabilidad ambiental en nuestra comunidad. Trabajando juntos, podemos asegurar un futuro más verde y sostenible para las generaciones venideras\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
+      __webpack_exports__["default"] = "<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              <i\n                class=\"fas fa-people-carry mr-2 text-white\"\n              ></i>\n              Plan Padrino\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 text-justify\">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200\">\n                  El Plan Padrino es un programa que promueve la integración entre clubes deportivos y fundaciones sociales ubicadas en áreas geográficamente cercanas, con el fin de ofrecer apoyo mutuo en el logro de sus respectivos objetivos. Este programa se centra en el establecimiento de redes de apoyo y colaboración entre ambas entidades, buscando potenciar su impacto y eficacia en la comunidad.\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n";
       /***/
     },
 
@@ -3091,7 +3449,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div class=\"w-full md:w-6/12 px-4 mr-auto ml-auto\">\n    <div\n      class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg\"\n    >\n      <img *ngIf=\"imgURL\"\n        alt=\"...\"\n        [src]=\"imgURL\" [alt]=\"fileName\"\n        class=\"w-full align-middle rounded-t-lg\"\n      />\n    </div>\n</div>\n<div>\n  <div *ngIf=\"progress\">\n    <mat-progress-bar [value]=\"progress\" max=\"100\">{{ progress }}%</mat-progress-bar>\n  </div>\n  <form [formGroup]=\"form\" #frmClubImages=\"ngForm\" (ngSubmit)=\"saveFile()\">\n    <div class=\"px-4\">\n        <input type=\"file\" #fileInput (change)=\"onFileSelected($event)\" style=\"display: none\" />\n        <button mat-raised-button class=\"bg-meraki-2 text-white\" (click)=\"fileInput.click()\">\n            <mat-icon>cloud_upload</mat-icon> Subir Archivo\n        </button>\n        <div *ngIf=\"selectedFile\">{{ selectedFile.name }}</div>\n    </div>    \n    <br>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"banner\">Banner</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"logo\">Logo</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"other\">Otra</mat-slide-toggle>\n    <div class=\"px-4\">\n      <br>\n      <button mat-raised-button class=\"bg-meraki-2 text-white\" type=\"submit\" [disabled]=\"frmClubImages.invalid\">\n          Guardar foto\n      </button>\n    </div>\n  </form>\n</div>";
+      __webpack_exports__["default"] = "<div  class=\"w-full \">\n  <table class=\"items-center w-full bg-transparent border-collapse\" mat-table [dataSource]=\"dataSourceImages\">\n    <ng-container matColumnDef=\"tipoImagen\">\n      <mat-header-cell *matHeaderCellDef\n      class=\"px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100\"> \n      Tipo imagen </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> \n        <div *ngIf=\"element.logo\">\n          Logo\n        </div>\n        <div *ngIf=\"element.other\">\n          Otra \n        </div>\n        <div *ngIf=\"element.banner\">\n          Banner \n        </div>\n      </mat-cell>\n    </ng-container>\n  \n    <ng-container matColumnDef=\"eliminar\">\n      <mat-header-cell *matHeaderCellDef\n      class=\"px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100\">\n      Eliminar</mat-header-cell>\n      <mat-cell *matCellDef=\"let element\">\n          <button mat-button style=\"color: #008080\" [disabled]=\"!element.state\" title=\"Eliminar\">\n              <mat-icon>clear</mat-icon>\n          </button>\n      </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </table>\n</div>\n<div class=\"w-full md:w-6/12 px-4 mr-auto ml-auto\">\n    <div\n      class=\"relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg\"\n    >\n      <img *ngIf=\"imgURL\"\n        alt=\"...\"\n        [src]=\"imgURL\" [alt]=\"fileName\"\n        class=\"w-full align-middle rounded-t-lg\"\n      />\n    </div>\n</div>\n<div>\n  <div *ngIf=\"progress\">\n    <mat-progress-bar [value]=\"progress\" max=\"100\">{{ progress }}%</mat-progress-bar>\n  </div>\n  <form [formGroup]=\"form\" #frmClubImages=\"ngForm\" (ngSubmit)=\"saveFile()\">\n    <div class=\"px-4\">\n        <input type=\"file\" #fileInput (change)=\"onFileSelected($event)\" style=\"display: none\" />\n        <button mat-raised-button class=\"bg-meraki-2 text-white\" (click)=\"fileInput.click()\">\n            <mat-icon>cloud_upload</mat-icon> Subir Archivo\n        </button>\n        <div *ngIf=\"selectedFile\">{{ selectedFile.name }}</div>\n    </div>    \n    <br>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"banner\">Banner</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"logo\">Logo</mat-slide-toggle>\n    <mat-slide-toggle class=\"px-4\" formControlName=\"other\">Otra</mat-slide-toggle>\n    <div class=\"px-4\">\n      <br>\n      <button mat-raised-button class=\"bg-meraki-2 text-white\" type=\"submit\" [disabled]=\"frmClubImages.invalid\">\n          Guardar foto\n      </button>\n    </div>\n  </form>\n</div>";
       /***/
     },
 

@@ -2,6 +2,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Club } from 'src/app/model/Club';
 import { ClubImages } from 'src/app/model/ClubImages';
@@ -22,6 +23,9 @@ export class InsertImageComponent implements OnInit {
   fileName: string = '';
   progress = 0;
 
+  dataSourceImages = new MatTableDataSource<any>();
+  displayedColumns: string[] = ['tipoImagen', 'eliminar'];
+
   constructor(private imageClubService: ClubImagesService, public dialogRef: MatDialogRef<InsertImageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,) { }
 
@@ -29,7 +33,14 @@ export class InsertImageComponent implements OnInit {
     this.idClub = this.data.idClub;
     this.edicion = this.data.edicion;
 
+    this.listar();
     this.inicializarFormularioVacio();
+  }
+
+  listar() {
+    this.imageClubService.getImages(this.idClub).subscribe(data => {
+      this.dataSourceImages = new MatTableDataSource(data);
+    });
   }
 
   inicializarFormularioVacio() {

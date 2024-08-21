@@ -5,6 +5,7 @@ import { City } from "src/app/model/City";
 import { Club } from "src/app/model/Club";
 import { ClubService } from "../../service/club.service";
 import { Router } from "@angular/router";
+import { ViewportScroller } from "@angular/common";
 
 @Component({
   selector: "app-landing",
@@ -22,11 +23,11 @@ export class LandingComponent implements OnInit {
   pageIndex = 0;
   pageSize = 15;
 
-  constructor(private generalService: GeneralService,
-              private clubService: ClubService,
-              private router: Router) { }
+  constructor(private generalService: GeneralService, private clubService: ClubService,
+              private router: Router, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
     this.generalService.getSports().subscribe(data => {
       this.sports = data;
     });
