@@ -12,8 +12,8 @@
     "e2e": "ng e2e",
     "build:tailwind": "tailwind build src/assets/styles/index.css -o src/assets/styles/tailwind.css",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm start",
-    "startRam": "node --max_old_space_size=14048 ./node_modules/@angular/cli/bin/ng serve",
-    "buildRam": "node --max_old_space_size=14048 ./node_modules/@angular/cli/bin/ng build"
+    "startRam": "node --max_old_space_size=18048 ./node_modules/@angular/cli/bin/ng serve",
+    "buildRam": "node --max_old_space_size=18048 ./node_modules/@angular/cli/bin/ng build"
   },
   "dependencies": {
     "@angular/animations": "11.2.5",
@@ -29,7 +29,7 @@
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
-    "chart.js": "2.9.4",
+    "aws-sdk": "^2.1684.0",
     "date-fns": "^3.6.0",
     "rxjs": "6.6.6",
     "tailwindcss": "2.0.4",
@@ -44,7 +44,7 @@
     "@angular/language-service": "11.2.5",
     "@types/jasmine": "3.6.6",
     "@types/jasminewd2": "2.0.8",
-    "@types/node": "14.14.35",
+    "@types/node": "^14.14.35",
     "@types/xlsx": "^0.0.36",
     "codelyzer": "6.0.1",
     "jasmine-core": "3.6.0",

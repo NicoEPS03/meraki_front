@@ -1,9 +1,8 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute, Params } from '@angular/router';
 import { Club } from 'src/app/model/Club';
 import { ClubImages } from 'src/app/model/ClubImages';
 import { ClubImagesService } from 'src/app/service/club-images.service';
@@ -17,21 +16,18 @@ export class InsertImageComponent implements OnInit {
 
   form: FormGroup;
   private idClub: number;
-  edicion: boolean;
   selectedFile?: File;
   imgURL: string | ArrayBuffer | null = null;
   fileName: string = '';
-  progress = 0;
 
   dataSourceImages = new MatTableDataSource<any>();
   displayedColumns: string[] = ['tipoImagen', 'eliminar'];
 
   constructor(private imageClubService: ClubImagesService, public dialogRef: MatDialogRef<InsertImageComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private infoSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.idClub = this.data.idClub;
-    this.edicion = this.data.edicion;
 
     this.listar();
     this.inicializarFormularioVacio();
@@ -44,23 +40,13 @@ export class InsertImageComponent implements OnInit {
   }
 
   inicializarFormularioVacio() {
-    if (this.edicion == true) {
-      this.form = new FormGroup({
-        'id': new FormControl(0, [Validators.required]),
-        'url': new FormControl(''),
-        'banner': new FormControl(false),
-        'logo': new FormControl(false),
-        'other': new FormControl(false),
-      });
-    } else {
-      this.form = new FormGroup({
-        'id': new FormControl(0, [Validators.required]),
-        'url': new FormControl(''),
-        'banner': new FormControl(false),
-        'logo': new FormControl(false),
-        'other': new FormControl(false),
-      });
-    }
+    this.form = new FormGroup({
+      'id': new FormControl(0, [Validators.required]),
+      'url': new FormControl(''),
+      'banner': new FormControl(false),
+      'logo': new FormControl(false),
+      'other': new FormControl(false),
+    });
   }
 
   onFileSelected(event: Event): void {
@@ -76,36 +62,55 @@ export class InsertImageComponent implements OnInit {
       };
     }
   }
+  
+  formatDateString(inputDate: string): string {
+    const date = new Date(inputDate);
+  
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+  
+    return `${day}_${month}_${year}`;
+  }
 
   saveFile(): void {
-    this.progress = 0;
     let clubImage = new ClubImages;
     clubImage.club = new Club(this.idClub);
-    clubImage.url = `${new Date().toDateString()}_${this.idClub}_${this.fileName}`;
+    clubImage.url = `${this.formatDateString(new Date().toDateString())}_${this.idClub}_${this.fileName}`;
     clubImage.banner = this.form.value['banner'];
     clubImage.logo = this.form.value['logo'];
     clubImage.other = this.form.value['other'];
 
-    if (this.edicion === true) {
-      //clubImage.id = this.id;
-    } else {
-      if (this.selectedFile) {
-        this.imageClubService.insertImageClub(clubImage, this.selectedFile).subscribe(
-          (event: any) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              this.progress = Math.round(100 * event.loaded / event.total);
-            } else if (event instanceof HttpResponse) {
-              //this.message = 'Archivo subido con éxito';
-            }
-          },
-          (err: any) => {
-            this.progress = 0;
-            //this.message = 'No se pudo subir el archivo!';
-            this.selectedFile = undefined;
+    if (this.selectedFile) {
+      this.imageClubService.insertImageClub(clubImage, this.selectedFile).subscribe(() => {
+          this.infoSnackBar.open('Imagen guardada satisfactoreamente', 'Informacion', {
+            duration: 2000,
           });
-
-        this.selectedFile = undefined;
-      }
+          this.listar();
+          this.selectedFile = undefined;
+          this.imgURL = null;
+          this.form.reset();
+        },
+        error=> {
+          this.infoSnackBar.open(error, '', {
+            duration: 2000,
+          });
+        });
     }
+  }
+
+  delete(url, id): void{
+    this.imageClubService.deleteImageClub(url, id).subscribe(() => {
+      this.infoSnackBar.open('Imagen eliminada satisfactoreamente', 'Informacion', {
+        duration: 2000,
+      });
+      this.listar();
+      this.form.reset();
+    },
+    error=> {
+      this.infoSnackBar.open(error, '', {
+        duration: 2000,
+      });
+    });
   }
 }

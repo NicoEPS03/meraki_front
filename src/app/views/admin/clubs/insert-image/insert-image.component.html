@@ -22,7 +22,7 @@
       class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
       Eliminar</mat-header-cell>
       <mat-cell *matCellDef="let element">
-          <button mat-button style="color: #008080" [disabled]="!element.state" title="Eliminar">
+          <button mat-button style="color: #008080"  (click)="delete(element.url, element.id) " title="Eliminar">
               <mat-icon>clear</mat-icon>
           </button>
       </mat-cell>
@@ -40,13 +40,11 @@
         alt="..."
         [src]="imgURL" [alt]="fileName"
         class="w-full align-middle rounded-t-lg"
+        style="max-width: 300px;"
       />
     </div>
 </div>
 <div>
-  <div *ngIf="progress">
-    <mat-progress-bar [value]="progress" max="100">{{ progress }}%</mat-progress-bar>
-  </div>
   <form [formGroup]="form" #frmClubImages="ngForm" (ngSubmit)="saveFile()">
     <div class="px-4">
         <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
