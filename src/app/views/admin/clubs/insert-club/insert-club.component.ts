@@ -163,7 +163,7 @@ export class InsertClubComponent implements OnInit {
   }
 
   insertImageModal(){
-    const dialogRef = this.dialog.open(InsertImageComponent, { data: { idClub: this.id, edicion: false} });
+    const dialogRef = this.dialog.open(InsertImageComponent, { data: { idClub: this.id} });
     this.clubService.mensajeCambio.subscribe(data => {
       dialogRef.afterClosed().subscribe(result => {
         this.openSnackBar(data);

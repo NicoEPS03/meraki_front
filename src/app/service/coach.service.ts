@@ -20,7 +20,7 @@ export class CoachService {
   }
 
   getCoachByClub(id){
-    return this.http.get<any>(`${this.url}/getCoachUser/${id}`);
+    return this.http.get<any>(`${this.url}/getCoachClub/${id}`);
   }
 
   getCoachByUser(id){

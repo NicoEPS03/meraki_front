@@ -27,8 +27,7 @@ export class ProfileComponent implements OnInit {
     this.clubService.getClub(id).subscribe(data => {
       this.club = data;
       this.imagesService.getImages(data.id).subscribe(data =>{
-        this.images = data
-        console.log(data)
+        this.images = data;
       })
     });
   }

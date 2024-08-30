@@ -1232,7 +1232,7 @@ let InsertClubComponent = class InsertClubComponent {
         this.router.navigate([`/admin/clubs/${this.id}/athlete`]);
     }
     insertImageModal() {
-        const dialogRef = this.dialog.open(_insert_image_insert_image_component__WEBPACK_IMPORTED_MODULE_13__["InsertImageComponent"], { data: { idClub: this.id, edicion: false } });
+        const dialogRef = this.dialog.open(_insert_image_insert_image_component__WEBPACK_IMPORTED_MODULE_13__["InsertImageComponent"], { data: { idClub: this.id } });
         this.clubService.mensajeCambio.subscribe(data => {
             dialogRef.afterClosed().subscribe(result => {
                 this.openSnackBar(data);
