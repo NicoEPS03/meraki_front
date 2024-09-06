@@ -17,6 +17,7 @@ import { SupporNetComponent } from "./views/landing/suppor-net/suppor-net.compon
 import { GodFatherComponent } from "./views/landing/god-father/god-father.component";
 import { AboutUsComponent } from "./views/landing/about-us/about-us.component";
 import { GrowLifeComponent } from "./views/landing/grow-life/grow-life.component";
+import { IndexComponent } from "./views/index/index.component";
 
 const routes: Routes = [
   // admin views
@@ -44,8 +45,9 @@ const routes: Routes = [
   { path: "suppornet", component: SupporNetComponent},
   { path: "godfather", component: GodFatherComponent},
   { path: "aboutus", component: AboutUsComponent},
-  { path: "growlife", component: GrowLifeComponent},
-  { path: "", component: LandingComponent },
+  { path: "growlife", component: GrowLifeComponent},  
+  { path: "directory", component: LandingComponent },
+  { path: "", component: IndexComponent},
   { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 

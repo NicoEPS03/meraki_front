@@ -24,7 +24,7 @@ import { SupporNetComponent } from './views/landing/suppor-net/suppor-net.compon
 import { GodFatherComponent } from './views/landing/god-father/god-father.component';
 import { AboutUsComponent } from './views/landing/about-us/about-us.component';
 import { GrowLifeComponent } from './views/landing/grow-life/grow-life.component';
-import { SocialDropdownComponent } from './components/dropdowns/social-dropdown/social-dropdown.component';
+import { IndexComponent } from './views/index/index.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { SocialDropdownComponent } from './components/dropdowns/social-dropdown/
     GodFatherComponent,
     AboutUsComponent,
     GrowLifeComponent,
-    SocialDropdownComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule, 
