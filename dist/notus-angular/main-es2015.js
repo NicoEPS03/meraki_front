@@ -177,7 +177,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexNavbarComponent", function() { return IndexNavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_index_navbar_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./index-navbar.component.html */ "RORk");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _index_navbar_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index-navbar.component.css */ "e4fu");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -195,9 +197,10 @@ let IndexNavbarComponent = class IndexNavbarComponent {
 };
 IndexNavbarComponent.ctorParameters = () => [];
 IndexNavbarComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: "app-index-navbar",
         template: _raw_loader_index_navbar_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_index_navbar_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
     })
 ], IndexNavbarComponent);
 
@@ -373,7 +376,43 @@ CoachService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              style=\"background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);\"\n              (selectionChange)=\"citiesSport($event.value)\">            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"w-full md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);\"\n                  class=\"w-36 h-36 rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main>\n  <div\n    class=\"relative pt-16 lex content-center items-center justify-center min-h-screen-75\"\n  >\n    <div\n      class=\"absolute top-0 w-full h-full bg-black\"\n    >\n      <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-75 bg-black\"\n      ></span>\n    </div>\n    <div class=\"container relative mx-auto\">\n      <div class=\"items-center flex flex-wrap\">\n        <div class=\"w-full lg:w-6/12 px-4 ml-auto mr-auto text-center\">\n          <div class=\"pr-12 mb-5\">\n            <h1 class=\"text-white font-semibold text-5xl\">\n              Directorio Deportivo\n            </h1>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mr-3 mb-8\">\n            <div class=\"relative flex w-full flex-wrap items-stretch\">\n              <span\n                class=\"z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3\"\n                ><i class=\"fas fa-search\"></i\n              ></span>\n              <mat-select placeholder=\"Disciplina\" class=\"border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10\"\n              style=\"background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);\"\n              (selectionChange)=\"citiesSport($event.value)\" disableOptionCentering>            \n                <mat-option *ngFor=\"let x of sports\" [value]=\"x.id\">\n                  {{x.name}}\n                </mat-option>\n              </mat-select>\n            </div>\n          </div>\n          <div class=\"flex-row flex-wrap items-center lg:ml-auto mb-5\">\n            <mat-chip-list aria-label=\"City selection\" #chipList>\n              <mat-chip *ngFor=\"let x of cities\" [value]=\"x.id\" (click)=\"selected = !selected\" (selectionChange)=\"clubCities(x.id)\" [selected]=\"selected\" >\n                {{x.nombre}}\n              </mat-chip>\n            </mat-chip-list>\n          </div>\n        </div>\n      </div>\n    </div>    \n  </div>\n  \n  <div class=\"pb-20 bg-black\">\n    <div>\n      <section class=\"pb-20 bg-black\" *ngFor=\"let x of clubs\">\n        <div class=\"container mx-auto px-4 border-2 border-white rounded-3xl\">\n          <div class=\"flex flex-wrap items-center\">\n            <div class=\"md:w-4/12 px-4 mr-auto ml-auto py-4\">\n              <div\n                class=\"relative flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg\"\n              >\n                <div *ngFor=\"let images of x.images\">\n                  <img\n                  alt=\"x.images.url\"\n                  [src] = \"images.logo ? images.url : '' \"\n                  style=\"clip-path: circle(50%);width: 19rem;\"\n                  class=\"rounded-full object-cover\"\n                  *ngIf=\"images.logo\"\n                  />\n                </div>\n              </div>\n            </div>\n\n            <div class=\"w-full md:w-5/12 px-4 mr-auto ml-auto text-white\">\n              <h1 class=\"text-3xl mb-2 font-semibold leading-normal py-4\">\n                {{x.name}}\n              </h1>\n              <p\n                class=\"text-lg font-light leading-relaxed mt-0 mb-4\"\n              >\n                {{x.municipio}} - {{x.sport}}\n              </p>\n              <div class=\"flex-button pb-4\">\n                <button class=\"bg-red-500 text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150\" type=\"button\"\n                (click) = \"goClub(x.id)\">\n                  <i class=\"fas fa-search\"></i> Ver \n                </button>\n              </div>\n            </div>\n          </div>\n        </div>\n      </section>\n      <mat-paginator\n        [length]=\"pages\"\n        [pageSize]=\"pageSize\"\n        (page)=\"updateClubCities($event)\"\n        class=\"bg-black text-white\"\n        [class.hidden]=\"clubs.length == 0\">\n      >\n      </mat-paginator>\n    </div>\n  </div>\n</main>\n<app-footer></app-footer>\n");
+
+/***/ }),
+
+/***/ "AiJS":
+/*!************************************************!*\
+  !*** ./src/app/views/index/index.component.ts ***!
+  \************************************************/
+/*! exports provided: IndexComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IndexComponent", function() { return IndexComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _raw_loader_index_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./index.component.html */ "W8yq");
+/* harmony import */ var _index_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.component.css */ "XPh2");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+
+
+let IndexComponent = class IndexComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+IndexComponent.ctorParameters = () => [];
+IndexComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
+        selector: 'app-index',
+        template: _raw_loader_index_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
+        styles: [_index_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    })
+], IndexComponent);
+
+
 
 /***/ }),
 
@@ -430,19 +469,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main class=\"profile-page\">\n  <section class=\"relative block h-500-px\">\n    <div\n      class=\"absolute top-0 w-full h-full bg-center bg-black\"\n    >\n    <span\n        id=\"blackOverlay\"\n        class=\"w-full h-full absolute opacity-50 bg-black\"  \n      >       \n    </span>\n      \n    </div>\n  </section>\n  <section class=\"relative py-16 bg-black\">\n    <div class=\"container mx-auto px-4\">\n      <div\n        class=\"relative flex flex-col min-w-0 break-words bg-black w-full mb-6 shadow-xl rounded-lg -mt-64\"\n      >\n        <div class=\"px-6\">\n          <div class=\"text-center mt-12\">\n            <div\n              class=\"text-xl leading-normal mt-0 mb-2 text-white font-bold uppercase\"\n            >\n              Acerca de nosotros\n            </div>\n          </div>\n          <div class=\"mt-10 py-10 border-t border-blueGray-200 \">\n            <div class=\"flex flex-wrap justify-center\">\n              <div class=\"w-full lg:w-9/12 px-4\">\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Misión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  Gestionar recursos a nivel nacional e internacional con fin de invertirlos en deporte, cultura y el bienestar general de la población, haciendo de MERAKI la entidad deportiva y cultural con mayor credibilidad del país. Nos comprometemos a promover el desarrollo humano, la inclusión y la calidad de vida a través de actividades deportivas y culturales, así como a fomentar prácticas éticas y transparentes en todas nuestras iniciativas.\n                </p>\n                <h1 class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-left\">Nuestra Visión</h1>\n                <p class=\"mb-4 text-lg leading-relaxed text-blueGray-200 text-justify\">\n                  A mediano plazo, la CORPORACIÓN MERAKI se consolidará como un referente deportivo en el departamento Cundinamarqués y para el año 2028 nuestros deportistas serán reconocidos como medallistas en los eventos deportivos nacionales e internacionales más destacados. En el ámbito cultural y social, los programas de la CORPORACIÓN MERAKI serán exaltados por su contribución a la construcción del tejido social en la región, promoviendo la inclusión, la diversidad y el bienestar comunitario.\n\n                </p>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </section>\n</main>\n<app-footer></app-footer>\n");
-
-/***/ }),
-
-/***/ "JHoV":
-/*!************************************************************************************!*\
-  !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.css ***!
-  \************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzb2NpYWwtZHJvcGRvd24uY29tcG9uZW50LmNzcyJ9 */");
 
 /***/ }),
 
@@ -802,7 +828,7 @@ LandingComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav\n  class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\"\n>\n  <div\n    class=\"container px-4 mx-auto flex flex-wrap items-center justify-between\"\n  >\n    <div\n      class=\"w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start\"\n    >\n      <a\n        [routerLink]=\"['']\"\n        class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n      >\n        <h1 style=\"margin: 0\">\n          <img src=\"assets/img/meraki_logo.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n        </h1>\n      </a>\n      <button\n        class=\"cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none\"\n        type=\"button\"\n        (click)=\"setNavbarOpen()\"\n      >\n        <i class=\"fas fa-list text-white\"></i>\n      </button>\n    </div>\n    <div\n      class=\"lg:flex flex-grow items-center\"\n      [ngClass]=\"{ hidden: !navbarOpen, block: navbarOpen }\"\n      id=\"example-navbar-warning\"\n    >\n      <ul class=\"flex flex-col lg:flex-row list-none lg:ml-auto\">\n        <li class=\"flex items-right justify-end lg:hidden\">\n          <button style=\"cursor: pointer\" routerLink=\"\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-futbol\"></i>\n            <span class=\" inline-block ml-2\">Deportes</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end lg:hidden\">\n          <app-social-dropdown></app-social-dropdown>\n        </li>\n\n        <li class=\"flex items-right justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-people-carry\"></i>\n            <span class=\" inline-block ml-2\">Plan Padrino</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-seedling\"></i>\n            <span class=\" inline-block ml-2\">Sembrando vida</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end hidden lg:flex\">\n          <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <i class=\"fas fa-hands-helping\"></i>\n            <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n          </button>\n        </li>\n\n        <li class=\"flex items-center justify-end\">\n          <button style=\"cursor: pointer\" routerLink=\"/aboutus\" \n          class=\"text-blueGray-100 hover:text-blueGray-300 px-3 py-2 flex items-center text-xs uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin == false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Admin</span>\n          </button>\n        </li>\n        <li class=\"flex items-center justify-end\" [class.hidden]=\"admin != false\">\n          <i class=\"fa-solid fas fa-circle-user\"></i> \n          <button style=\"cursor: pointer\" routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\">\n            <i class=\"fas fa-user\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n        </li>\n      </ul>\n    </div>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("\n<div class=\"top-0 fixed z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg bg-black shadow\">\n  <div class=\"container mx-auto flex flex-wrap items-center justify-between bg-black\">\n    <mat-toolbar class=\"bg-black\" > \n      \n        <a\n          [routerLink]=\"['']\"\n          class=\"text-white font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase\"        \n        >\n          <h1 style=\"margin: 0\">\n            <img src=\"assets/img/meraki_logo.png\" style=\"height: 1em;vertical-align: middle; line-height: 1;\">\n          </h1>\n        </a>\n   \n        <span style=\"flex: 1 1 auto;\"></span>\n   \n        <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n          <i class=\"fas fa-list text-white fa-lg\"></i>\n        </button>\n   \n        <mat-menu #menu=\"matMenu\" [ngStyle]=\"{'width': '25vw !important', 'height': '50vh !important', 'overflow-y': 'auto'}\" >\n          <button mat-menu-item routerLink=\"/directory\"   \n          class=\"text-black hover:text-blueGray-500 py-2 flex items-center uppercase font-bold\">\n            <i class=\"fas fa-futbol fa-lg\"></i>\n            <span class=\" inline-block ml-2\" >Deportes</span>\n          </button>\n          <button mat-menu-item [matMenuTriggerFor]=\"social\"\n          class=\"text-black hover:text-blueGray-500  py-2 flex items-center uppercase font-bold\">\n            <i class=\"fas fa-user-friends\"></i>\n              Social\n          </button>\n          <mat-menu #social=\"matMenu\">\n            <button mat-menu-item routerLink=\"/godfather\" \n                class=\"py-2 flex items-center uppercase font-bold\">\n                <i class=\"fas fa-people-carry\"></i>\n                <span class=\" inline-block ml-2\">Plan Padrino</span>\n            </button>\n\n            <button mat-menu-item routerLink=\"/suppornet\" \n                class=\"py-2 flex items-center uppercase font-bold\">\n                <i class=\"fas fa-hands-helping\"></i>\n                <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n            </button>\n\n            <button mat-menu-item routerLink=\"/growlife\" \n                class=\"py-2 flex items-center uppercase font-bold\">\n                <i class=\"fas fa-seedling\"></i>\n                <span class=\" inline-block ml-2\">Sembrando vida</span>\n            </button>\n          </mat-menu>\n          <button mat-menu-item routerLink=\"/aboutus\" \n          class=\"text-black hover:text-blueGray-500 py-2 flex items-center uppercase font-bold\">\n            <span class=\"inline-block ml-2\">¿Quiénes somos?</span>\n          </button>\n          <button mat-menu-item routerLink=\"/admin\" \n          class=\"bg-white text-black active:bg-black font-bold uppercase py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\"\n          *ngIf=\"admin != false\">\n            <i class=\"fas fa-user fa-lg\"></i>\n            <span> Admin</span>\n          </button>\n          <button mat-menu-item routerLink=\"/auth/login\" \n          class=\"bg-white text-black active:bg-black font-bold uppercase py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150\"\n          *ngIf=\"admin == false\">\n            <i class=\"fas fa-user fa-lg\"></i>\n            <span> Iniciar Sesion</span>\n          </button>\n      </mat-menu>\n    </mat-toolbar>    \n  </div>\n</div>");
 
 /***/ }),
 
@@ -1202,63 +1228,6 @@ AppComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 /***/ }),
 
-/***/ "UMCE":
-/*!***********************************************************************************!*\
-  !*** ./src/app/components/dropdowns/social-dropdown/social-dropdown.component.ts ***!
-  \***********************************************************************************/
-/*! exports provided: SocialDropdownComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocialDropdownComponent", function() { return SocialDropdownComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
-/* harmony import */ var _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./social-dropdown.component.html */ "jyU7");
-/* harmony import */ var _social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./social-dropdown.component.css */ "JHoV");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _popperjs_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @popperjs/core */ "EjV/");
-
-
-
-
-
-let SocialDropdownComponent = class SocialDropdownComponent {
-    constructor() {
-        this.dropdownPopoverShow = false;
-    }
-    ngOnInit() { }
-    toggleDropdown(event) {
-        event.preventDefault();
-        if (this.dropdownPopoverShow) {
-            this.dropdownPopoverShow = false;
-        }
-        else {
-            this.dropdownPopoverShow = true;
-            this.createPoppper();
-        }
-    }
-    createPoppper() {
-        Object(_popperjs_core__WEBPACK_IMPORTED_MODULE_4__["createPopper"])(this.btnDropdownRef.nativeElement, this.popoverDropdownRef.nativeElement, {
-            placement: "left-start",
-        });
-    }
-};
-SocialDropdownComponent.propDecorators = {
-    btnDropdownRef: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ["btnDropdownRef", { static: false },] }],
-    popoverDropdownRef: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["ViewChild"], args: ["popoverDropdownRef", { static: false },] }]
-};
-SocialDropdownComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'app-social-dropdown',
-        template: _raw_loader_social_dropdown_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_social_dropdown_component_css__WEBPACK_IMPORTED_MODULE_2__["default"]]
-    })
-], SocialDropdownComponent);
-
-
-
-/***/ }),
-
 /***/ "VUSx":
 /*!*****************************************************!*\
   !*** ./src/app/views/admin/club/club.component.css ***!
@@ -1317,6 +1286,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "W8yq":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/views/index/index.component.html ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<app-index-navbar></app-index-navbar>\n<main>\n\n  <div class=\"relative pt-16 lex content-center items-center justify-center bg-black\">\n    <div class=\"container relative mx-auto flex justify-center items-center\" style=\"min-height: 50vh;\">\n      <img src=\"assets/img/merakiGif.gif\" alt=\"\">\n    </div>  \n  </div>\n  \n  \n  <div class=\"pb-20 bg-black flex justify-center pt-16 mx-auto\">\n    <span style=\"flex: 1 1 auto;\"></span>\n        <button class=\"bg-black text-white font-bold uppercase text-lg px-6 py-3 rounded-lg border-2\" type=\"button\" style=\"border-color: #937d38 ;\" routerLink=\"/directory\">\n            Deporte \n        </button>\n        <span style=\"flex: 1 1 auto;\"></span>\n        <button class=\"bg-black text-white font-bold uppercase text-lg px-6 py-3 rounded-lg border-2\" type=\"button\" style=\"border-color: #937d38 ;\">\n            Cultura \n        </button>\n        <span style=\"flex: 1 1 auto;\"></span>\n        <button class=\"bg-black text-white font-bold uppercase text-lg px-6 py-3 rounded-lg border-2\" type=\"button\" style=\"border-color: #937d38 ;\">\n            Tejido Social \n        </button>  \n        <span style=\"flex: 1 1 auto;\"></span>\n  </div>\n</main>\n<app-footer></app-footer>\n");
+
+/***/ }),
+
 /***/ "Wj+v":
 /*!*****************************************************!*\
   !*** ./src/app/views/landing/landing.component.css ***!
@@ -1327,6 +1309,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (".mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {\n  background-color: white;\n  color: goldenrod;\n  cursor: pointer;\n  height: auto;\n}\n\n.mat-chip.mat-standard-chip {\n  background-color: black;\n  color: white;\n  border-color: white;\n  border-width: 2px;\n  border-style: solid;\n  cursor: pointer;\n  height: auto;\n}\n\n.flex-button {\n  display: flex;\n  justify-content: right;\n}\n\n.mat-paginator.hidden {\n  display: none !important;\n}\n\n::ng-deep .mat-select-panel {\n  background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxhbmRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHVCQUF1QjtFQUN2QixnQkFBZ0I7RUFDaEIsZUFBZTtFQUNmLFlBQVk7QUFDZjs7QUFDQTtFQUNHLHVCQUF1QjtFQUN2QixZQUFZO0VBQ1osbUJBQW1CO0VBQ25CLGlCQUFpQjtFQUNqQixtQkFBbUI7RUFDbkIsZUFBZTtFQUNmLFlBQVk7QUFDaEI7O0FBRUE7RUFDSSxhQUFhO0VBQ2Isc0JBQXNCO0FBQzFCOztBQUVBO0VBQ0ksd0JBQXdCO0FBQzVCOztBQUVBO0VBQ0ksb0hBQW9IO0FBQ3RIIiwiZmlsZSI6ImxhbmRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYXQtY2hpcC5tYXQtc3RhbmRhcmQtY2hpcC5tYXQtY2hpcC1zZWxlY3RlZC5tYXQtcHJpbWFyeSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcclxuICAgIGNvbG9yOiBnb2xkZW5yb2Q7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICBoZWlnaHQ6IGF1dG87XHJcbiB9XHJcbiAubWF0LWNoaXAubWF0LXN0YW5kYXJkLWNoaXAge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBib3JkZXItY29sb3I6IHdoaXRlO1xyXG4gICAgYm9yZGVyLXdpZHRoOiAycHg7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgaGVpZ2h0OiBhdXRvO1xyXG59XHJcblxyXG4uZmxleC1idXR0b24geyBcclxuICAgIGRpc3BsYXk6IGZsZXg7IFxyXG4gICAganVzdGlmeS1jb250ZW50OiByaWdodDsgXHJcbn1cclxuXHJcbi5tYXQtcGFnaW5hdG9yLmhpZGRlbiB7XHJcbiAgICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbjo6bmctZGVlcCAubWF0LXNlbGVjdC1wYW5lbCB7XHJcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gdG9wLCBsaWdodGdyZXkgMCUsIGxpZ2h0Z3JleSAxJSwgI2UwZTBlMCAyNiUsICNlZmVmZWYgNDglLCAjZDlkOWQ5IDc1JSwgI2JjYmNiYyAxMDAlKTtcclxuICB9Il19 */");
+
+/***/ }),
+
+/***/ "XPh2":
+/*!*************************************************!*\
+  !*** ./src/app/views/index/index.component.css ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5jb21wb25lbnQuY3NzIn0= */");
 
 /***/ }),
 
@@ -1424,7 +1419,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./views/landing/god-father/god-father.component */ "Sj5I");
 /* harmony import */ var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./views/landing/about-us/about-us.component */ "c8Gl");
 /* harmony import */ var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./views/landing/grow-life/grow-life.component */ "Y0AE");
-/* harmony import */ var _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/dropdowns/social-dropdown/social-dropdown.component */ "UMCE");
+/* harmony import */ var _views_index_index_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./views/index/index.component */ "AiJS");
 
 
 
@@ -1469,7 +1464,7 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_19__["GodFatherComponent"],
             _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_20__["AboutUsComponent"],
             _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_21__["GrowLifeComponent"],
-            _components_dropdowns_social_dropdown_social_dropdown_component__WEBPACK_IMPORTED_MODULE_22__["SocialDropdownComponent"],
+            _views_index_index_component__WEBPACK_IMPORTED_MODULE_22__["IndexComponent"],
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1658,6 +1653,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "e4fu":
+/*!****************************************************************************!*\
+  !*** ./src/app/components/navbars/index-navbar/index-navbar.component.css ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("::ng-deep .mat-menu-item:focus {\n  outline: none !important;\n  box-shadow: none !important;\n  background-color: transparent !important;\n}\n\n::ng-deep .mat-menu-item:active {\n  border: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LW5hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksd0JBQXdCO0VBQ3hCLDJCQUEyQjtFQUMzQix3Q0FBd0M7QUFDMUM7O0FBRUE7RUFDRSx1QkFBdUI7QUFDekIiLCJmaWxlIjoiaW5kZXgtbmF2YmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6Om5nLWRlZXAgLm1hdC1tZW51LWl0ZW06Zm9jdXMge1xyXG4gICAgb3V0bGluZTogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgYm94LXNoYWRvdzogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcclxuICB9XHJcbiAgXHJcbiAgOjpuZy1kZWVwIC5tYXQtbWVudS1pdGVtOmFjdGl2ZSB7XHJcbiAgICBib3JkZXI6IG5vbmUgIWltcG9ydGFudDtcclxuICB9Il19 */");
+
+/***/ }),
+
 /***/ "hctd":
 /*!*********************************************!*\
   !*** ./src/app/material/material.module.ts ***!
@@ -1690,6 +1698,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/checkbox */ "bSwM");
 /* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/slide-toggle */ "1jcm");
 /* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/progress-bar */ "bv9b");
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/menu */ "STbY");
+
 
 
 
@@ -1737,7 +1747,8 @@ MaterialModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _angular_material_core__WEBPACK_IMPORTED_MODULE_18__["MatNativeDateModule"],
             _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__["MatCheckboxModule"],
             _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_20__["MatSlideToggleModule"],
-            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_21__["MatProgressBarModule"]
+            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_21__["MatProgressBarModule"],
+            _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__["MatMenuModule"]
         ],
         exports: [
             _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButtonModule"],
@@ -1758,7 +1769,8 @@ MaterialModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _angular_material_core__WEBPACK_IMPORTED_MODULE_18__["MatNativeDateModule"],
             _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__["MatCheckboxModule"],
             _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_20__["MatSlideToggleModule"],
-            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_21__["MatProgressBarModule"]
+            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_21__["MatProgressBarModule"],
+            _angular_material_menu__WEBPACK_IMPORTED_MODULE_22__["MatMenuModule"]
         ]
     })
 ], MaterialModule);
@@ -1784,19 +1796,6 @@ class User {
     }
 }
 
-
-/***/ }),
-
-/***/ "jyU7":
-/*!***************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/dropdowns/social-dropdown/social-dropdown.component.html ***!
-  \***************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<a\n  class=\"px-3 py-2 text-blueGray-100 hover:text-blueGray-300 text-xs uppercase font-bold\"\n  (click)=\"toggleDropdown($event)\"\n  #btnDropdownRef\n>\n<i class=\"fas fa-user-friends\"></i>\n  Social\n</a>\n<div\n  class=\"bg-white text-base z-10 float-left py-2 list-none text-left rounded shadow-lg min-w-48 translate-x-full\"\n  [ngClass]=\"dropdownPopoverShow ? 'block' : 'hidden'\"\n  #popoverDropdownRef\n>\n    <button style=\"cursor: pointer\" routerLink=\"/godfather\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-people-carry\"></i>\n        <span class=\" inline-block ml-2\">Plan Padrino</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/suppornet\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-hands-helping\"></i>\n        <span class=\"inline-block ml-2\">Red. de Apoyo</span>\n    </button>\n\n    <button style=\"cursor: pointer\" routerLink=\"/growlife\" \n        class=\"px-3 py-2 flex items-center text-xs uppercase font-bold\">\n        <i class=\"fas fa-seedling\"></i>\n        <span class=\" inline-block ml-2\">Sembrando vida</span>\n    </button>\n</div>\n");
 
 /***/ }),
 
@@ -1964,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/landing/god-father/god-father.component */ "Sj5I");
 /* harmony import */ var _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/landing/about-us/about-us.component */ "c8Gl");
 /* harmony import */ var _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./views/landing/grow-life/grow-life.component */ "Y0AE");
+/* harmony import */ var _views_index_index_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./views/index/index.component */ "AiJS");
 
 
 
@@ -1973,6 +1973,7 @@ __webpack_require__.r(__webpack_exports__);
 // auth views
 
 // no layouts views
+
 
 
 
@@ -2008,7 +2009,8 @@ const routes = [
     { path: "godfather", component: _views_landing_god_father_god_father_component__WEBPACK_IMPORTED_MODULE_11__["GodFatherComponent"] },
     { path: "aboutus", component: _views_landing_about_us_about_us_component__WEBPACK_IMPORTED_MODULE_12__["AboutUsComponent"] },
     { path: "growlife", component: _views_landing_grow_life_grow_life_component__WEBPACK_IMPORTED_MODULE_13__["GrowLifeComponent"] },
-    { path: "", component: _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__["LandingComponent"] },
+    { path: "directory", component: _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_8__["LandingComponent"] },
+    { path: "", component: _views_index_index_component__WEBPACK_IMPORTED_MODULE_14__["IndexComponent"] },
     { path: "**", redirectTo: "", pathMatch: "full" },
 ];
 let AppRoutingModule = class AppRoutingModule {

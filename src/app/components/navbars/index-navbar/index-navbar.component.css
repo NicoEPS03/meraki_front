@@ -1,0 +1,9 @@
+::ng-deep .mat-menu-item:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  
+  ::ng-deep .mat-menu-item:active {
+    border: none !important;
+  }

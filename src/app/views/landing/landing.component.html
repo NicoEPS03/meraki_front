@@ -27,7 +27,7 @@
               ></span>
               <mat-select placeholder="Disciplina" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 rounded-full relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
               style="background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%);"
-              (selectionChange)="citiesSport($event.value)">            
+              (selectionChange)="citiesSport($event.value)" disableOptionCentering>            
                 <mat-option *ngFor="let x of sports" [value]="x.id">
                   {{x.name}}
                 </mat-option>
@@ -51,16 +51,16 @@
       <section class="pb-20 bg-black" *ngFor="let x of clubs">
         <div class="container mx-auto px-4 border-2 border-white rounded-3xl">
           <div class="flex flex-wrap items-center">
-            <div class="w-full md:w-4/12 px-4 mr-auto ml-auto py-4">
+            <div class="md:w-4/12 px-4 mr-auto ml-auto py-4">
               <div
-                class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg"
+                class="relative flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg"
               >
                 <div *ngFor="let images of x.images">
                   <img
                   alt="x.images.url"
                   [src] = "images.logo ? images.url : '' "
-                  style="clip-path: circle(50%);"
-                  class="w-36 h-36 rounded-full object-cover"
+                  style="clip-path: circle(50%);width: 19rem;"
+                  class="rounded-full object-cover"
                   *ngIf="images.logo"
                   />
                 </div>
