@@ -1,23 +1,25 @@
 <app-index-navbar></app-index-navbar>
-<main class="profile-page">
-  <section class="relative block h-500-px">
-    <div
-      class="absolute top-0 w-full h-full bg-center bg-black"
-    >
-    <div *ngFor="let img of images">
-      <span
-        id="blackOverlay"
-        [style.background-image]="img.banner ? 'url(' + img.url + ')' : ''"
-        class="w-full h-full absolute opacity-50 bg-cover bg-center bg-no-repeat"
-      >          
-      </span>
-    </div>
-    </div>
-  </section>
-  <section class="relative py-16 bg-black">
+<main class="profile-page bg-black">
+  <section class="relative bg-black pt-24">
     <div class="container mx-auto px-4">
       <div
-        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-xl rounded-lg"
+      >
+        <div *ngFor="let img of images">
+          <img
+            alt="x.img.url"
+            [src] = "img.banner ? img.url : '' "
+            class="w-full h-full"
+            *ngIf="img.banner"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="relative py-16 bg-black">    
+    <div class="container mx-auto px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-24"
       >
         <div class="px-6">
           <div class="flex flex-wrap justify-center">
