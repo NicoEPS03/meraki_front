@@ -5,6 +5,7 @@ import { Club } from "src/app/model/Club";
 import { ClubImages } from "src/app/model/ClubImages";
 import { ClubImagesService } from "src/app/service/club-images.service";
 import { ClubService } from "src/app/service/club.service";
+import { GeneralService } from "src/app/service/general.service";
 
 @Component({
   selector: "app-profile",
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   id: string;
   constructor(private route: ActivatedRoute, private router: Router,
               private clubService: ClubService, private imagesService: ClubImagesService,
-              private viewportScroller: ViewportScroller) {}
+              private viewportScroller: ViewportScroller, private generalService: GeneralService) {}
 
   ngOnInit(): void {
     this.viewportScroller.scrollToPosition([0, 0]);

@@ -25,7 +25,7 @@
                 class="z-10 h-full leading-snug font-normal absolute text-center rounded-full text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3"
                 ><i class="fas fa-search"></i
               ></span>
-              <mat-select placeholder="Disciplina" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
+              <mat-select #selectSport placeholder="Disciplina" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
               style="background: linear-gradient(to top, lightgrey 0%, lightgrey 1%, #e0e0e0 26%, #efefef 48%, #d9d9d9 75%, #bcbcbc 100%); border-radius: 100px !important;"
               (selectionChange)="citiesSport($event.value)" disableOptionCentering>            
                 <mat-option *ngFor="let x of sports" [value]="x.id">
@@ -36,7 +36,7 @@
           </div>
           <div class="flex-row flex-wrap items-center lg:ml-auto mb-5">
             <mat-chip-list aria-label="City selection" #chipList>
-              <mat-chip *ngFor="let x of cities" [value]="x.id" (click)="selected = !selected" (selectionChange)="clubCities(x.id)" [selected]="selected" >
+              <mat-chip id="chip{{x.id}}" *ngFor="let x of cities" [value]="x.id" (click)="selected = !selected" (selectionChange)="clubCities(x.id)" [selected]="selected" >
                 {{x.nombre}}
               </mat-chip>
             </mat-chip-list>
