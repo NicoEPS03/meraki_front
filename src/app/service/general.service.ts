@@ -12,6 +12,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GeneralService {
+  idSport: number;
+  idCity: number;
   
   private url = `${environment.HOST_BACK}/general`;
 

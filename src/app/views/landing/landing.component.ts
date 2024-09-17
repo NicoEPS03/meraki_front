@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { GeneralService } from '../../service/general.service';
 import { Sport } from "src/app/model/Sport";
 import { City } from "src/app/model/City";
@@ -6,6 +6,7 @@ import { Club } from "src/app/model/Club";
 import { ClubService } from "../../service/club.service";
 import { Router } from "@angular/router";
 import { ViewportScroller } from "@angular/common";
+import { MatSelect } from "@angular/material/select";
 
 @Component({
   selector: "app-landing",
@@ -13,6 +14,7 @@ import { ViewportScroller } from "@angular/common";
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent implements OnInit {
+  @ViewChild("selectSport") selectSport : MatSelect
   sports: Sport[] = [];
   cities: City[] = [];
   clubs: Club[] = [];
@@ -27,16 +29,47 @@ export class LandingComponent implements OnInit {
               private router: Router, private viewportScroller: ViewportScroller) { }
 
   ngOnInit(): void {
-    this.viewportScroller.scrollToPosition([0, 0]);
+    //this.viewportScroller.scrollToPosition([0, 0]);
+    if(this.generalService.idSport){
+      this.reloadBack();
+    }
+
     this.generalService.getSports().subscribe(data => {
       this.sports = data;
     });
+  }
+
+  reloadBack(){
+    this.generalService.getCitiesSports(this.generalService.idSport).subscribe(data => {
+      this.cities = data;
+      this.selectSport.value = this.generalService.idSport;
+  
+      if (this.generalService.idCity) {
+        const selectedChip = this.cities.find(city => city.id === this.generalService.idCity);
+        if (selectedChip) {
+          this.selected = true;
+        }
+      }
+    });
+    if (this.generalService.idSport) {
+      this.idSport = this.generalService.idSport;
+      this.clubService.getPageFilterSportAndCity(this.pageIndex, this.pageSize, this.generalService.idSport, this.generalService.idCity).subscribe(data => {
+        this.clubs = data.content;
+    
+        // Actualizar el número de páginas
+        this.clubService.getNumClubs(this.generalService.idSport, this.generalService.idCity).subscribe(data => {      
+          this.pages = Math.ceil(data / 1);
+        });
+      });
+    }    
   }
 
   citiesSport(id) {
     this.selected = false;
     this.cities = [];
     this.idSport = id;
+    this.generalService.idSport = id;
+    this.generalService.idCity = null;
     this.generalService.getCitiesSports(id).subscribe(data => {
       this.cities = data;      
       this.clubs = [];
@@ -47,6 +80,7 @@ export class LandingComponent implements OnInit {
     this.clubs = [];
     this.selected = true;
     this.city = city;
+    this.generalService.idCity = city;
     this.clubService.getPageFilterSportAndCity(this.pageIndex, this.pageSize, this.idSport, city).subscribe(data => {
       this.clubs = data.content;
     });
