@@ -10,7 +10,7 @@
     <div id="carouselExampleIndicators" class="carousel slide container relative mx-auto flex justify-center items-center bg-black" data-bs-ride="carousel" data-bs-interval="8000">  
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <a href="https:www.elmorenoconcamara.com"
+          <a href="https://www.elmorenoconcamara.com"
             target="_blank">
             <img src="https://meraki.nyc3.cdn.digitaloceanspaces.com/meraki_images/Banner_elMoreno.jpg" class="d-block w-100 h-64 object-contain" alt="Slide 1">
           </a>
@@ -34,18 +34,35 @@
 
   <div class="pb-20 bg-black flex justify-center pt-16 mx-auto">
     <span style="flex: 1 1 auto;"></span>
-        <button class="bg-black text-white font-bold uppercase text-lg px-6 py-2 rounded-lg border-2" type="button" style="border-color: #937d38 ;" routerLink="/directory">
-            Deporte 
-        </button>
-        <span style="flex: 1 1 auto;"></span>
-        <button class="bg-black text-white font-bold uppercase text-lg px-6 py-2 rounded-lg border-2" type="button" style="border-color: #937d38 ;">
-            Cultura 
-        </button>
-        <span style="flex: 1 1 auto;"></span>
-        <button class="bg-black text-white font-bold uppercase text-lg px-6 py-2 rounded-lg border-2" type="button" style="border-color: #937d38 ;">
-            Tejido Social 
-        </button>  
-        <span style="flex: 1 1 auto;"></span>
+    <button class="bg-black text-white font-bold uppercase text-lg px-6 py-2 rounded-lg underline" type="button" routerLink="/directory">
+      Deporte 
+    </button>
+    <span style="flex: 1 1 auto;"></span>
+    <button class="bg-black text-white font-bold uppercase text-lg px-6 py-2 rounded-lg underline" type="button">
+      Cultura 
+    </button>
+    <span style="flex: 1 1 auto;"></span>
+  </div>
+  <div class="pb-20 bg-black flex justify-center mx-auto">
+    <span style="flex: 1 1 auto;"></span>
+    <button [matMenuTriggerFor]="social" class="bg-black text-white font-bold uppercase text-lg py-2 rounded-lg underline" type="button">
+      Tejido Social
+    </button>    
+    <mat-menu #social="matMenu" class="custom-menu">
+      <button mat-menu-item routerLink="/godfather" class="custom-menu-item">
+          <i class="fas fa-people-carry"></i>
+          <span class="ml-2">Plan Padrino</span>
+      </button>
+      <button mat-menu-item routerLink="/suppornet" class="custom-menu-item">
+          <i class="fas fa-hands-helping"></i>
+          <span class="ml-2">Red. de Apoyo</span>
+      </button>
+      <button mat-menu-item routerLink="/growlife" class="custom-menu-item">
+          <i class="fas fa-seedling"></i>
+          <span class="ml-2">Sembrando vida</span>
+      </button>
+    </mat-menu>    
+    <span style="flex: 1 1 auto;"></span>
   </div>
 </main>
 <app-footer></app-footer>
