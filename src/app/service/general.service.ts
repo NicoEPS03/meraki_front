@@ -31,6 +31,10 @@ export class GeneralService {
     return this.http.get<City[]>(`${this.url}/getCities`);
   }
 
+  getCitiesId(id){
+    return this.http.get<City[]>(`${this.url}/getCities/${id}`);
+  }
+
   getDocuments(){
     return this.http.get<DocumentType[]>(`${this.url}/getDocuments`);
   }
