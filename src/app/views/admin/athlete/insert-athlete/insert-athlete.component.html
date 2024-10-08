@@ -32,12 +32,26 @@
                 </mat-form-field>
             </div>
         </div>
+        <h3 class="px-4 font-semibold">
+            Lugar de Nacimiento
+        </h3>
         <div class="flex flex-wrap">
-            <div class="px-4 lg:w-6/12">
+            <div class="px-4 lg:w-3/12">
+                <mat-form-field class=" w-full">
+                    <mat-label>{{nombreDep}}</mat-label>
+                    <mat-select [(ngModel)]="selectedDep" (selectionChange)="listarCiudades($event.value)">
+                    <mat-label>Seleccione el departamento</mat-label>
+                    <mat-option *ngFor="let dep of departamentos" [value]="dep.idDep">
+                        {{ dep.nombreDep }}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>           
+            <div class="px-4 lg:w-3/12">
                 <mat-form-field class=" w-full">
                     <mat-label>{{nombreCiudad}}</mat-label>
                     <mat-select formControlName="city">
-                        <mat-label>Seleccione lugar de nacimiento</mat-label>
+                        <mat-label>Seleccione la ciudad</mat-label>
                         <mat-option *ngFor="let x of cities" [value]="x.id">
                             {{x.nombre}}
                         </mat-option>
@@ -59,8 +73,8 @@
                     <mat-label>Seleccione el genero</mat-label>
                     <mat-select formControlName="gender">
                         <mat-label>Seleccione el genero</mat-label>
-                        <mat-option value="M">M</mat-option>
-                        <mat-option value="F">F</mat-option>
+                        <mat-option value="M">Masculino</mat-option>
+                        <mat-option value="F">Femenino</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -92,13 +106,23 @@
             <div class="px-4 lg:w-2/12">
                 <mat-form-field class="input w-full">
                     <mat-label>Documento</mat-label>
-                    <input matInput formControlName="document" maxlength="13" minlength="5" type="number">
+                    <input matInput formControlName="document" maxlength="13" minlength="5">
                 </mat-form-field>
             </div>
             <div class="px-4 lg:w-1/12">
                 <mat-form-field class="input w-full">
-                    <mat-label>RH</mat-label>
-                    <input matInput formControlName="rh" minlength="2" maxlength="4">
+                    <mat-label>Seleccione el RH</mat-label>
+                    <mat-select formControlName="rh">
+                        <mat-label>Seleccione el RH</mat-label>
+                        <mat-option value="O-">O-</mat-option>
+                        <mat-option value="O+">O+</mat-option>
+                        <mat-option value="A-">A-</mat-option>
+                        <mat-option value="A+">A+</mat-option>
+                        <mat-option value="B-">B-</mat-option>
+                        <mat-option value="B+">B+</mat-option>
+                        <mat-option value="AB-">AB-</mat-option>
+                        <mat-option value="AB+">AB+</mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div class="px-4 lg:w-3/12">
@@ -210,7 +234,7 @@
         <div class="flex flex-wrap">
             <div class="px-4 lg:w-2/12">
                 <mat-form-field class=" w-full">
-                    <mat-label>Seleccione la discapacidad</mat-label>
+                    <mat-label>Seleccione la poblacion</mat-label>
                     <mat-select formControlName="populationType">
                         <mat-label>Seleccione la discapacidad</mat-label>
                         <mat-option value="Ninguna">Ninguna</mat-option>
@@ -218,6 +242,8 @@
                         <mat-option value="Indigena">Indigena</mat-option>
                         <mat-option value="LGTBI">LGTBI</mat-option>
                         <mat-option value="Mayoritario">Mayoritario</mat-option>
+                        <mat-option value="Afro">Afro</mat-option>
+                        <mat-option value="RROM">RROM</mat-option>
                         <mat-option value="Otros">Otros...</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -238,7 +264,7 @@
                 <mat-form-field class="w-full">
                     <mat-label>Seleccione el estrato</mat-label>
                     <mat-select formControlName="stratum">
-                    <mat-label>Seleccione el genero</mat-label>
+                    <mat-label>Seleccione el estrato</mat-label>
                     <mat-option value="1">1</mat-option>
                     <mat-option value="2">2</mat-option>
                     <mat-option value="3">3</mat-option>
@@ -257,6 +283,7 @@
                         <mat-option value="B">Grupo B</mat-option>
                         <mat-option value="C">Grupo C</mat-option>
                         <mat-option value="D">Grupo D</mat-option>
+                        <mat-option value="0">No Aplica</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -337,7 +364,7 @@
                 <ng-container matColumnDef="phone">
                     <mat-header-cell *matHeaderCellDef
                     class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                    Telefono </mat-header-cell>
+                    Teléfono </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
                 </ng-container>
         

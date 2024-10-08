@@ -29,7 +29,8 @@ export class InsertAthleteComponent implements OnInit {
   private edicion: boolean;
   edad: number;
   nombrePoblacion = "Seleccione lugar de nacimiento";
-  nombreCiudad = "Seleccione lugar de nacimiento";
+  nombreDep = "Seleccione departamento de nacimiento"
+  nombreCiudad = "Seleccione ciudad de nacimiento";
   otroEstudios = "Otros estudios";
   city: City;
   cities: City[] = [];
@@ -39,6 +40,45 @@ export class InsertAthleteComponent implements OnInit {
   selectedDate: string;
   maxDate: string;
   disabilityDisabled: boolean = false;
+  admin: Number;
+
+  selectedDep: number;     // ID del departamento seleccionado
+
+  departamentos = [
+    { idDep: 1, nombreDep: 'Antioquia' },
+    { idDep: 2, nombreDep: 'Atlantico' },
+    { idDep: 3, nombreDep: 'Santa Fe de Bogotá' },
+    { idDep: 4, nombreDep: 'Bolivar' },
+    { idDep: 5, nombreDep: 'Boyaca' },
+    { idDep: 6, nombreDep: 'Caldas' },
+    { idDep: 7, nombreDep: 'Caqueta' },
+    { idDep: 8, nombreDep: 'Cauca' },
+    { idDep: 9, nombreDep: 'Cesar' },
+    { idDep: 10, nombreDep: 'Cordova' },
+    { idDep: 11, nombreDep: 'Cundinamarca' },
+    { idDep: 12, nombreDep: 'Choco' },
+    { idDep: 13, nombreDep: 'Huila' },
+    { idDep: 14, nombreDep: 'La Guajira' },
+    { idDep: 15, nombreDep: 'Magdalena' },
+    { idDep: 16, nombreDep: 'Meta' },
+    { idDep: 17, nombreDep: 'Nariño' },
+    { idDep: 18, nombreDep: 'Norte de Santander' },
+    { idDep: 19, nombreDep: 'Quindi' },
+    { idDep: 20, nombreDep: 'Risaralda' },
+    { idDep: 21, nombreDep: 'Santander' },
+    { idDep: 22, nombreDep: 'Sucre' },
+    { idDep: 23, nombreDep: 'Tolima' },
+    { idDep: 24, nombreDep: 'Valle' },
+    { idDep: 25, nombreDep: 'Arauca' },
+    { idDep: 26, nombreDep: 'Casanare' },
+    { idDep: 27, nombreDep: 'Putumayo' },
+    { idDep: 28, nombreDep: 'San Andrés' },
+    { idDep: 29, nombreDep: 'Amazonas' },
+    { idDep: 30, nombreDep: 'Guainia' },
+    { idDep: 31, nombreDep: 'Guaviare' },
+    { idDep: 32, nombreDep: 'Vaupes' },
+    { idDep: 33, nombreDep: 'Vichada' }
+  ];
 
   constructor(private route: ActivatedRoute, private router: Router,
     private snackBar: MatSnackBar, private generalService: GeneralService,
@@ -47,13 +87,13 @@ export class InsertAthleteComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.admin = Number(sessionStorage.getItem('idSession'));
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.idAthlete = params['idAthlete'];
       this.edicion = params['idAthlete'] != null;
     });
     this.inicializarFormularioVacio();
-    this.listarCiudades();
     this.listarDocumentos();
     this.setMaxDate();
     if (this.edicion == true) {
@@ -74,10 +114,10 @@ export class InsertAthleteComponent implements OnInit {
         'city': new FormControl(City, [Validators.required]),
         'bornDate': new FormControl('', [Validators.required]),
         'gender': new FormControl('', [Validators.required]),
-        'phone': new FormControl(0, [Validators.required]),
+        'phone': new FormControl([Validators.required]),
         'direction': new FormControl('', [Validators.required]),
         'documentType': new FormControl(DocumentType, [Validators.required]),
-        'document': new FormControl(0, [Validators.required]),
+        'document': new FormControl('', [Validators.required]),
         'rh': new FormControl('', [Validators.required]),
         'neighborhood': new FormControl('', [Validators.required]),
         'email': new FormControl('', [Validators.required]),
@@ -177,10 +217,10 @@ export class InsertAthleteComponent implements OnInit {
         'city': new FormControl(City, [Validators.required]),
         'bornDate': new FormControl('', [Validators.required]),
         'gender': new FormControl('', [Validators.required]),
-        'phone': new FormControl(0, [Validators.required]),
+        'phone': new FormControl('', [Validators.required]),
         'direction': new FormControl('', [Validators.required]),
         'documentType': new FormControl(DocumentType, [Validators.required]),
-        'document': new FormControl(0, [Validators.required]),
+        'document': new FormControl('', [Validators.required]),
         'rh': new FormControl('', [Validators.required]),
         'neighborhood': new FormControl('', [Validators.required]),
         'email': new FormControl('', [Validators.required]),
@@ -274,8 +314,8 @@ export class InsertAthleteComponent implements OnInit {
     }
   }
 
-  listarCiudades() {
-    this.generalService.getCities().subscribe(data => {
+  listarCiudades(id) {
+    this.generalService.getCitiesId(id).subscribe(data => {
       this.cities = data;
     });
   }
@@ -337,7 +377,7 @@ export class InsertAthleteComponent implements OnInit {
     athlete.stratum = this.form.value['stratum'];
     athlete.sisben = this.form.value['sisben'];
     athlete.disease = this.form.value['disease'];
-    athlete.disabilityDescription = this.form.value['disabilityDescription'];
+    athlete.diseaseDescription = this.form.value['diseaseDescription'];
     athlete.club = new Club(this.id);
     if(athlete.disability == false){
       delete athlete.disabilityType;
@@ -349,7 +389,7 @@ export class InsertAthleteComponent implements OnInit {
       delete athlete.disabilityDescription;
     }
     if(athlete.disease == false){
-      delete athlete.disabilityDescription;
+      delete athlete.diseaseDescription;
     }
     if(athlete.populationType != 'Otros'){
       delete athlete.otherPopulationType;
@@ -370,7 +410,7 @@ export class InsertAthleteComponent implements OnInit {
       this.athleteService.editAthlete(athlete).subscribe(() => {
         this.form.reset();
         this.openSnackBar('Deportista editado satisfactoreamente');
-        this.router.navigate([`/admin/club/${this.id}/athlete`]);
+        this.router.navigate([`/admin/clubs/${this.id}/athlete`]);
       },
       error=> {
         this.infoSnackBar.open(error, '', {
@@ -381,7 +421,7 @@ export class InsertAthleteComponent implements OnInit {
       this.athleteService.insertAthlete(athlete).subscribe(() => {
         this.form.reset();
         this.athleteService.mensajeCambio.next('Deportista guadado satisfactoreamente');
-        this.router.navigate([`/admin/club/${this.id}/athlete`]);
+        this.router.navigate([`/admin/clubs/${this.id}/athlete`]);
       },
       error=> {
         this.infoSnackBar.open(error, '', {
@@ -397,6 +437,7 @@ export class InsertAthleteComponent implements OnInit {
     this.form.get("lastName").setValue(data.lastName);
     this.form.get("eps").setValue(data.eps);
     this.city = data.bornCity;
+    this.selectedDep = data.bornCity.idDep;
     this.nombreCiudad = data.bornCity.nombre;
     this.edad = this.calcularEdad(data.bornDate.toString());
     this.form.get("bornDate").setValue(data.bornDate);
