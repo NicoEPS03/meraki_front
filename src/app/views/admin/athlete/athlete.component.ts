@@ -84,40 +84,56 @@ export class AthleteComponent implements OnInit {
   }
 
   exportExcel(){
-    const dataToExport = this.dataSourceAthleteExcel.data.map(row => ({
-      Nombre: row.name,
-      Apellido: row.lastName,
-      EPS: row.eps,
-      "Fecha Nacimiento": row.bornDate,
-      "Lugar Nacimiento": row.bornCity.nombre,
-      Genero: row.gender,
-      Telefono: row.phone,
-      Direccion: row.direction,
-      Documento: row.document,
-      "Tipo Documento": row.documentType.description,
-      RH: row.rh,
-      Barrio: row.neighborhood,
-      Correo: row.email,
-      "Grado Escuela": row.schoolGrade,
-      Grado: row.grade,
-      Institucion: row.institution,
-      Profesion: row.profession,
-      "Otros Estudios": row.otherStudy,
-      Discapacidad: row.disability,
-      "Descripcion Discapacidad": row.disabilityDescription,
-      "Tipo Discapacidad": row.disabilityType,
-      "Tipo Poblacion": row.populationType,
-      "Otro Tipo Poblacion": row.otherPopulationType,
-      Nacionalidad: row.nationality,
-      Estrato: row.stratum,
-      SISBEN: row.sisben == 0 ? 'N/A' : row.sisben,
-      Enfermedad: row.disease,
-      "Descripcion Enfermedad": row.diseaseDescription
-    }));
+    const dataToExport = this.dataSourceAthleteExcel.data.map(row => {
+      const acudientes = row.familyDtoList.reduce((acc, familiar, index) => {
+        acc[`Relacion acudiente ${index + 1}`] = familiar.relationship;
+        acc[`Nombre acudiente ${index + 1}`] = familiar.name;
+        acc[`Documento acudiente ${index + 1}`] = familiar.document;
+        acc[`Tipo Documento acudiente ${index + 1}`] = familiar.documentType.description;
+        acc[`Telefono acudiente ${index + 1}`] = familiar.phone;
+        acc[`Correo acudiente ${index + 1}`] = familiar.email;
+        acc[`Empresa acudiente ${index + 1}`] = familiar.company;
+        acc[`Ocupacion acudiente ${index + 1}`] = familiar.occupation;
+        return acc;
+      }, {});
+    
+      // Devuelve el objeto con los datos del atleta y los familiares
+      return {
+        Nombre: row.athlete.name,
+        Apellido: row.athlete.lastName,
+        EPS: row.athlete.eps,
+        "Fecha Nacimiento": row.athlete.bornDate,
+        "Lugar Nacimiento": row.athlete.bornCity.nombre,
+        Genero: row.athlete.gender,
+        Telefono: row.athlete.phone,
+        Direccion: row.athlete.direction,
+        Documento: row.athlete.document,
+        "Tipo Documento": row.athlete.documentType.description,
+        RH: row.athlete.rh,
+        Barrio: row.athlete.neighborhood,
+        Correo: row.athlete.email,
+        "Grado Escuela": row.athlete.schoolGrade,
+        Grado: row.athlete.grade,
+        Institucion: row.athlete.institution,
+        Profesion: row.athlete.profession,
+        "Otros Estudios": row.athlete.otherStudy,
+        Discapacidad: row.athlete.disability,
+        "Descripcion Discapacidad": row.athlete.disabilityDescription,
+        "Tipo Discapacidad": row.athlete.disabilityType,
+        "Tipo Poblacion": row.athlete.populationType,
+        "Otro Tipo Poblacion": row.athlete.otherPopulationType,
+        Nacionalidad: row.athlete.nationality,
+        Estrato: row.athlete.stratum,
+        SISBEN: row.athlete.sisben == 0 ? 'N/A' : row.athlete.sisben,
+        Enfermedad: row.athlete.disease,
+        "Descripcion Enfermedad": row.athlete.diseaseDescription,
+        ...acudientes
+      };
+    });
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataToExport);
     const workbook: XLSX.WorkBook = {
-      Sheets: { 'clubes': worksheet },
-      SheetNames: ['clubes']
+      Sheets: { 'atletas': worksheet },
+      SheetNames: ['atletas']
     };
     XLSX.writeFile(workbook, 'TablaAtletas.xlsx');
   }
