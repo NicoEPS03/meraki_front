@@ -17,6 +17,7 @@ import { GeneralService } from 'src/app/service/general.service';
 export class InsertFamilyComponent implements OnInit {
 
   form: FormGroup;
+  form2: FormGroup;
   id: number;
   idAthlete : number;
   edicion: boolean;
@@ -85,6 +86,17 @@ export class InsertFamilyComponent implements OnInit {
         'occupation': new FormControl('', [Validators.required]),
         'relationship': new FormControl('', [Validators.required])
       });
+      this.form2 = new FormGroup({
+        'id2': new FormControl(0, [Validators.required]),
+        'name2': new FormControl('', [Validators.required]),
+        'document2': new FormControl('', [Validators.required]),
+        'documentType2': new FormControl(DocumentType, [Validators.required]),
+        'phone2': new FormControl('', [Validators.required]),
+        'email2': new FormControl('', [Validators.required]),
+        'company2': new FormControl('', [Validators.required]),
+        'occupation2': new FormControl('', [Validators.required]),
+        'relationship2': new FormControl('', [Validators.required])
+      });
     }
   }
 
@@ -116,16 +128,42 @@ export class InsertFamilyComponent implements OnInit {
         });
       });
     } else {
+      let family2 = new Family();
+      family2.athlete = new Athlete(this.idAthlete);
+      family2.name = this.form2.value['name2'];    
+      family2.documentType = new DocumentType(this.form2.value['documentType2']);
+      family2.document = this.form2.value['document2'];
+      family2.phone = this.form2.value['phone2'];
+      family2.email = this.form2.value['email2'];
+      family2.company = this.form2.value['company2'];
+      family2.occupation = this.form2.value['occupation2'];
+      family2.relationship = this.form2.value['relationship2'];
       this.familyService.insertFamiliar(family).subscribe(() => {
         this.form.reset();
-        this.dialogRef.close();
-        this.familyService.mensajeCambio.next('Familiar agregado satisfactoreamente');
-      },
-      error=> {
+        this.familyService.mensajeCambio.next('Primer familiar agregado satisfactoriamente');
+      
+        this.infoSnackBar.open('Primer familiar agregado', '', {
+          duration: 2000,
+        }).afterDismissed().subscribe(() => {
+          this.familyService.insertFamiliar(family2).subscribe(() => {
+            this.form.reset();
+            this.dialogRef.close();
+            this.familyService.mensajeCambio.next('Segundo familiar agregado satisfactoriamente');
+      
+            this.infoSnackBar.open('Segundo familiar agregado', '', {
+              duration: 2000,
+            });
+          }, error => {
+            this.infoSnackBar.open(error, '', {
+              duration: 2000,
+            });
+          });
+        });
+      }, error => {
         this.infoSnackBar.open(error, '', {
           duration: 2000,
         });
-      });
+      });      
     }
   }
 

@@ -1,70 +1,135 @@
 <mat-dialog-content class="mat-typography">
-    <div
-    class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white"
-    >
+    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+        <h3 *ngIf="edicion != true">Acudiente 1</h3>
         <div class="px-4 py-4">
-        <form [formGroup]="form" #frmCoach="ngForm">
-            <div [hidden]="true">
-                <mat-form-field class="input">
-                    <mat-label>Id</mat-label>
-                    <input matInput formControlName="id" [hidden]="true">
+            <form [formGroup]="form">
+                <div [hidden]="true">
+                    <mat-form-field class="input">
+                        <mat-label>Id</mat-label>
+                        <input matInput formControlName="id" [hidden]="true">
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="input w-full">
+                    <mat-label>Nombre y Apellido</mat-label>
+                    <input matInput formControlName="name" maxlength="70" minlength="5">
                 </mat-form-field>
-            </div>
-            <mat-form-field class="input w-full">
-                <mat-label>Nombre</mat-label>
-                <input matInput formControlName="name" maxlength="70" minlength="5">
-            </mat-form-field>
-            <br>
-            <mat-form-field class=" w-full">
-                <mat-label>{{documento}}</mat-label>
-                <mat-select formControlName="documentType">
-                    <mat-label>Seleccione el documento</mat-label>
-                    <mat-option *ngFor="let x of documentTypes" [value]="x.id">
-                        {{x.description}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-            <mat-form-field class="input w-full">
-                <mat-label>Documento</mat-label>
-                <input matInput formControlName="document" maxlength="13" minlength="3" type="number">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="input w-full">
-                <mat-label>Telefono</mat-label>
-                <input matInput formControlName="phone" maxlength="11" minlength="5" type="number">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="input w-full">
-                <mat-label>Correo</mat-label>
-                <input matInput formControlName="email" maxlength="50" type="email">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="input w-full">
-                <mat-label>Empresa</mat-label>
-                <input matInput formControlName="company" maxlength="30" minlength="5">
-            </mat-form-field>
-            <br>
-            <mat-form-field class="input w-full">
-                <mat-label>Ocupación</mat-label>
-                <input matInput formControlName="occupation" maxlength="25" minlength="5">
-            </mat-form-field>
-            <br>
-            <mat-form-field class=" w-full">
-                <mat-label>Seleccione el parentesco</mat-label>
-                <mat-select formControlName="relationship">
+                <br>
+                <mat-form-field class=" w-full">
+                    <mat-label>{{documento}}</mat-label>
+                    <mat-select formControlName="documentType">
+                        <mat-label>Seleccione el documento</mat-label>
+                        <mat-option *ngFor="let x of documentTypes" [value]="x.id">
+                            {{x.description}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="input w-full">
+                    <mat-label>Documento</mat-label>
+                    <input matInput formControlName="document" maxlength="13" minlength="3">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="input w-full">
+                    <mat-label>Telefono</mat-label>
+                    <input matInput formControlName="phone" maxlength="11" minlength="5" type="number">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="input w-full">
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="email" maxlength="50" type="email">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="input w-full">
+                    <mat-label>Empresa</mat-label>
+                    <input matInput formControlName="company" maxlength="30" minlength="5">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="input w-full">
+                    <mat-label>Ocupación</mat-label>
+                    <input matInput formControlName="occupation" maxlength="25" minlength="5">
+                </mat-form-field>
+                <br>
+                <mat-form-field class=" w-full">
                     <mat-label>Seleccione el parentesco</mat-label>
-                    <mat-option value="Madre">Madre</mat-option>
-                    <mat-option value="Padre">Padre</mat-option>
-                    <mat-option value="Acudiente">Acudiente</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <br>
-        </form>
-    </div>
+                    <mat-select formControlName="relationship">
+                        <mat-label>Seleccione el parentesco</mat-label>
+                        <mat-option value="Madre">Madre</mat-option>
+                        <mat-option value="Padre">Padre</mat-option>
+                        <mat-option value="Acudiente">Acudiente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+            </form>
+        </div>
+        <section *ngIf="edicion != true">
+            <h3>Acudiente 2</h3>
+            <div class="px-4 py-4">
+                <form [formGroup]="form2">
+                    <div [hidden]="true">
+                        <mat-form-field class="input">
+                            <mat-label>Id</mat-label>
+                            <input matInput formControlName="id2" [hidden]="true">
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Nombre y Apellido</mat-label>
+                        <input matInput formControlName="name2" maxlength="70" minlength="5">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class=" w-full">
+                        <mat-label>{{documento}}</mat-label>
+                        <mat-select formControlName="documentType2">
+                            <mat-label>Seleccione el documento</mat-label>
+                            <mat-option *ngFor="let x of documentTypes" [value]="x.id">
+                                {{x.description}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Documento</mat-label>
+                        <input matInput formControlName="document2" maxlength="13" minlength="3">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput formControlName="phone2" maxlength="11" minlength="5" type="number">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Correo</mat-label>
+                        <input matInput formControlName="email2" maxlength="50" type="email">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Empresa</mat-label>
+                        <input matInput formControlName="company2" maxlength="30" minlength="5">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="input w-full">
+                        <mat-label>Ocupación</mat-label>
+                        <input matInput formControlName="occupation2" maxlength="25" minlength="5">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class=" w-full">
+                        <mat-label>Seleccione el parentesco</mat-label>
+                        <mat-select formControlName="relationship2">
+                            <mat-label>Seleccione el parentesco</mat-label>
+                            <mat-option value="Madre">Madre</mat-option>
+                            <mat-option value="Padre">Padre</mat-option>
+                            <mat-option value="Acudiente">Acudiente</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br>
+                </form>
+            </div>
+        </section>
+
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cerrar</button>
-    <button mat-button class="px-4 bg-meraki-2 text-white" [disabled]="frmCoach.invalid" (click)="guardar()">Guardar</button>
+    <button mat-raised-button class="px-4 bg-meraki-2 text-white" [disabled]="form.invalid" *ngIf="edicion==true"
+        (click)="guardar()">Guardar e</button>
+    <button mat-raised-button class="px-4 bg-meraki-2 text-white" [disabled]="form.invalid || form2.invalid" *ngIf="edicion!=true" (click)="guardar()">Guardar</button>
 </mat-dialog-actions>
